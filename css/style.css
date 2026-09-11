@@ -672,6 +672,10 @@ nav button.active {
   grid-template-columns: repeat(2, 1fr)
 }
 
+.gifted-grid{
+  grid-template-columns: repeat(2, 1fr)
+}
+
 .leader-grid {
   grid-template-columns: repeat(2, 1fr)
 }
@@ -679,6 +683,7 @@ nav button.active {
 .student-grid {
   grid-template-columns: repeat(5, 1fr)
 }
+
 
 .person-card {
   background: linear-gradient(145deg, #10291f, #0a1b14);

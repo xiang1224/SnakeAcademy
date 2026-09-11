@@ -40,8 +40,10 @@ createApp({
         { id: 16, type: 'student', name: '福瑞．布萊梅', title: '學生', image: 'images/students/福瑞．布萊梅.png' },
         { id: 17, type: 'student', name: '維恩．阿斯特', title: '學生', image: 'images/students/維恩．阿斯特.png' },
         { id: 18, type: 'student', name: '蕾貝卡．羅溫', title: '學生', image: 'images/students/蕾貝卡．羅溫.png' },
-        { id: 19, type: 'student', name: '蹦．撤卡拉卡', title: '學生', image: 'images/students/蹦．撤卡拉卡.png' },
+        { id: 19, type: 'gifted', name: '蹦．撤卡拉卡', title: '資優生', bio: '負責教學弟們搭訕。', image: 'images/students/蹦．撤卡拉卡.png' },
         { id: 20, type: 'student', name: '鵝嵋珊 • 荷歡珊', title: '學生', image: 'images/students/鵝嵋珊 • 荷歡珊.png' },
+        { id: 21, type: 'gifted', name: '伊芙琳．克羅伊斯', title: '資優生', bio: '負責細心呵護學弟妹們。', image: 'images/students/伊芙琳．克羅伊斯.png' },
+        { id: 21, type: 'student', name: '莉絲·羅文', title: '學生', image: 'images/students/莉絲·羅文.png' },
       ]
     };
   },
@@ -59,6 +61,10 @@ createApp({
     },
     leaders() {
       return this.people.filter(x => x.type === 'leader');
+    },
+    // 延伸新增：資優學生 / 專案代表
+    giftedLeaders() {
+      return this.people.filter(x => x.type === 'gifted');
     },
     students() {
       return this.people.filter(x => x.type === 'student');
