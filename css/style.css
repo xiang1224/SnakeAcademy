@@ -974,6 +974,7 @@ nav button.active {
   .gallery-grid,
   .faculty-grid,
   .leader-grid,
+  .gifted-grid,
   .about-layout {
     grid-template-columns: 1fr
   }

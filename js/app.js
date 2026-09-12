@@ -16,7 +16,10 @@ createApp({
         { id: 3, name: '地震中', category: '校園日常', image: 'images/gallery/地震.jpg' },
         { id: 4, name: '第一次班會紀錄', category: '校園日常', image: 'images/gallery/班會.png' },
         { id: 5, name: '歷史課', category: '課堂側拍', image: 'images/gallery/歷史課.png' },
-        { id: 6, name: '魔法理論課', category: '課堂側拍', image: 'images/gallery/魔法理論課.png' }
+        { id: 6, name: '魔法理論課', category: '課堂側拍', image: 'images/gallery/魔法理論課.png' },
+        { id: 7, name: '粉紅泡泡隊', category: '學院活動', image: 'images/gallery/粉紅泡泡隊.png' },
+        { id: 8, name: '灰蛇厲害隊', category: '學院活動', image: 'images/gallery/灰蛇厲害隊.png' },
+        { id: 9, name: '團康遊戲', category: '學院活動', image: 'images/gallery/團康遊戲.png' },
       ],
 
       people: [
@@ -42,8 +45,13 @@ createApp({
         { id: 18, type: 'student', name: '蕾貝卡．羅溫', title: '學生', image: 'images/students/蕾貝卡．羅溫.png' },
         { id: 19, type: 'gifted', name: '蹦．撤卡拉卡', title: '資優生', bio: '負責教學弟們搭訕。', image: 'images/students/蹦．撤卡拉卡.png' },
         { id: 20, type: 'student', name: '鵝嵋珊 • 荷歡珊', title: '學生', image: 'images/students/鵝嵋珊 • 荷歡珊.png' },
-        { id: 21, type: 'gifted', name: '伊芙琳．克羅伊斯', title: '資優生', bio: '負責細心呵護學弟妹們。', image: 'images/students/伊芙琳．克羅伊斯.png' },
-        { id: 21, type: 'student', name: '莉絲·羅文', title: '學生', image: 'images/students/莉絲·羅文.png' },
+        { id: 22, type: 'gifted', name: '伊芙琳．克羅伊斯', title: '資優生', bio: '負責細心呵護學弟妹們。', image: 'images/students/伊芙琳．克羅伊斯.png' },
+        { id: 23, type: 'student', name: '莉絲·羅文', title: '學生', image: 'images/students/莉絲·羅文.png' },
+        { id: 24, type: 'student', name: '亞瑟 • 金斯利', title: '學生', image: 'images/students/亞瑟 • 金斯利.png' },
+        { id: 25, type: 'student', name: '哈比·麥·貴度', title: '學生', image: 'images/students/哈比·麥·貴度.png' },
+        { id: 26, type: 'student', name: '熙振．泰瑞托', title: '學生', image: 'images/students/熙振．泰瑞托.png' },
+        { id: 27, type: 'student', name: '伊莉莎．霍普', title: '學生', image: 'images/students/伊莉莎．霍普.png' },
+        { id: 28, type: 'student', name: '露娜．索爾貝克', title: '學生', image: 'images/students/露娜．索爾貝克.png' },
       ]
     };
   },
