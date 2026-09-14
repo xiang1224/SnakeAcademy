@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,304 +8,488 @@
   <meta name="description" content="毒蛇學院官方網站">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div id="app">
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
+  <div id="app">
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
 
-  <header class="site-header" :class="{ scrolled: scrolled }">
-    <div class="nav-shell">
-      <button class="brand" @click="go('home')" aria-label="返回首頁">
-        <span class="brand-mark"><img src="images/logo.png" alt="毒蛇學院標誌"></span>
-        <span>
-          <strong>毒蛇學院</strong>
-          <small>SNAKE ACADEMY</small>
-        </span>
-      </button>
+    <header class="site-header" :class="{ scrolled: scrolled }">
+      <div class="nav-shell">
+        <button class="brand" @click="go('home')" aria-label="返回首頁">
+          <span class="brand-mark"><img src="images/logo.png" alt="毒蛇學院標誌"></span>
+          <span>
+            <strong>毒蛇學院</strong>
+            <small>SNAKE ACADEMY</small>
+          </span>
+        </button>
 
-      <button class="menu-toggle" @click="mobileOpen = !mobileOpen" aria-label="開啟選單">☰</button>
+        <button class="menu-toggle" @click="mobileOpen = !mobileOpen" aria-label="開啟選單">☰</button>
 
-      <nav :class="{ open: mobileOpen }">
-        <button :class="{ active: page === 'home' }" @click="go('home')">首頁</button>
-        <button :class="{ active: page === 'gallery' }" @click="go('gallery')">學院相簿</button>
-        <button :class="{ active: page === 'people' }" @click="go('people')">師生名錄</button>
-        <button :class="{ active: page === 'about' }" @click="go('about')">學院介紹</button>
-      </nav>
-    </div>
-  </header>
+        <nav :class="{ open: mobileOpen }">
+          <button :class="{ active: page === 'home' }" @click="go('home')">首頁</button>
 
-  <main>
-    <!-- HOME -->
-    <section v-if="page === 'home'" class="page">
-      <section class="hero">
-        <div class="hero-content">
-          <p class="eyebrow">SNAKE ACADEMY · EST. 1940</p>
-          <h1>毒蛇學院</h1>
-          <div class="hero-line"></div>
-          <p class="hero-subtitle">智慧．野心．榮耀</p>
-          <p class="hero-description">
-            在黑暗中保持清醒，在未知前保持勇氣。<br>
-            這裡培育的不只是學生，而是能掌握自己命運的人。
-          </p>
-          <div class="hero-actions">
-            <button class="btn btn-gold" @click="go('about')">探索學院</button>
-            <button class="btn btn-outline" @click="go('people')">認識師生</button>
-          </div>
-        </div>
-        <div class="hero-symbol" aria-hidden="true">
-          <div class="symbol-ring"></div>
-          <div class="snake-symbol">
-            <img src="images/logo.png" alt="毒蛇學院標誌">
-          </div>
-          <span>智慧</span><span>野心</span><span>榮耀</span>
-        </div>
-        <div class="scroll-hint">SCROLL <span>↓</span></div>
-      </section>
 
-      <section class="section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">THE ACADEMY</p>
-          <h2>歡迎來到毒蛇學院</h2>
-          <p>一所重視智慧、紀律與團隊精神的學院。</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-icon">♜</span>
-            <h3>智慧</h3>
-            <p>以知識武裝自己，學會觀察、判斷與思考。</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-icon">✦</span>
-            <h3>野心</h3>
-            <p>不畏懼設定更高的目標，勇敢走出自己的道路。</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-icon">♛</span>
-            <h3>榮耀</h3>
-            <p>珍惜團隊與學院的榮譽，讓每一次努力留下意義。</p>
-          </article>
-        </div>
-      </section>
 
-      <section class="section dark-section">
-        <div class="split-section">
-          <div>
-            <p class="eyebrow">LATEST MOMENTS</p>
-            <h2>學院最新紀錄</h2>
-            <p class="muted">瀏覽毒蛇學院的活動照片、師生合影與校園日常。</p>
-            <button class="text-link" @click="go('gallery')">前往學院相簿 →</button>
-          </div>
-          <div class="mini-gallery">
-            <button v-for="item in gallery.slice(0,3)" :key="item.id" @click="openLightbox(item)">
-              <img :src="item.image" :alt="item.name" @error="imageFallback">
+          <button :class="{ active: page === 'gallery' }" @click="go('gallery')">學院相簿</button>
+          <button :class="{ active: page === 'people' }" @click="go('people')">師生名錄</button>
+          <button :class="{ active: page === 'about' }" @click="go('about')">學院介紹</button>
+          <div class="nav-dropdown" :class="{ open: infoOpen }">
+            <button class="nav-dropdown-toggle" :class="{ active: infoPages.includes(page) }" @click="toggleInfoMenu">
+              情報區 <span class="dropdown-arrow">⌄</span>
             </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="stats-grid">
-          <div><strong>{{ people.length }}</strong><span>師生資料</span></div>
-          <div><strong>{{ gallery.length }}</strong><span>學院照片</span></div>
-          <div><strong>2026</strong><span>學院年度</span></div>
-          <div><strong>∞</strong><span>未完的故事</span></div>
-        </div>
-      </section>
-    </section>
-
-    <!-- GALLERY -->
-    <section v-if="page === 'gallery'" class="page inner-page">
-      <div class="page-hero">
-        <p class="eyebrow">PHOTO ARCHIVE</p>
-        <h1>學院相簿</h1>
-        <p>收藏每一個值得記住的瞬間。</p>
-      </div>
-
-      <section class="section compact">
-        <div class="toolbar">
-          <div class="filters">
-            <button v-for="cat in galleryCategories" :key="cat"
-              :class="{ active: galleryFilter === cat }"
-              @click="galleryFilter = cat">{{ cat }}</button>
-          </div>
-          <span class="result-count">{{ filteredGallery.length }} 張照片</span>
-        </div>
-
-        <div class="gallery-grid">
-          <article class="photo-card" v-for="item in filteredGallery" :key="item.id">
-            <button class="photo-image" @click="openLightbox(item)">
-              <img :src="item.image" :alt="item.name" @error="imageFallback">
-              <span class="zoom">＋</span>
-            </button>
-            <div class="photo-info">
-              <div>
-                <small>{{ item.category }}</small>
-                <h3>{{ item.name }}</h3>
-              </div>
-              <a class="download-btn" :href="item.image" :download="safeFileName(item.name)" @click.stop>↓</a>
+            <div class="nav-dropdown-menu">
+              <button :class="{ active: page === 'gathering' }" @click="go('gathering')">採集相關
+                <small>Gathering</small></button>
+              <button :class="{ active: page === 'stones' }" @click="go('stones')">魔法石相關 <small>Magic
+                  Stones</small></button>
+              <button :class="{ active: page === 'professors' }" @click="go('professors')">教授們相關
+                <small>Professors</small></button>
             </div>
-          </article>
-        </div>
-
-        <div v-if="filteredGallery.length === 0" class="empty-state">
-          <span>🐍</span>
-          <h3>目前沒有這個分類的照片</h3>
-        </div>
-      </section>
-    </section>
-
-    <!-- PEOPLE -->
-    <section v-if="page === 'people'" class="page inner-page">
-      <div class="page-hero">
-        <p class="eyebrow">OUR PEOPLE</p>
-        <h1>師生名錄</h1>
-        <p>認識與毒蛇學院共同寫下故事的人。</p>
+          </div>
+        </nav>
       </div>
+    </header>
 
-      <section class="section compact">
-        <div class="people-block">
-          <div class="sub-heading"><span>01</span><h2>教授</h2></div>
-          <div class="people-grid faculty-grid">
-            <article class="person-card faculty" v-for="person in faculty" :key="person.id">
-              <div class="person-photo">
-                <img :src="person.image" :alt="person.name" @error="imageFallback">
-                <span class="role-badge">PROFESSOR</span>
-              </div>
-              <div class="person-body">
-                <small>{{ person.title }}</small>
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.bio }}</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="people-block">
-          <div class="sub-heading"><span>02</span>
-            <h2>資優生</h2>
-          </div>
-          <div class="people-grid gifted-grid">
-            <article class="person-card gifted" v-for="person in giftedLeaders" :key="person.id">
-              <div class="person-photo">
-                <img :src="person.image" :alt="person.name" @error="imageFallback">
-                <span class="role-badge">{{ person.title }}</span>
-              </div>
-              <div class="person-body">
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.bio }}</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="people-block">
-          <div class="sub-heading"><span>03</span><h2>學生幹部</h2></div>
-          <div class="people-grid leader-grid">
-            <article class="person-card leader" v-for="person in leaders" :key="person.id">
-              <div class="person-photo">
-                <img :src="person.image" :alt="person.name" @error="imageFallback">
-                <span class="role-badge">{{ person.title }}</span>
-              </div>
-              <div class="person-body">
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.bio }}</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="people-block">
-          <div class="sub-heading"><span>03</span><h2>全體學生</h2></div>
-          <div class="people-grid student-grid">
-            <article class="person-card student" v-for="person in students" :key="person.id">
-              <div class="person-photo">
-                <img :src="person.image" :alt="person.name" @error="imageFallback">
-              </div>
-              <div class="person-body">
-                <h3>{{ person.name }}</h3>
-                <small>{{ person.title }}</small>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <!-- ABOUT -->
-    <section v-if="page === 'about'" class="page inner-page">
-      <div class="page-hero">
-        <p class="eyebrow">ABOUT SNAKE ACADEMY</p>
-        <h1>學院介紹</h1>
-        <p>了解毒蛇學院的精神、文化與制度。</p>
-      </div>
-
-      <section class="section compact">
-        <div class="about-layout">
-          <article class="about-card large">
-            <p class="eyebrow">OUR PHILOSOPHY</p>
-            <h2>在沉默之中觀察，<br>在關鍵時刻行動。</h2>
-            <p>
-              毒蛇學院相信，真正的力量並不只來自天賦。
-              能夠理解自己、尊重他人、保持冷靜並在關鍵時刻做出選擇，
-              才是值得被稱為「毒蛇」的人。
+    <main>
+      <!-- HOME -->
+      <section v-if="page === 'home'" class="page">
+        <section class="hero">
+          <div class="hero-content">
+            <p class="eyebrow">SNAKE ACADEMY · EST. 1940</p>
+            <h1>毒蛇學院</h1>
+            <div class="hero-line"></div>
+            <p class="hero-subtitle">智慧．野心．榮耀</p>
+            <p class="hero-description">
+              在黑暗中保持清醒，在未知前保持勇氣。<br>
+              這裡培育的不只是學生，而是能掌握自己命運的人。
             </p>
-          </article>
-          <article class="about-card">
-            <span class="number">01</span>
-            <h3>學院精神</h3>
-            <p>智慧、野心、榮耀，是我們共同遵循的三項核心價值。</p>
-          </article>
-          <article class="about-card">
-            <span class="number">02</span>
-            <h3>團隊文化</h3>
-            <p>每個人都有自己的位置，而真正的勝利來自彼此信任。</p>
-          </article>
-          <article class="about-card">
-            <span class="number">03</span>
-            <h3>學院生活</h3>
-            <p>課堂、活動、競賽與日常相處，都是成長的一部分。</p>
-          </article>
-          <article class="about-card">
-            <span class="number">04</span>
-            <h3>我們的未來</h3>
-            <p>讓每一位學生離開學院時，都能帶著屬於自己的故事。</p>
-          </article>
-        </div>
+            <div class="hero-actions">
+              <button class="btn btn-gold" @click="go('about')">探索學院</button>
+              <button class="btn btn-outline" @click="go('people')">認識師生</button>
+            </div>
+          </div>
+          <div class="hero-symbol" aria-hidden="true">
+            <div class="symbol-ring"></div>
+            <div class="snake-symbol">
+              <img src="images/logo.png" alt="毒蛇學院標誌">
+            </div>
+            <span>智慧</span><span>野心</span><span>榮耀</span>
+          </div>
+          <div class="scroll-hint">SCROLL <span>↓</span></div>
+        </section>
+
+        <section class="section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">THE ACADEMY</p>
+            <h2>歡迎來到毒蛇學院</h2>
+            <p>一所重視智慧、紀律與團隊精神的學院。</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-icon">♜</span>
+              <h3>智慧</h3>
+              <p>以知識武裝自己，學會觀察、判斷與思考。</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon">✦</span>
+              <h3>野心</h3>
+              <p>不畏懼設定更高的目標，勇敢走出自己的道路。</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon">♛</span>
+              <h3>榮耀</h3>
+              <p>珍惜團隊與學院的榮譽，讓每一次努力留下意義。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section dark-section">
+          <div class="split-section">
+            <div>
+              <p class="eyebrow">LATEST MOMENTS</p>
+              <h2>學院最新紀錄</h2>
+              <p class="muted">瀏覽毒蛇學院的活動照片、師生合影與校園日常。</p>
+              <button class="text-link" @click="go('gallery')">前往學院相簿 →</button>
+            </div>
+            <div class="mini-gallery">
+              <button v-for="item in gallery.slice(0,3)" :key="item.id" @click="openLightbox(item)">
+                <img :src="item.image" :alt="item.name" @error="imageFallback">
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="stats-grid">
+            <div><strong>{{ academyPeopleCount }}</strong><span>師生資料</span></div>
+            <div><strong>{{ gallery.length }}</strong><span>學院照片</span></div>
+            <div><strong>2026</strong><span>學院年度</span></div>
+            <div><strong>∞</strong><span>未完的故事</span></div>
+          </div>
+        </section>
       </section>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div>
-      <strong><img src="images/logo.png" alt="毒蛇學院標誌" class="footer-logo"> 毒蛇學院</strong>
-      <p>智慧．野心．榮耀</p>
-    </div>
-    <p>© 2026 暈船仔丨小翔丨 · All Rights Reserved.</p>
-  </footer>
-
-  <!-- Lightbox -->
-  <div v-if="lightbox" class="lightbox" @click.self="closeLightbox">
-    <button class="lightbox-close" @click="closeLightbox">×</button>
-    <button class="lightbox-nav prev" @click="prevPhoto">‹</button>
-    <div class="lightbox-content">
-      <img :src="lightbox.image" :alt="lightbox.name" @error="imageFallback">
-      <div class="lightbox-caption">
-        <div>
-          <small>{{ lightbox.category }}</small>
-          <h2>{{ lightbox.name }}</h2>
+      <!-- GALLERY -->
+      <section v-if="page === 'gallery'" class="page inner-page">
+        <div class="page-hero">
+          <p class="eyebrow">PHOTO ARCHIVE</p>
+          <h1>學院相簿</h1>
+          <p>收藏每一個值得記住的瞬間。</p>
         </div>
-        <a class="btn btn-gold" :href="lightbox.image" :download="safeFileName(lightbox.name)">↓ 下載照片</a>
+
+        <section class="section compact">
+          <div class="toolbar">
+            <div class="filters">
+              <button v-for="cat in galleryCategories" :key="cat" :class="{ active: galleryFilter === cat }"
+                @click="galleryFilter = cat">{{ cat }}</button>
+            </div>
+            <span class="result-count">{{ filteredGallery.length }} 張照片</span>
+          </div>
+
+          <div class="gallery-grid">
+            <article class="photo-card" v-for="item in filteredGallery" :key="item.id">
+              <button class="photo-image" @click="openLightbox(item)">
+                <img :src="item.image" :alt="item.name" @error="imageFallback">
+                <span class="zoom">＋</span>
+              </button>
+              <div class="photo-info">
+                <div>
+                  <small>{{ item.category }}</small>
+                  <h3>{{ item.name }}</h3>
+                </div>
+                <a class="download-btn" :href="item.image" :download="safeFileName(item.name)" @click.stop>↓</a>
+              </div>
+            </article>
+          </div>
+
+          <div v-if="filteredGallery.length === 0" class="empty-state">
+            <span>🐍</span>
+            <h3>目前沒有這個分類的照片</h3>
+          </div>
+        </section>
+      </section>
+
+      <!-- PEOPLE -->
+      <section v-if="page === 'people'" class="page inner-page">
+        <div class="page-hero">
+          <p class="eyebrow">OUR PEOPLE</p>
+          <h1>師生名錄</h1>
+          <p>認識與毒蛇學院共同寫下故事的人。</p>
+        </div>
+
+        <section class="section compact">
+          <div class="people-block">
+            <div class="sub-heading"><span>01</span>
+              <h2>教授</h2>
+            </div>
+            <div class="people-grid faculty-grid">
+              <article class="person-card faculty" v-for="person in faculty" :key="person.id">
+                <div class="person-photo">
+                  <img :src="person.image" :alt="person.name" @error="imageFallback">
+                  <span class="role-badge">PROFESSOR</span>
+                </div>
+                <div class="person-body">
+                  <small>{{ person.title }}</small>
+                  <h3>{{ person.name }}</h3>
+                  <p>{{ person.bio }}</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="people-block">
+            <div class="sub-heading"><span>02</span>
+              <h2>資優生</h2>
+            </div>
+            <div class="people-grid gifted-grid">
+              <article class="person-card gifted" v-for="person in giftedLeaders" :key="person.id">
+                <div class="person-photo">
+                  <img :src="person.image" :alt="person.name" @error="imageFallback">
+                  <span class="role-badge">{{ person.title }}</span>
+                </div>
+                <div class="person-body">
+                  <h3>{{ person.name }}</h3>
+                  <p>{{ person.bio }}</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="people-block">
+            <div class="sub-heading"><span>03</span>
+              <h2>學生幹部</h2>
+            </div>
+            <div class="people-grid leader-grid">
+              <article class="person-card leader" v-for="person in leaders" :key="person.id">
+                <div class="person-photo">
+                  <img :src="person.image" :alt="person.name" @error="imageFallback">
+                  <span class="role-badge">{{ person.title }}</span>
+                </div>
+                <div class="person-body">
+                  <h3>{{ person.name }}</h3>
+                  <p>{{ person.bio }}</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="people-block">
+            <div class="sub-heading"><span>03</span>
+              <h2>全體學生</h2>
+            </div>
+            <div class="people-grid student-grid">
+              <article class="person-card student" v-for="person in students" :key="person.id">
+                <div class="person-photo">
+                  <img :src="person.image" :alt="person.name" @error="imageFallback">
+                </div>
+                <div class="person-body">
+                  <h3>{{ person.name }}</h3>
+                  <small>{{ person.title }}</small>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- INFORMATION: GATHERING -->
+      <section v-if="page === 'gathering'" class="page inner-page">
+        <div class="page-hero info-hero">
+          <p class="eyebrow">FIELD INTELLIGENCE · GATHERING</p>
+          <h1>採集相關</h1>
+          <p>記錄學院周邊重要資源的採集地點、用途與實際位置。</p>
+        </div>
+
+        <section class="section compact">
+          <div class="info-warning">
+            <span class="brand-mark"><img src="images/logo.png" alt="毒蛇學院標誌"></span>
+            <div><strong>採集情報檔案</strong>
+              <p>抵達現場後盡量減少奔跑，避免走馬看花沒看到採集物。</p>
+            </div>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card" v-for="item in gatheringSpots" :key="item.id">
+              <div class="resource-title">
+                <div><span class="resource-type">{{ item.type }}</span>
+                  <h2>{{ item.name }}</h2>
+                </div>
+                <span class="intel-number">{{ String(item.id).padStart(2,'0') }}</span>
+              </div>
+              <p class="resource-use"><strong>用途</strong>{{ item.use }}</p>
+              <figure class="resource-main-image" @click="openImageLightbox(item.image, item.name + '｜採集物', '採集物')">
+                <img :src="item.image" :alt="item.name + '採集物'" @error="imageFallback">
+                <span class="image-zoom-hint">＋ 放大</span>
+                <figcaption>採集物照片</figcaption>
+              </figure>
+              <div class="location-grid">
+                <figure class="location-image" @click="openImageLightbox(item.mapImage, item.name + '｜地圖位置', '地圖位置')">
+                  <img :src="item.mapImage" :alt="item.name + '地圖位置'" @error="imageFallback">
+                  <span class="image-zoom-hint">＋ 放大</span>
+                  <figcaption>地圖位置</figcaption>
+                </figure>
+                <figure class="location-image"
+                  @click="openImageLightbox(item.actualImage, item.name + '｜實際位置', '實際位置')">
+                  <img :src="item.actualImage" :alt="item.name + '實際位置'" @error="imageFallback">
+                  <span class="image-zoom-hint">＋ 放大</span>
+                  <figcaption>實際位置</figcaption>
+                </figure>
+              </div>
+              <div class="location-note"><span>⌖</span>
+                <div><small>位置情報</small><strong>{{ item.location }}</strong></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+
+      <!-- INFORMATION: MAGIC STONES -->
+      <section v-if="page === 'stones'" class="page inner-page">
+        <div class="page-hero info-hero">
+          <p class="eyebrow">ARCANE INTELLIGENCE · MAGIC STONES</p>
+          <h1>魔法石相關</h1>
+          <p>整理學院已知魔法石的名稱、種類、外觀與用途。</p>
+        </div>
+        <section class="section compact">
+          <div class="stone-toolbar">
+            <div class="stone-search">
+              <span>⌕</span>
+              <input v-model="stoneSearch" type="search" placeholder="搜尋魔法石名稱、種類、用途或標籤……">
+              <button v-if="stoneSearch" class="clear-search" @click="stoneSearch = ''" aria-label="清除搜尋">×</button>
+            </div>
+            <div class="stone-filters">
+              <button v-for="cat in stoneCategories" :key="cat" :class="{ active: stoneFilter === cat }"
+                @click="stoneFilter = cat">{{ cat }}</button>
+            </div>
+            <span class="result-count">找到 {{ filteredMagicStones.length }} 顆魔法石</span>
+          </div>
+
+          <div class="stone-grid">
+            <article class="stone-card" v-for="stone in filteredMagicStones" :key="stone.id">
+              <div class="stone-image">
+                <img :src="stone.image" :alt="stone.name" @error="imageFallback">
+                <span>{{ stone.kind }}</span>
+              </div>
+              <div class="stone-body">
+                <div class="stone-index">ARCANE {{ String(stone.id).padStart(2,'0') }}</div>
+                <h2>{{ stone.name }}</h2>
+                <div class="stone-tags">
+                  <span v-for="tag in (stone.tags || [])" :key="tag">#{{ tag }}</span>
+                </div>
+                <div class="stone-kind"><small>種類</small><strong>{{ stone.kind }}</strong></div>
+                <p><strong>用途</strong>{{ stone.use }}</p>
+              </div>
+            </article>
+          </div>
+
+          <div v-if="filteredMagicStones.length === 0" class="empty-state stone-empty">
+            <span>✦</span>
+            <h3>沒有找到符合條件的魔法石</h3>
+            <p>可以嘗試其他名稱、種類或標籤。</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- INFORMATION: PROFESSORS -->
+      <section v-if="page === 'professors'" class="page inner-page">
+        <div class="page-hero info-hero">
+          <p class="eyebrow">FACULTY INTELLIGENCE · PROFESSORS</p>
+          <h1>教授們相關</h1>
+          <p>掌握教授的專長領域，尋找最適合你的學習方向。</p>
+        </div>
+        <section class="section compact">
+          <div class="professor-intro">
+            <span>FACULTY DOSSIER</span>
+            <p>「真正的情報，不只是知道名字，而是知道誰能在關鍵時刻提供答案。」</p>
+          </div>
+          <div class="professor-grid">
+            <!-- 這裡改用 allProfessors -->
+            <article class="professor-card" v-for="prof in allProfessors" :key="prof.id">
+              <div class="professor-photo">
+                <img :src="prof.image" :alt="prof.name" @error="imageFallback">
+                <span>PROFESSOR</span>
+              </div>
+              <div class="professor-body">
+                <small>{{ prof.title }} <template v-if="prof.house">· {{ prof.house }}</template></small>
+                <h2>{{ prof.name }}</h2>
+                <div class="expertise">
+                  <span>專長</span>
+                  <strong>{{ prof.expertise || '學院教學與指導' }}</strong>
+                </div>
+                <p>{{ prof.bio }}</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <!-- ABOUT -->
+      <section v-if="page === 'about'" class="page inner-page">
+        <div class="page-hero">
+          <p class="eyebrow">ABOUT SNAKE ACADEMY</p>
+          <h1>學院介紹</h1>
+          <p>了解毒蛇學院的精神、文化與制度。</p>
+        </div>
+
+        <section class="section compact">
+          <div class="about-layout">
+            <article class="about-card large">
+              <p class="eyebrow">OUR PHILOSOPHY</p>
+              <h2>在沉默之中觀察，<br>在關鍵時刻行動。</h2>
+              <p>
+                毒蛇學院相信，真正的力量並不只來自天賦。
+                能夠理解自己、尊重他人、保持冷靜並在關鍵時刻做出選擇，
+                才是值得被稱為「毒蛇」的人。
+              </p>
+            </article>
+            <article class="about-card">
+              <span class="number">01</span>
+              <h3>學院精神</h3>
+              <p>智慧、野心、榮耀，是我們共同遵循的三項核心價值。</p>
+            </article>
+            <article class="about-card">
+              <span class="number">02</span>
+              <h3>團隊文化</h3>
+              <p>每個人都有自己的位置，而真正的勝利來自彼此信任。</p>
+            </article>
+            <article class="about-card">
+              <span class="number">03</span>
+              <h3>學院生活</h3>
+              <p>課堂、活動、競賽與日常相處，都是成長的一部分。</p>
+            </article>
+            <article class="about-card">
+              <span class="number">04</span>
+              <h3>我們的未來</h3>
+              <p>讓每一位學生離開學院時，都能帶著屬於自己的故事。</p>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong><img src="images/logo.png" alt="毒蛇學院標誌" class="footer-logo"> 毒蛇學院</strong>
+        <p>智慧．野心．榮耀</p>
+      </div>
+      <p>© 2026 暈船仔丨小翔丨 · All Rights Reserved.</p>
+    </footer>
+
+    <!-- 情報區密碼鎖 -->
+    <div v-if="passwordModal" class="password-modal" @click.self="closePasswordModal">
+      <div class="password-panel" role="dialog" aria-modal="true" aria-labelledby="password-title">
+        <button class="password-close" @click="closePasswordModal" aria-label="關閉">×</button>
+        <div class="password-symbol">🐍</div>
+        <p class="eyebrow">SNAKE ACADEMY · CLASSIFIED</p>
+        <h2 id="password-title">情報區已上鎖</h2>
+        <p class="password-description">
+          此區域僅限毒蛇學院成員查看。<br>
+          請輸入通行密語以繼續。
+        </p>
+        <form @submit.prevent="verifyPassword">
+          <label for="intel-password">通行密語</label>
+          <div class="password-input-wrap">
+            <input id="intel-password" ref="passwordInput" v-model="passwordInput"
+              :type="showPassword ? 'text' : 'password'" autocomplete="off" placeholder="請輸入密碼"
+              @keyup.enter="verifyPassword">
+            <button type="button" class="show-password" @click="showPassword = !showPassword">
+              {{ showPassword ? '隱藏' : '顯示' }}
+            </button>
+          </div>
+          <p v-if="passwordError" class="password-error">⚠ {{ passwordError }}</p>
+          <button type="submit" class="btn btn-gold password-submit">確認身分</button>
+        </form>
+        <small class="password-note">CLASSIFIED · SNAKE ACADEMY INTERNAL INTELLIGENCE</small>
       </div>
     </div>
-    <button class="lightbox-nav next" @click="nextPhoto">›</button>
-  </div>
-</div>
 
-<script src="js/app.js"></script>
+    <!-- Lightbox -->
+    <div v-if="lightbox" class="lightbox" @click.self="closeLightbox">
+      <button class="lightbox-close" @click="closeLightbox">×</button>
+      <button v-if="lightbox.mode === 'gallery'" class="lightbox-nav prev" @click="prevPhoto">‹</button>
+      <div class="lightbox-content">
+        <img :src="lightbox.image" :alt="lightbox.name" @error="imageFallback">
+        <div class="lightbox-caption">
+          <div>
+            <small>{{ lightbox.category }}</small>
+            <h2>{{ lightbox.name }}</h2>
+          </div>
+          <a class="btn btn-gold" :href="lightbox.image" :download="safeFileName(lightbox.name)">↓ 下載照片</a>
+        </div>
+      </div>
+      <button v-if="lightbox.mode === 'gallery'" class="lightbox-nav next" @click="nextPhoto">›</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
 </body>
+
 </html>

@@ -1028,3 +1028,326 @@ nav button.active {
     width: 100%
   }
 }
+/* ===== 情報區 / Intelligence ===== */
+.nav-dropdown{position:relative;display:flex;align-items:center}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:7px}
+.dropdown-arrow{font-size:15px;color:var(--gold);transition:.25s;transform:translateY(-1px)}
+.nav-dropdown.open .dropdown-arrow{transform:rotate(180deg) translateY(1px)}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translate(-50%,-8px);width:230px;padding:8px;background:rgba(7,16,12,.98);border:1px solid rgba(200,164,91,.35);box-shadow:0 20px 50px rgba(0,0,0,.45);opacity:0;visibility:hidden;pointer-events:none;transition:.25s;z-index:50}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.nav-dropdown-menu:before{content:"";position:absolute;top:-6px;left:50%;width:10px;height:10px;background:#0a1812;border-left:1px solid rgba(200,164,91,.35);border-top:1px solid rgba(200,164,91,.35);transform:translateX(-50%) rotate(45deg)}
+.nav-dropdown-menu button{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;padding:12px 13px;color:var(--text);background:transparent;border:0;border-bottom:1px solid rgba(200,164,91,.1);font-size:13px;cursor:pointer}
+.nav-dropdown-menu button:last-child{border-bottom:0}
+.nav-dropdown-menu button:hover,.nav-dropdown-menu button.active{background:rgba(200,164,91,.1);color:var(--gold2)}
+.nav-dropdown-menu small{font:9px Cinzel;color:var(--muted);letter-spacing:1px}
+.info-hero{position:relative}
+.info-hero:after{content:"";position:absolute;right:5%;bottom:8px;width:130px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));opacity:.45}
+.info-warning{display:flex;gap:16px;align-items:center;padding:18px 20px;margin-bottom:28px;border:1px solid rgba(200,164,91,.22);background:linear-gradient(90deg,rgba(200,164,91,.08),rgba(18,59,41,.18));color:var(--muted)}
+.info-warning>span{font-size:28px}.info-warning strong{color:var(--gold2);display:block;margin-bottom:3px}.info-warning p{margin:0;font-size:12px}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.resource-card{background:linear-gradient(145deg,#10291f,#091810);border:1px solid rgba(200,164,91,.18);padding:22px;position:relative;overflow:hidden}
+.resource-card:before,.stone-card:before,.professor-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 55%,rgba(200,164,91,.05));pointer-events:none}
+.resource-title{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}.resource-type{font:9px Cinzel;letter-spacing:2px;color:var(--gold)}.resource-title h2{margin:5px 0 0;font-size:22px}.intel-number{font:24px Cinzel;color:rgba(200,164,91,.35)}
+.resource-use{font-size:13px;color:var(--muted);line-height:1.75;min-height:67px}.resource-use strong{display:block;color:var(--text);font-size:11px;letter-spacing:1px;margin-bottom:4px}
+.resource-main-image{position:relative;margin:18px 0 0;background:#07100c;border:1px solid rgba(200,164,91,.14);cursor:zoom-in;overflow:hidden}.resource-main-image img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .3s ease,filter .3s ease}.resource-main-image:hover img{transform:scale(1.025);filter:brightness(1.08)}.resource-main-image figcaption{padding:8px 9px;font-size:10px;color:var(--gold2);letter-spacing:1px}.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.location-grid figure{margin:0;background:#07100c;border:1px solid rgba(200,164,91,.12)}.location-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}.location-grid figcaption{padding:8px 9px;font-size:10px;color:var(--gold2);letter-spacing:1px}
+.location-note{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(200,164,91,.1)}.location-note>span{color:var(--gold);font-size:20px}.location-note small{display:block;color:var(--muted);font-size:9px}.location-note strong{font-size:12px;color:var(--text)}
+.stone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.stone-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#10291f,#091810);border:1px solid rgba(200,164,91,.18)}.stone-image{position:relative;aspect-ratio:16/10;background:#06100c;overflow:hidden}.stone-image img{width:100%;height:100%;object-fit:cover}.stone-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(4,10,7,.9))}.stone-image span{position:absolute;z-index:1;left:14px;bottom:12px;font:10px Cinzel;letter-spacing:1.5px;color:var(--gold2);padding:5px 8px;border:1px solid rgba(200,164,91,.55);background:rgba(7,16,12,.7)}.stone-body{padding:19px}.stone-index{font:9px Cinzel;color:var(--gold);letter-spacing:2px}.stone-body h2{font-size:23px;margin:7px 0 14px}.stone-kind{display:flex;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:12px}.stone-kind small{color:var(--muted)}.stone-kind strong{color:var(--gold2);font-size:12px}.stone-body p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}.stone-body p strong{display:block;color:var(--text);font-size:11px;margin-bottom:3px}
+.professor-intro{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:0 0 25px;border-bottom:1px solid var(--line);margin-bottom:25px}.professor-intro span{font:11px Cinzel;color:var(--gold);letter-spacing:2px}.professor-intro p{max-width:620px;margin:0;color:var(--muted);font-size:13px;line-height:1.8}.professor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.professor-card{position:relative;display:grid;grid-template-columns:45% 55%;background:linear-gradient(145deg,#10291f,#091810);border:1px solid rgba(200,164,91,.18);overflow:hidden}.professor-photo{min-height:360px;position:relative;background:#07100c}.professor-photo img{width:100%;height:100%;object-fit:cover}.professor-photo span{position:absolute;left:12px;bottom:12px;padding:6px 9px;background:rgba(7,16,12,.85);border:1px solid var(--gold);color:var(--gold2);font:9px Cinzel;letter-spacing:1px}.professor-body{padding:25px;display:flex;flex-direction:column;justify-content:center}.professor-body small{color:var(--gold);font-size:10px}.professor-body h2{font-size:26px;margin:7px 0 20px}.expertise{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:11px 0;margin-bottom:15px}.expertise span{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}.expertise strong{font-size:13px;color:var(--gold2)}.professor-body p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+@media(max-width:900px){.resource-grid,.stone-grid{grid-template-columns:repeat(2,1fr)}.professor-grid{grid-template-columns:1fr}.professor-card{grid-template-columns:40% 60%}}
+@media(max-width:700px){.nav-dropdown{display:block}.nav-dropdown-menu{position:static;transform:none;width:auto;margin:4px 0 6px;box-shadow:none;opacity:1;visibility:visible;pointer-events:auto;display:none}.nav-dropdown.open .nav-dropdown-menu{transform:none;display:block}.nav-dropdown-menu:before{display:none}.nav-dropdown-menu button{padding-left:22px}.resource-grid,.stone-grid{grid-template-columns:1fr}.professor-intro{align-items:flex-start;flex-direction:column;gap:8px}.professor-card{grid-template-columns:1fr}.professor-photo{min-height:340px}}
+
+/* ===== 採集圖片放大 ===== */
+.location-image {
+  position: relative;
+  cursor: zoom-in;
+}
+.location-image img {
+  transition: transform .3s ease, filter .3s ease;
+}
+.location-image:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.08);
+}
+.image-zoom-hint {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  padding: 5px 8px;
+  border: 1px solid rgba(200,164,91,.45);
+  background: rgba(7,16,12,.82);
+  color: var(--gold2);
+  font-size: 10px;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: .25s;
+  pointer-events: none;
+}
+.location-image:hover .image-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== 魔法石搜尋 / 標籤 ===== */
+.stone-toolbar {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.2fr) 2fr auto;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.stone-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #07140e;
+  border: 1px solid rgba(200,164,91,.22);
+}
+.stone-search > span {
+  padding-left: 13px;
+  color: var(--gold);
+  font-size: 20px;
+}
+.stone-search input {
+  width: 100%;
+  padding: 13px 36px 13px 9px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+}
+.stone-search input::placeholder {
+  color: #64746b;
+}
+.clear-search {
+  position: absolute;
+  right: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 20px;
+  cursor: pointer;
+}
+.stone-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.stone-filters button {
+  border: 1px solid rgba(200,164,91,.18);
+  background: rgba(200,164,91,.04);
+  color: var(--muted);
+  padding: 8px 11px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: .2s;
+}
+.stone-filters button:hover,
+.stone-filters button.active {
+  color: var(--gold2);
+  border-color: rgba(200,164,91,.55);
+  background: rgba(200,164,91,.1);
+}
+.stone-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 13px;
+}
+.stone-tags span {
+  padding: 4px 7px;
+  border: 1px solid rgba(200,164,91,.2);
+  color: #aeb7b0;
+  background: rgba(200,164,91,.035);
+  font-size: 10px;
+}
+.stone-empty p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media(max-width:1100px){
+  .stone-toolbar{grid-template-columns:1fr 1.5fr}
+  .stone-toolbar .result-count{grid-column:1/-1}
+}
+@media(max-width:700px){
+  .stone-toolbar{grid-template-columns:1fr}
+  .stone-toolbar .result-count{grid-column:auto}
+  .stone-filters{gap:6px}
+  .stone-filters button{flex:1 1 auto}
+  .image-zoom-hint{opacity:1;transform:none}
+}
+
+
+/* ============================
+   情報區密碼鎖
+   ============================ */
+.password-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(2, 8, 6, .88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.password-panel {
+  position: relative;
+  width: min(460px, 100%);
+  padding: 42px 38px 30px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(35, 105, 72, .24), transparent 48%),
+    linear-gradient(145deg, #10291f, #07130e);
+  border: 1px solid rgba(200, 164, 91, .42);
+  box-shadow: 0 25px 90px rgba(0, 0, 0, .65), 0 0 45px rgba(200, 164, 91, .08);
+  text-align: center;
+  animation: passwordPanelIn .25s ease-out;
+}
+
+@keyframes passwordPanelIn {
+  from { opacity: 0; transform: translateY(12px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.password-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(200, 164, 91, .2);
+  background: transparent;
+  color: #a9b1ab;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.password-close:hover {
+  color: var(--gold2);
+  border-color: var(--gold);
+}
+
+.password-symbol {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-size: 25px;
+  background: rgba(200, 164, 91, .06);
+  box-shadow: 0 0 28px rgba(200, 164, 91, .08);
+}
+
+.password-panel .eyebrow {
+  margin-bottom: 8px;
+}
+
+.password-panel h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+.password-description {
+  margin: 0 auto 25px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.password-panel form {
+  text-align: left;
+}
+
+.password-panel label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold2);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.password-input-wrap {
+  display: flex;
+  border: 1px solid #294438;
+  background: rgba(3, 10, 7, .65);
+  transition: .25s;
+}
+
+.password-input-wrap:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(200, 164, 91, .08);
+}
+
+.password-input-wrap input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #eee7d7;
+  padding: 13px 14px;
+  font: inherit;
+}
+
+.password-input-wrap input::placeholder {
+  color: #59675f;
+}
+
+.show-password {
+  border: 0;
+  border-left: 1px solid #294438;
+  background: transparent;
+  color: #8c9a91;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.show-password:hover {
+  color: var(--gold2);
+}
+
+.password-error {
+  min-height: 20px;
+  margin: 10px 0 0;
+  color: #d99a8e;
+  font-size: 12px;
+  text-align: left;
+}
+
+.password-submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.password-note {
+  display: block;
+  margin-top: 25px;
+  color: #536159;
+  font: 9px Cinzel;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 560px) {
+  .password-modal {
+    padding: 16px;
+  }
+
+  .password-panel {
+    padding: 35px 22px 25px;
+  }
+
+  .password-panel h2 {
+    font-size: 24px;
+  }
+}
