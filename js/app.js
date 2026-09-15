@@ -35,10 +35,10 @@ createApp({
       ],
 
       gatheringSpots: [
-        { id: 1, name: '水晶蘑菇', type: 'Crystal Mushroom', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Crystal_Mushroom.png', mapImage: 'images/intel/gathering/mushroom-map.png', actualImage: 'images/intel/gathering/mushroom-location.png' },
+        { id: 1, name: '水晶蘑菇', type: 'Crystal Mushroom', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Crystal_Mushroom.png', mapImage: 'images/intel/gathering/mushroom-map.png', actualImage: 'images/intel/gathering/' },
         { id: 2, name: '魔力泉水', type: 'Magical Spring Water', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '活米村右側森林處', image: './images/material/Magical_Spring_Water.png', mapImage: 'images/map/water-map.png', actualImage: 'images/map/water.png' },
-        { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Magic_Flower.png', mapImage: 'images/intel/gathering/holy-water-map.png', actualImage: 'images/intel/gathering/holy-water-location.png' },
-        { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Fairy_Pollen.png', mapImage: 'images/intel/gathering/holy-water-map.png', actualImage: 'images/intel/gathering/holy-water-location.png' }
+        { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Magic_Flower.png', mapImage: 'images/intel/gathering/holy-water-map.png', actualImage: 'images/intel/gathering/' },
+        { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Fairy_Pollen.png', mapImage: 'images/intel/gathering/holy-water-map.png', actualImage: 'images/intel/gathering/' }
       ],
 
       magicStones: [
@@ -138,43 +138,43 @@ createApp({
         { id: 36, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/teacher-07.jpg' },
         { id: 37, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '傑克 • 唐 • 祖利亞', title: '課程教授', expertise: '咒術學', bio: '任教於鳳凰學院，專精咒術學的理論與應用。', image: 'images/teachers/teacher-08.jpg' },
 
-        
+
         { id: 1, type: 'faculty', house: 'snake', name: '歐克 • 科布拉', title: '教授', bio: '負責學院教學與學生指導。', expertise: '魔法理論、實戰指導', image: 'images/teachers/teacher-01.jpg' },
         { id: 2, type: 'faculty', house: 'snake', name: '比莉 • 艾利殊', title: '教授', bio: '負責課程規劃與學院事務。', expertise: '歷史、戰術與課程規劃', image: 'images/teachers/teacher-02.jpg' },
-        { id: 3, type: 'leader', name: '優莉安娜．溫特貝爾', title: '班長', bio: '協助教授管理班級與維持團隊秩序。', image: 'images/students/優莉安娜．溫特貝爾.png' },
+        { id: 3, type: 'leader', name: '優莉安娜．溫特貝爾', title: '班長', bio: '協助教授管理班級與維持團隊秩序。', image: 'images/students/優莉安娜．溫特貝爾.png', liveUrl: 'https://www.twitch.tv/loveuu_uu' },
         { id: 4, type: 'leader', name: '茶漓．阿斯特', title: '副班長', bio: '協助班長處理班務與學生事務。', image: 'images/students/茶漓．阿斯特.png' },
         { id: 5, type: 'student', name: '心肝 • 普林西斯', title: '學生', image: 'images/students/心肝 • 普林西斯.png' },
         { id: 6, type: 'student', name: '伊凡•莫爾', title: '學生', image: 'images/students/伊凡•莫爾.png' },
         { id: 7, type: 'student', name: '吉米 • 湯馬斯', title: '學生', image: 'images/students/吉米 • 湯馬斯.png' },
         { id: 8, type: 'student', name: '杜威・庫柏恩', title: '學生', image: 'images/students/杜威・庫柏恩.png' },
         { id: 9, type: 'student', name: '芙莉．佛力', title: '學生', image: 'images/students/芙莉．佛力.png' },
-        { id: 10, type: 'student', name: '夏綠蒂．華倫', title: '學生', image: 'images/students/夏綠蒂．華倫.png' },
-        { id: 11, type: 'student', name: '烏拉菈•艾寶', title: '學生', image: 'images/students/烏拉菈•艾寶.png' },
+        { id: 10, type: 'student', name: '夏綠蒂．華倫', title: '學生', image: 'images/students/夏綠蒂．華倫.png', liveUrl: 'https://www.twitch.tv/amuam3u' },
+        { id: 11, type: 'student', name: '烏拉菈•艾寶', title: '學生', image: 'images/students/烏拉菈•艾寶.png', liveUrl: 'https://www.twitch.tv/rr_leice' },
         { id: 22, type: 'student', name: '烏魯魯奇雅．瑪拉', title: '學生', image: 'images/students/烏魯魯奇雅．瑪拉.png' },
-        { id: 12, type: 'student', name: '莉絲·菲伊', title: '學生', image: 'images/students/莉絲·菲伊.png' },
-        { id: 21, type: 'student', name: '凱文．諾瓦克', title: '學生', image: 'images/students/凱文．諾瓦克.png' },
-        { id: 13, type: 'student', name: '愛・洛溫斯特', title: '學生', image: 'images/students/愛・洛溫斯特.png' },
+        { id: 12, type: 'student', name: '莉絲·菲伊', title: '學生', image: 'images/students/莉絲·菲伊.png', liveUrl: 'https://www.twitch.tv/1nom1' },
+        { id: 21, type: 'student', name: '凱文．諾瓦克', title: '學生', image: 'images/students/凱文．諾瓦克.png', liveUrl: 'https://www.twitch.tv/capricornxiang' },
+        { id: 13, type: 'student', name: '愛・洛溫斯特', title: '學生', image: 'images/students/愛・洛溫斯特.png', liveUrl: 'https://www.twitch.tv/arielacc3' },
         { id: 14, type: 'student', name: '溫加·癲拉唯啊撒', title: '學生', image: 'images/students/溫加·癲拉唯啊撒.png' },
-        { id: 15, type: 'student', name: '雷歐．提力斯', title: '學生', image: 'images/students/雷歐．提力斯.png' },
+        { id: 15, type: 'student', name: '雷歐．提力斯', title: '學生', image: 'images/students/雷歐．提力斯.png', liveUrl: 'https://www.twitch.tv/pug_tw' },
         { id: 16, type: 'student', name: '福瑞．布萊梅', title: '學生', image: 'images/students/福瑞．布萊梅.png' },
         { id: 17, type: 'student', name: '維恩．阿斯特', title: '學生', image: 'images/students/維恩．阿斯特.png' },
         { id: 18, type: 'student', name: '蕾貝卡．羅溫', title: '學生', image: 'images/students/蕾貝卡．羅溫.png' },
         { id: 19, type: 'gifted', name: '蹦．撤卡拉卡', title: '資優生', bio: '負責教學弟們搭訕。', image: 'images/students/蹦．撤卡拉卡.png' },
         { id: 20, type: 'student', name: '鵝嵋珊 • 荷歡珊', title: '學生', image: 'images/students/鵝嵋珊 • 荷歡珊.png' },
         { id: 23, type: 'gifted', name: '伊芙琳．克羅伊斯', title: '資優生', bio: '負責細心呵護學弟妹們。', image: 'images/students/伊芙琳．克羅伊斯.png' },
-        { id: 24, type: 'student', name: '莉絲·羅文', title: '學生', image: 'images/students/莉絲·羅文.png' },
+        { id: 24, type: 'student', name: '莉絲·羅文', title: '學生', image: 'images/students/莉絲·羅文.png', liveUrl: 'https://www.twitch.tv/yidhra0727' },
         { id: 25, type: 'student', name: '亞瑟 • 金斯利', title: '學生', image: 'images/students/亞瑟 • 金斯利.png' },
-        { id: 26, type: 'student', name: '哈比·麥·貴度', title: '學生', image: 'images/students/哈比·麥·貴度.png' },
+        { id: 26, type: 'student', name: '哈比·麥·貴度', title: '學生', image: 'images/students/哈比·麥·貴度.png', liveUrl: 'https://www.twitch.tv/tnyuuta' },
         { id: 27, type: 'student', name: '熙振．泰瑞托', title: '學生', image: 'images/students/熙振．泰瑞托.png' },
         { id: 28, type: 'student', name: '伊莉莎．霍普', title: '學生', image: 'images/students/伊莉莎．霍普.png' },
-        { id: 29, type: 'student', name: '露娜．索爾貝克', title: '學生', image: 'images/students/露娜．索爾貝克.png' },
+        { id: 29, type: 'student', name: '露娜．索爾貝克', title: '學生', image: 'images/students/露娜．索爾貝克.png', liveUrl: 'https://www.twitch.tv/boss_guan' },
         { id: 30, type: 'student', name: '凱斯·凱爾采', title: '學生', image: 'images/students/凱斯·凱爾采.png' },
         { id: 31, type: 'faculty', house: '老虎學院', name: '哈爾 • 詹金斯', title: '教授', image: 'images/students/1.png' },
 
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
         // 不列入「師生名錄」與首頁「師生資料」統計數字
-        
+
       ]
     };
   },
