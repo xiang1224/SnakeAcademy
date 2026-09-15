@@ -39,9 +39,9 @@ createApp({
         { id: 2, name: '魔力泉水', type: 'Magical Spring Water', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村左上側森林處', image: './images/material/Magical_Spring_Water.png', mapImage: 'images/map/water-map.png', actualImage: 'images/map/water.png' },
         { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Magic_Flower.png', mapImage: './images/map/flower-map.png', actualImage: 'images/map/flower.png' },
         { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '霍格華茲正門噴水池', image: './images/material/Fairy_Pollen.png', mapImage: 'images/map/pollen-map.png', actualImage: 'images/map/pollen.png' },
-        { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '未知。', location: '霍格華茲正門噴水池', image: './images/material/Dragon_Blood.png', mapImage: 'images/map/blood-map.png', actualImage: 'images/map/blood.png' },
+        { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '未知。', location: '地圖魁地奇球場右上方', image: './images/material/Dragon_Blood.png', mapImage: 'images/map/blood-map.png', actualImage: 'images/map/blood.png' },
         { id: 6, name: '蜂王蜜', type: 'Honey', use: '未知。', location: '活米村北方', image: './images/material/Honey.png', mapImage: 'images/map/honey-map.png', actualImage: 'images/map/honey.png' },
-        { id: 7, name: '水晶花', type: 'Crystal Flower', use: '未知。', location: '地圖魁地奇球場右上方', image: './images/material/Ice-Flower.png', mapImage: 'images/map/ice-flower-map.png', actualImage: 'images/map/ice-flower.png' }
+        { id: 7, name: '水晶花', type: 'Crystal Flower', use: '未知。', location: '花園', image: './images/material/Ice-Flower.png', mapImage: 'images/map/ice-flower-map.png', actualImage: 'images/map/ice-flower.png' }
       ],
 
       magicStones: [
@@ -136,14 +136,14 @@ createApp({
       ],
 
       people: [
-        { id: 32, type: 'faculty', intelOnly: true, name: '彼得楊', title: '校長', expertise: '學院行政與治理', bio: '總管學院行政與各項重大決策，統籌全院運作。', image: 'images/teachers/teacher-03.jpg' },
+        { id: 32, type: 'faculty', intelOnly: true, name: '彼得 • 楊', title: '校長', expertise: '學院行政與治理', bio: '總管學院行政與各項重大決策，統籌全院運作。', image: 'images/teachers/彼得 • 楊.png' },
         { id: 39, type: 'faculty', intelOnly: true, name: '芭別 • 喬', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-10.jpg' },
         { id: 40, type: 'faculty', intelOnly: true, name: '克羅斯 • 蘭斯洛特', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-11.jpg' },
         { id: 41, type: 'faculty', intelOnly: true, name: '魯迪烏斯．格雷拉特', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-12.jpg' },
         { id: 42, type: 'faculty', intelOnly: true, name: '卡能傑 • 丁格', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-13.jpg' },
         { id: 43, type: 'faculty', intelOnly: true, name: '奈爾 • 奧斯本', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-14.jpg' },
         { id: 38, type: 'faculty', intelOnly: true, name: '洛克 • K', title: '課程教授', expertise: '雙手劍', bio: '教授雙手劍術，注重實戰技巧與體能訓練。', image: 'images/teachers/teacher-09.jpg' },
-        { id: 33, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '洛恩 • 維特斯', title: '課程教授', expertise: '魔藥學', bio: '任教於凍狼學院，專精魔藥調配與藥理研究。', image: 'images/teachers/teacher-04.jpg' },
+        { id: 33, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '洛恩 • 維特斯', title: '課程教授', expertise: '魔藥學', bio: '任教於凍狼學院，專精魔藥調配與藥理研究。', image: 'images/teachers/洛恩 • 維特斯.png' },
         { id: 34, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/teacher-05.jpg' },
         { id: 35, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/teacher-06.jpg' },
         { id: 36, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/teacher-07.jpg' },
