@@ -124,7 +124,15 @@ createApp({
           tags: ['黑妝'],
           use: '將暗影魔力附著於體表以遮蔽面貌，大幅提升在夜間與陰影中的隱匿能力。',
           image: './images/rock/purple.png'
-        }
+        },
+        {
+          id: 11,
+          name: '迷霧術',
+          kind: '輔助控制魔法',
+          tags: ['迷霧'],
+          use: '展開大範圍大霧遮蔽戰場視線，干擾視野以爭取逃脫時間或進行戰術轉移。',
+          image: './images/rock/blue.png'
+        },
       ],
 
       people: [
