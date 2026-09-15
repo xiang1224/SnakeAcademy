@@ -20,6 +20,8 @@ createApp({
       infoSessionKey: 'snakeAcademyInfoAuth',
       infoSessionDuration: 30 * 60 * 1000,
       sessionCheckTimer: null,
+      showRecipes: false,
+      highlightedMaterial: null,
 
       // ====== 你之後主要修改這裡的資料 ======
       gallery: [
@@ -32,6 +34,7 @@ createApp({
         { id: 7, name: '粉紅泡泡隊', category: '學院活動', image: 'images/gallery/粉紅泡泡隊.png' },
         { id: 8, name: '灰蛇厲害隊', category: '學院活動', image: 'images/gallery/灰蛇厲害隊.png' },
         { id: 9, name: '團康遊戲', category: '學院活動', image: 'images/gallery/團康遊戲.png' },
+        { id: 10, name: '迷霧術課程', category: '課堂側拍', image: 'images/gallery/迷霧術.png' },
       ],
 
       gatheringSpots: [
@@ -41,7 +44,21 @@ createApp({
         { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '霍格華茲正門噴水池', image: './images/material/Fairy_Pollen.png', mapImage: 'images/map/pollen-map.png', actualImage: 'images/map/pollen.png' },
         { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '未知。', location: '地圖魁地奇球場右上方', image: './images/material/Dragon_Blood.png', mapImage: 'images/map/blood-map.png', actualImage: 'images/map/blood.png' },
         { id: 6, name: '蜂王蜜', type: 'Honey', use: '未知。', location: '活米村北方', image: './images/material/Honey.png', mapImage: 'images/map/honey-map.png', actualImage: 'images/map/honey.png' },
-        { id: 7, name: '水晶花', type: 'Crystal Flower', use: '未知。', location: '花園', image: './images/material/Ice-Flower.png', mapImage: 'images/map/ice-flower-map.png', actualImage: 'images/map/ice-flower.png' }
+        { id: 7, name: '水晶花', type: 'Crystal Flower', use: '未知。', location: '花園', image: './images/material/Ice-Flower.png', mapImage: 'images/map/ice-flower-map.png', actualImage: 'images/map/ice-flower.png' },
+        { id: 8, name: '尖叫草藥', type: 'Scream Flower', use: '未知。', location: '很南方的巨石陣', image: './images/material/scream.png', mapImage: 'images/map/scream-map.png', actualImage: 'images/map/scream.png' },
+        // ↓↓↓ 這兩筆是合成表新增的材料，圖片與地點還沒補上實際資料，先用預留檔名，記得之後把對應圖片放進 images 資料夾
+        { id: 9, name: '怪物精華', type: 'Monster Essence', use: '擊敗怪物後掉落，可用於各類藥水合成。', location: '目前可用其他材料與教授1:1兌換', image: './images/material/marrow.png', mapImage: 'images/map/monster-essence-map.png', actualImage: 'images/map/monster-essence.png' },
+        { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '目前可用其他材料與教授1:1兌換', image: './images/material/magicrock.png', mapImage: 'images/map/magic-stone-map.png', actualImage: 'images/map/magic-stone.png' }
+      ],
+
+      // 藥水合成表：採集相關頁面使用
+      craftingRecipes: [
+        { id: 1, name: '魔力恢復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 2, name: '能量護盾藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 3, name: '強力心臟藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 4, name: '回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 5, name: '腎上腺素', materials: [{ name: '怪物精華', qty: 2 }, { name: '龍血藤', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 6, name: '特效瀉藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '妖精花粉', qty: 2 }, { name: '魔石', qty: 2 }] }
       ],
 
       magicStones: [
@@ -144,7 +161,7 @@ createApp({
         { id: 43, type: 'faculty', intelOnly: true, name: '奈爾 • 奧斯本', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-14.jpg' },
         { id: 38, type: 'faculty', intelOnly: true, name: '洛克 • K', title: '課程教授', expertise: '雙手劍', bio: '教授雙手劍術，注重實戰技巧與體能訓練。', image: 'images/teachers/teacher-09.jpg' },
         { id: 33, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '洛恩 • 維特斯', title: '課程教授', expertise: '魔藥學', bio: '任教於凍狼學院，專精魔藥調配與藥理研究。', image: 'images/teachers/洛恩 • 維特斯.png' },
-        { id: 34, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/teacher-05.jpg' },
+        { id: 34, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/艾莉森 • 奧爾洛夫.png' },
         { id: 35, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/teacher-06.jpg' },
         { id: 36, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/teacher-07.jpg' },
         { id: 37, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '傑克 • 唐 • 祖利亞', title: '課程教授', expertise: '咒術學', bio: '任教於鳳凰學院，專精咒術學的理論與應用。', image: 'images/teachers/teacher-08.jpg' },
@@ -358,6 +375,17 @@ createApp({
     openLightbox(item) {
       this.lightbox = { ...item, mode: 'gallery' };
       document.body.style.overflow = 'hidden';
+    },
+
+    // 點擊合成表材料標籤，捲動到對應的採集物卡片並短暫高亮
+    scrollToMaterial(name) {
+      const el = document.getElementById('gather-' + name);
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.highlightedMaterial = name;
+      setTimeout(() => {
+        if (this.highlightedMaterial === name) this.highlightedMaterial = null;
+      }, 1600);
     },
 
     openImageLightbox(image, name, category) {

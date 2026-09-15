@@ -336,7 +336,7 @@ nav button.active {
 .section {
   max-width: 1200px;
   margin: auto;
-  padding: 100px 28px
+  padding: 50px 28px
 }
 
 .section.compact {
@@ -655,7 +655,7 @@ nav button.active {
 
 .sub-heading span {
   font: 12px Cinzel;
-  color: var(--gold)
+  color: var(--cream)
 }
 
 .sub-heading h2 {
@@ -1299,6 +1299,124 @@ nav button.active {
   margin-bottom: 4px
 }
 
+.recipe-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(200, 164, 91, .08), rgba(18, 59, 41, .18));
+  border: 1px solid rgba(200, 164, 91, .22);
+  padding: 16px 22px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.recipe-toggle .sub-heading {
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+  pointer-events: none;
+}
+
+.recipe-toggle .sub-heading h2 {
+  color: var(--cream);
+}
+
+.recipe-toggle-arrow {
+  color: var(--gold);
+  font-size: 18px;
+  transition: transform .25s ease;
+}
+
+.recipe-toggle.open .recipe-toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 22px
+}
+
+.recipe-card {
+  background: linear-gradient(145deg, #10291f, #091810);
+  border: 1px solid rgba(200, 164, 91, .18);
+  padding: 22px;
+  position: relative;
+  overflow: hidden
+}
+
+.recipe-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 55%, rgba(200, 164, 91, .05));
+  pointer-events: none
+}
+
+.recipe-card h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: var(--gold2);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px
+}
+
+.recipe-materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.recipe-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid rgba(200, 164, 91, .25);
+  background: rgba(200, 164, 91, .06);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .5px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.recipe-chip:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #07100c
+}
+
+.recipe-chip:hover em {
+  color: #07100c
+}
+
+.recipe-chip em {
+  font-style: normal;
+  color: var(--gold);
+  font: 12px Cinzel
+}
+
+.resource-card.highlighted {
+  animation: recipe-highlight 1.6s ease;
+}
+
+@keyframes recipe-highlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(200, 164, 91, .8);
+    border-color: var(--gold);
+  }
+
+  100% {
+    box-shadow: 0 0 0 14px rgba(200, 164, 91, 0);
+    border-color: rgba(200, 164, 91, .18);
+  }
+}
+
 .resource-main-image {
   position: relative;
   margin: 18px 0 0;
@@ -1582,7 +1700,8 @@ nav button.active {
 @media(max-width:900px) {
 
   .resource-grid,
-  .stone-grid {
+  .stone-grid,
+  .recipe-grid {
     grid-template-columns: repeat(2, 1fr)
   }
 
@@ -1626,7 +1745,8 @@ nav button.active {
   }
 
   .resource-grid,
-  .stone-grid {
+  .stone-grid,
+  .recipe-grid {
     grid-template-columns: 1fr
   }
 

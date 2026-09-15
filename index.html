@@ -303,8 +303,30 @@
               <p>抵達現場後盡量減少奔跑，避免走馬看花沒看到採集物。</p>
             </div>
           </div>
+          <button class="recipe-toggle" @click="showRecipes = !showRecipes" :class="{ open: showRecipes }">
+            <span class="sub-heading"><span>01</span>
+              <h2>藥水合成表</h2>
+            </span>
+            <span class="recipe-toggle-arrow">▾</span>
+          </button>
+          <div class="recipe-grid" v-show="showRecipes">
+            <article class="recipe-card" v-for="recipe in craftingRecipes" :key="recipe.id">
+              <h3>{{ recipe.name }}</h3>
+              <div class="recipe-materials">
+                <button class="recipe-chip" v-for="mat in recipe.materials" :key="mat.name"
+                  @click="scrollToMaterial(mat.name)">
+                  {{ mat.name }} <em>x{{ mat.qty }}</em>
+                </button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section compact">
+          
           <div class="resource-grid">
-            <article class="resource-card" v-for="item in gatheringSpots" :key="item.id">
+            <article class="resource-card" v-for="item in gatheringSpots" :key="item.id" :id="'gather-' + item.name"
+              :class="{ highlighted: highlightedMaterial === item.name }">
               <div class="resource-title">
                 <div><span class="resource-type">{{ item.type }}</span>
                   <h2>{{ item.name }}</h2>
