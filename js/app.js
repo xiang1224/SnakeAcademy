@@ -35,10 +35,13 @@ createApp({
       ],
 
       gatheringSpots: [
-        { id: 1, name: '水晶蘑菇', type: 'Crystal Mushroom', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Crystal_Mushroom.png', mapImage: 'images/intel/gathering/mushroom-map.png', actualImage: 'images/intel/gathering/' },
-        { id: 2, name: '魔力泉水', type: 'Magical Spring Water', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '活米村右側森林處', image: './images/material/Magical_Spring_Water.png', mapImage: 'images/map/water-map.png', actualImage: 'images/map/water.png' },
-        { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Magic_Flower.png', mapImage: 'images/intel/gathering/holy-water-map.png', actualImage: 'images/intel/gathering/' },
-        { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '待補', image: './images/material/Fairy_Pollen.png', mapImage: 'images/intel/gathering/holy-water-map.png', actualImage: 'images/intel/gathering/' }
+        { id: 1, name: '水晶蘑菇', type: 'Crystal Mushroom', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村上方墓園處', image: './images/material/Crystal_Mushroom.png', mapImage: 'images/map/mushroom-map.png', actualImage: 'images/map/mushroom.png' },
+        { id: 2, name: '魔力泉水', type: 'Magical Spring Water', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村左上側森林處', image: './images/material/Magical_Spring_Water.png', mapImage: 'images/map/water-map.png', actualImage: 'images/map/water.png' },
+        { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Magic_Flower.png', mapImage: './images/map/flower-map.png', actualImage: 'images/map/flower.png' },
+        { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '霍格華茲正門噴水池', image: './images/material/Fairy_Pollen.png', mapImage: 'images/map/pollen-map.png', actualImage: 'images/map/pollen.png' },
+        { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '未知。', location: '霍格華茲正門噴水池', image: './images/material/Dragon_Blood.png', mapImage: 'images/map/blood-map.png', actualImage: 'images/map/blood.png' },
+        { id: 6, name: '蜂王蜜', type: 'Honey', use: '未知。', location: '活米村北方', image: './images/material/Honey.png', mapImage: 'images/map/honey-map.png', actualImage: 'images/map/honey.png' },
+        { id: 7, name: '水晶花', type: 'Crystal Flower', use: '未知。', location: '地圖魁地奇球場右上方', image: './images/material/Ice-Flower.png', mapImage: 'images/map/ice-flower-map.png', actualImage: 'images/map/ice-flower.png' }
       ],
 
       magicStones: [
@@ -170,6 +173,7 @@ createApp({
         { id: 29, type: 'student', name: '露娜．索爾貝克', title: '學生', image: 'images/students/露娜．索爾貝克.png', liveUrl: 'https://www.twitch.tv/boss_guan' },
         { id: 30, type: 'student', name: '凱斯·凱爾采', title: '學生', image: 'images/students/凱斯·凱爾采.png' },
         { id: 31, type: 'faculty', house: '老虎學院', name: '哈爾 • 詹金斯', title: '教授', image: 'images/students/1.png' },
+        { id: 44, type: 'student', name: '史崔克·東', title: '學生', image: 'images/students/史崔克·東.png', liveUrl: 'https://www.twitch.tv/hirnmampfer' },
 
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
