@@ -1927,6 +1927,179 @@ nav button.active {
 
 
 /* ============================
+   禁忌的石碑（Forbidden Tablets）
+   ============================ */
+.tablet-hero h1 {
+  color: #e7d3c9;
+}
+
+.tablet-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  padding: 18px 22px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(139, 58, 58, .3);
+  background: linear-gradient(90deg, rgba(139, 58, 58, .08), rgba(18, 59, 41, .18));
+}
+
+.tablet-progress-text strong {
+  display: block;
+  color: var(--gold2);
+  font-size: 15px;
+  margin-bottom: 4px;
+  letter-spacing: .5px;
+}
+
+.tablet-progress-text p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 460px;
+}
+
+.tablet-progress-bar {
+  flex: 0 0 180px;
+  height: 4px;
+  background: rgba(200, 164, 91, .12);
+  position: relative;
+  overflow: hidden;
+}
+
+.tablet-progress-bar span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #8b3a3a, var(--gold));
+  transition: width .6s ease;
+}
+
+.tablet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.tablet-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  min-height: 230px;
+  background:
+    linear-gradient(160deg, rgba(139, 58, 58, .06), transparent 60%),
+    linear-gradient(145deg, #1a1613, #0c0a09);
+  border: 1px solid rgba(200, 164, 91, .18);
+  clip-path: polygon(0 3%, 4% 0, 96% 0, 100% 3%, 100% 97%, 96% 100%, 4% 100%, 0 97%);
+}
+
+.tablet-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, .02) 0 2px, transparent 2px 26px),
+    linear-gradient(135deg, transparent 55%, rgba(200, 164, 91, .05));
+  pointer-events: none;
+}
+
+.tablet-number {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tablet-number span {
+  font: 10px Cinzel;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.tablet-number strong {
+  font: 20px Cinzel;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.tablet-frame {
+  position: relative;
+  padding-top: 16px;
+  border-top: 1px solid rgba(200, 164, 91, .2);
+}
+
+.tablet-subtitle {
+  font: 11px Cinzel;
+  letter-spacing: 2px;
+  color: #c98d8d;
+  margin: 0 0 12px;
+}
+
+.tablet-text p {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--cream);
+  margin: 0 0 4px;
+}
+
+.tablet-card.locked {
+  background: linear-gradient(145deg, #0e0c0b, #070605);
+  border-style: dashed;
+  border-color: rgba(200, 164, 91, .15);
+}
+
+.tablet-locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  min-height: 130px;
+  color: var(--muted);
+}
+
+.tablet-locked-mark {
+  font-size: 30px;
+  color: rgba(200, 164, 91, .35);
+}
+
+.tablet-locked p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.tablet-locked small {
+  font: 9px Cinzel;
+  letter-spacing: 2px;
+  color: rgba(200, 164, 91, .4);
+}
+
+@media(max-width:1100px) {
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:700px) {
+  .tablet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tablet-progress {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tablet-progress-bar {
+    width: 100%;
+    flex-basis: auto;
+  }
+}
+
+
+/* ============================
    情報區密碼鎖
    ============================ */
 .password-modal {

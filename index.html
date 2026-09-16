@@ -50,6 +50,8 @@
                 <small>Gathering</small></button>
               <button :class="{ active: page === 'stones' }" @click="go('stones')">魔法石相關 <small>Magic
                   Stones</small></button>
+              <button :class="{ active: page === 'tablets' }" @click="go('tablets')">禁忌的石碑
+                    <small>Forbidden Tablets</small></button>
               <button :class="{ active: page === 'professors' }" @click="go('professors')">教授們相關
                 <small>Professors</small></button>
             </div>
@@ -323,7 +325,7 @@
         </section>
 
         <section class="section compact">
-          
+
           <div class="resource-grid">
             <article class="resource-card" v-for="item in gatheringSpots" :key="item.id" :id="'gather-' + item.name"
               :class="{ highlighted: highlightedMaterial === item.name }">
@@ -442,6 +444,51 @@
                   <strong>{{ prof.expertise || '學院教學與指導' }}</strong>
                 </div>
                 <p>{{ prof.bio }}</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <!-- INFORMATION: FORBIDDEN TABLETS -->
+      <section v-if="page === 'tablets'" class="page inner-page">
+        <div class="page-hero info-hero tablet-hero">
+          <p class="eyebrow">FORBIDDEN INTELLIGENCE · TABLETS</p>
+          <h1>禁忌的石碑</h1>
+          <p>破碎的石碑上，殘留著這個世界不願被記起的歷史。</p>
+        </div>
+        <section class="section compact">
+          <div class="tablet-progress">
+            <div class="tablet-progress-text">
+              <strong>已尋獲 {{ discoveredTabletsCount }} / {{ totalTabletsCount }} 塊石碑</strong>
+              <p>傳說中，或許還存在著一塊未被計入的「第八塊」……真偽至今無人能證實。</p>
+            </div>
+            <div class="tablet-progress-bar">
+              <span :style="{ width: (discoveredTabletsCount / totalTabletsCount * 100) + '%' }"></span>
+            </div>
+          </div>
+
+          <div class="tablet-grid">
+            <article class="tablet-card" v-for="tablet in forbiddenTablets" :key="tablet.id"
+              :class="{ locked: !tablet.discovered }">
+              <div class="tablet-number">
+                <span>石碑</span>
+                <strong>{{ String(tablet.id).padStart(2,'0') }}</strong>
+              </div>
+              <div class="tablet-frame">
+                <template v-if="tablet.discovered">
+                  <p class="tablet-subtitle">{{ tablet.subtitle }}</p>
+                  <div class="tablet-text">
+                    <p v-for="(line, idx) in tablet.lines" :key="idx">{{ line }}</p>
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="tablet-locked">
+                    <span class="tablet-locked-mark">᛭</span>
+                    <p>此石碑碎片尚未被尋獲……</p>
+                    <small>UNDISCOVERED</small>
+                  </div>
+                </template>
               </div>
             </article>
           </div>

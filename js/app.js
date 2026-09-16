@@ -11,7 +11,7 @@ createApp({
       stoneSearch: '',
       lightbox: null,
       infoOpen: false,
-      infoPages: ['gathering', 'stones', 'professors'],
+      infoPages: ['gathering', 'stones', 'professors', 'tablets'],
       passwordModal: false,
       passwordInput: '',
       passwordError: '',
@@ -152,6 +152,73 @@ createApp({
         },
       ],
 
+      // 情報區「禁忌的石碑」：世界觀失落歷史碎片
+      // 共 7 塊，傳說中或許存在第 8 塊（真偽未證實）
+      // discovered: false 代表尚未尋獲的石碑，之後找到內容時把 discovered 改成 true 並補上 subtitle / lines 即可
+      totalTabletsCount: 7,
+      forbiddenTablets: [
+        {
+          id: 1,
+          discovered: true,
+          subtitle: '失落的歷史',
+          lines: [
+            '王選擇把自己的靈魂撕裂。',
+            '化作七道墜落世界的流星。'
+          ]
+        },
+        {
+          id: 2,
+          discovered: true,
+          subtitle: '失落的歷史',
+          lines: [
+            '森林被挖空。',
+            '河流失去光芒。',
+            '魔族死於沒有魔素的夜晚。'
+          ]
+        },
+        {
+          id: 3,
+          discovered: true,
+          subtitle: '失落的歷史',
+          lines: [
+            '人類駕船穿越黑海。',
+            '他們不是為了和平而來。',
+            '而是為了掠奪力量。'
+          ]
+        },
+        {
+          id: 4,
+          discovered: true,
+          subtitle: '失落的歷史',
+          lines: [
+            '願千年後族人幫助復甦。',
+            '人族因掠奪魔素打造魔法王國。'
+          ]
+        },
+        {
+          id: 5,
+          discovered: true,
+          subtitle: '失落的歷史',
+          lines: [
+            '第五位英雄試圖阻止人類，最終反被四位英雄殺害。',
+            '因此，他的名字被從歷史中抹去。'
+          ]
+        },
+        {
+          id: 6,
+          discovered: true,
+          subtitle: '失落的歷史',
+          lines: [
+            '魔族沒有選擇反抗到底。',
+            '王選擇犧牲自己。'
+          ]
+        },
+        {
+          id: 7,
+          discovered: false
+        }
+      ],
+
       people: [
         { id: 32, type: 'faculty', intelOnly: true, name: '彼得 • 楊', title: '校長', expertise: '學院行政與治理', bio: '總管學院行政與各項重大決策，統籌全院運作。', image: 'images/teachers/彼得 • 楊.png' },
         { id: 39, type: 'faculty', intelOnly: true, name: '芭別 • 喬', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-10.jpg' },
@@ -257,6 +324,9 @@ createApp({
     },
     students() {
       return this.people.filter(x => x.type === 'student');
+    },
+    discoveredTabletsCount() {
+      return this.forbiddenTablets.filter(x => x.discovered).length;
     }
   },
 
