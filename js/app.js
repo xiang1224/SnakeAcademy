@@ -153,6 +153,22 @@ createApp({
           use: '展開大範圍大霧遮蔽戰場視線，干擾視野以爭取逃脫時間或進行戰術轉移。',
           image: './images/rock/blue.webp'
         },
+        {
+          id: 12,
+          name: '火球術',
+          kind: '攻擊魔法',
+          tags: ['火焰', '爆破'],
+          use: '凝聚熾熱的高溫火球投擲向敵人，擊中時會引發範圍爆裂與持續灼燒傷害。',
+          image: './images/rock/red.webp'
+        },
+        {
+          id: 13,
+          name: '牽引術',
+          kind: '咒術魔法',
+          tags: ['牽引'],
+          use: '釋放無形魔力，將距離自己最近的敵人強力彈開，迅速拉開安全距離。',
+          image: './images/rock/purple.webp'
+        },
       ],
 
       // 情報區「禁忌的石碑」：世界觀失落歷史碎片
