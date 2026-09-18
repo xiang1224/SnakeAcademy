@@ -169,6 +169,14 @@ createApp({
           use: '釋放無形魔力，將距離自己最近的敵人強力彈開，迅速拉開安全距離。',
           image: './images/rock/purple.webp'
         },
+        {
+          id: 14,
+          name: '繳械術',
+          kind: '咒術魔法',
+          tags: ['繳械'],
+          use: '發射精準的魔力衝擊，強行打落敵方手中持有的武器或魔導器具，削弱其攻擊能力。',
+          image: './images/rock/purple.webp'
+        },
       ],
 
       // 情報區「禁忌的石碑」：世界觀失落歷史碎片
@@ -244,21 +252,21 @@ createApp({
 
         { id: 2, type: 'faculty', intelOnly: true, name: '芭別 • 喬', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-10.webp' },
         { id: 3, type: 'faculty', intelOnly: true, name: '克羅斯 • 蘭斯洛特', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-11.webp' },
-        { id: 4, type: 'faculty', intelOnly: true, name: '魯迪烏斯．格雷拉特', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-12.webp' },
+        { id: 4, type: 'faculty', intelOnly: true, name: '魯迪烏斯．格雷拉特', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/魯迪烏斯．格雷拉特.webp' },
         { id: 5, type: 'faculty', intelOnly: true, name: '卡能傑 • 丁格', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-13.webp' },
         { id: 6, type: 'faculty', intelOnly: true, name: '奈爾 • 奧斯本', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-14.webp' },
         { id: 7, type: 'faculty', intelOnly: true, name: '帕比 • 索恩維亞', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/帕比．索恩維亞.webp' },
 
         { id: 8, type: 'faculty', intelOnly: true, name: '洛克 • K', title: '課程教授', expertise: '雙手劍', bio: '教授雙手劍術，注重實戰技巧與體能訓練。', image: 'images/teachers/洛克•K.webp' },
         { id: 9, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '洛恩 • 維特斯', title: '課程教授', expertise: '魔藥學', bio: '任教於凍狼學院，專精魔藥調配與藥理研究。', image: 'images/teachers/洛恩 • 維特斯.webp', liveUrl: 'https://www.twitch.tv/abcabc0620' },
-        { id: 10, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/艾莉森 • 奧爾洛夫.webp', liveUrl: 'https://www.twitch.tv/ume_zz' },
-        { id: 11, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/約翰•康斯坦丁.webp' },
-        { id: 12, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/貝爾•奧利安.webp' },
-        { id: 13, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '傑克 • 唐 • 祖利亞', title: '課程教授', expertise: '咒術學', bio: '任教於鳳凰學院，專精咒術學的理論與應用。', image: 'images/teachers/teacher-08.webp' },
+        { id: 10, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/約翰•康斯坦丁.webp' },
+        { id: 11, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/艾莉森 • 奧爾洛夫.webp', liveUrl: 'https://www.twitch.tv/ume_zz' },
+        { id: 12, type: 'faculty', house: '老虎學院', name: '哈爾 • 詹金斯', title: '教授', image: 'images/students/1.webp' },
+        { id: 13, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/貝爾•奧利安.webp' },
+        { id: 14, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '傑克 • 唐 • 祖利亞', title: '課程教授', expertise: '咒術學', bio: '任教於鳳凰學院，專精咒術學的理論與應用。', image: 'images/teachers/傑克 • 唐 • 祖利亞.webp' },
 
-        { id: 14, type: 'faculty', house: 'snake', name: '歐克 • 科布拉', title: '教授', bio: '負責學院教學與學生指導。', expertise: '魔法理論、實戰指導', image: 'images/teachers/teacher-01.webp', liveUrl: 'https://www.twitch.tv/kosh1106' },
-        { id: 15, type: 'faculty', house: 'snake', name: '比莉 • 艾利殊', title: '教授', bio: '負責課程規劃與學院事務。', expertise: '歷史、戰術與課程規劃', image: 'images/teachers/teacher-02.webp' },
-        { id: 16, type: 'faculty', house: '老虎學院', name: '哈爾 • 詹金斯', title: '教授', image: 'images/students/1.webp' },
+        { id: 15, type: 'faculty', house: 'snake', name: '歐克 • 科布拉', title: '教授', bio: '負責學院教學與學生指導。', expertise: '魔法理論、實戰指導', image: 'images/teachers/teacher-01.webp', liveUrl: 'https://www.twitch.tv/kosh1106' },
+        { id: 16, type: 'faculty', house: 'snake', name: '比莉 • 艾利殊', title: '教授', bio: '負責課程規劃與學院事務。', expertise: '歷史、戰術與課程規劃', image: 'images/teachers/teacher-02.webp' },
 
         // ====== 學生群，編號與教師群分開，各自從 1 開始 ======
         { id: 1, type: 'leader', name: '優莉安娜．溫特貝爾', title: '班長', bio: '協助教授管理班級與維持團隊秩序。', image: 'images/students/優莉安娜．溫特貝爾.webp', liveUrl: 'https://www.twitch.tv/loveuu_uu' },
