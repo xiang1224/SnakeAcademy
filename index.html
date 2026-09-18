@@ -51,7 +51,7 @@
               <button :class="{ active: page === 'stones' }" @click="go('stones')">魔法石相關 <small>Magic
                   Stones</small></button>
               <button :class="{ active: page === 'tablets' }" @click="go('tablets')">禁忌的石碑
-                    <small>Forbidden Tablets</small></button>
+                <small>Forbidden Tablets</small></button>
               <button :class="{ active: page === 'professors' }" @click="go('professors')">教授們相關
                 <small>Professors</small></button>
             </div>
@@ -193,22 +193,35 @@
               <h2>教授</h2>
             </div>
             <div class="people-grid faculty-grid">
-              <article class="person-card faculty" v-for="person in faculty" :key="person.id">
-                <div class="person-photo">
-                  <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
-                  <span class="role-badge">PROFESSOR</span>
-                  <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
-                    @click.stop>
-                    <span>前往直播間</span>
-                  </a>
-                  <div v-else class="live-overlay disabled">
-                    <span>尚未放上連結</span>
+              <article class="person-card faculty id-card" v-for="person in faculty" :key="person.id">
+                <div class="id-card-inner">
+                  <div class="id-head">
+                    <span class="id-head-logo"><img src="images/logo.webp" alt="" loading="lazy"></span>
+                    <span class="id-head-text"><strong>毒蛇學院</strong><small>SNAKE ACADEMY · FACULTY ID</small></span>
+                    <span class="id-chip" aria-hidden="true"></span>
                   </div>
-                </div>
-                <div class="person-body">
-                  <small>{{ person.title }}</small>
-                  <h3>{{ person.name }}</h3>
-                  <p>{{ person.bio }}</p>
+                  <div class="person-photo">
+                    <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
+                    <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
+                      @click.stop>
+                      <span>前往直播間</span>
+                    </a>
+                    <div v-else class="live-overlay disabled">
+                      <span>尚未放上連結</span>
+                    </div>
+                  </div>
+                  <div class="person-body">
+                    <div class="id-body-top">
+                      <small>{{ person.title }}<template v-if="person.house"> · {{ person.house }}</template></small>
+                      <span class="id-no">NO.{{ String(person.id).padStart(4,'0') }}</span>
+                    </div>
+                    <h3>{{ person.name }}</h3>
+                    <p>{{ person.bio }}</p>
+                  </div>
+                  <div class="id-foot">
+                    <span class="id-barcode" aria-hidden="true"></span>
+                    <span class="id-valid">VALID · 2026</span>
+                  </div>
                 </div>
               </article>
             </div>
@@ -219,21 +232,36 @@
               <h2>資優生</h2>
             </div>
             <div class="people-grid gifted-grid">
-              <article class="person-card gifted" v-for="person in giftedLeaders" :key="person.id">
-                <div class="person-photo">
-                  <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
-                  <span class="role-badge">{{ person.title }}</span>
-                  <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
-                    @click.stop>
-                    <span>前往直播間</span>
-                  </a>
-                  <div v-else class="live-overlay disabled">
-                    <span>尚未放上連結</span>
+              <article class="person-card gifted id-card" v-for="person in giftedLeaders" :key="person.id">
+                <div class="id-card-inner">
+                  <div class="id-head">
+                    <span class="id-head-logo"><img src="images/logo.webp" alt="" loading="lazy"></span>
+                    <span class="id-head-text"><strong>毒蛇學院</strong><small>SNAKE ACADEMY · STUDENT ID</small></span>
+                    <span class="id-type-tag">HONOR</span>
                   </div>
-                </div>
-                <div class="person-body">
-                  <h3>{{ person.name }}</h3>
-                  <p>{{ person.bio }}</p>
+                  <div class="person-photo">
+                    <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
+                    <span class="role-badge">{{ person.title }}</span>
+                    <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
+                      @click.stop>
+                      <span>前往直播間</span>
+                    </a>
+                    <div v-else class="live-overlay disabled">
+                      <span>尚未放上連結</span>
+                    </div>
+                  </div>
+                  <div class="person-body">
+                    <div class="id-body-top">
+                      <small>資優生</small>
+                      <span class="id-no">NO.{{ String(person.id).padStart(4,'0') }}</span>
+                    </div>
+                    <h3>{{ person.name }}</h3>
+                    <p>{{ person.bio }}</p>
+                  </div>
+                  <div class="id-foot">
+                    <span class="id-barcode" aria-hidden="true"></span>
+                    <span class="id-valid">VALID · 2026</span>
+                  </div>
                 </div>
               </article>
             </div>
@@ -244,45 +272,71 @@
               <h2>學生幹部</h2>
             </div>
             <div class="people-grid leader-grid">
-              <article class="person-card leader" v-for="person in leaders" :key="person.id">
-                <div class="person-photo">
-                  <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
-                  <span class="role-badge">{{ person.title }}</span>
-                  <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
-                    @click.stop>
-                    <span>前往直播間</span>
-                  </a>
-                  <div v-else class="live-overlay disabled">
-                    <span>尚未放上連結</span>
+              <article class="person-card leader id-card" v-for="person in leaders" :key="person.id">
+                <div class="id-card-inner">
+                  <div class="id-head">
+                    <span class="id-head-logo"><img src="images/logo.webp" alt="" loading="lazy"></span>
+                    <span class="id-head-text"><strong>毒蛇學院</strong><small>SNAKE ACADEMY · STUDENT ID</small></span>
+                    <span class="id-type-tag">COUNCIL</span>
                   </div>
-                </div>
-                <div class="person-body">
-                  <h3>{{ person.name }}</h3>
-                  <p>{{ person.bio }}</p>
+                  <div class="person-photo">
+                    <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
+                    <span class="role-badge">{{ person.title }}</span>
+                    <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
+                      @click.stop>
+                      <span>前往直播間</span>
+                    </a>
+                    <div v-else class="live-overlay disabled">
+                      <span>尚未放上連結</span>
+                    </div>
+                  </div>
+                  <div class="person-body">
+                    <div class="id-body-top">
+                      <small>學生幹部</small>
+                      <span class="id-no">NO.{{ String(person.id).padStart(4,'0') }}</span>
+                    </div>
+                    <h3>{{ person.name }}</h3>
+                    <p>{{ person.bio }}</p>
+                  </div>
+                  <div class="id-foot">
+                    <span class="id-barcode" aria-hidden="true"></span>
+                    <span class="id-valid">VALID · 2026</span>
+                  </div>
                 </div>
               </article>
             </div>
           </div>
 
           <div class="people-block">
-            <div class="sub-heading"><span>03</span>
+            <div class="sub-heading"><span>04</span>
               <h2>全體學生</h2>
             </div>
             <div class="people-grid student-grid">
-              <article class="person-card student" v-for="person in students" :key="person.id">
-                <div class="person-photo">
-                  <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
-                  <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
-                    @click.stop>
-                    <span>前往直播間</span>
-                  </a>
-                  <div v-else class="live-overlay disabled">
-                    <span>尚未放上連結</span>
+              <article class="person-card student id-card" v-for="person in students" :key="person.id">
+                <div class="id-card-inner">
+                  <div class="id-head">
+                    <span class="id-head-text"><strong>毒蛇學院</strong><small>STUDENT ID</small></span>
                   </div>
-                </div>
-                <div class="person-body">
-                  <h3>{{ person.name }}</h3>
-                  <small>{{ person.title }}</small>
+                  <div class="person-photo">
+                    <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
+                    <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
+                      @click.stop>
+                      <span>前往直播間</span>
+                    </a>
+                    <div v-else class="live-overlay disabled">
+                      <span>尚未放上連結</span>
+                    </div>
+                  </div>
+                  <div class="person-body">
+                    <h3>{{ person.name }}</h3>
+                    <div class="id-body-top">
+                      <small>{{ person.title }}</small>
+                      <span class="id-no">NO.{{ String(person.id).padStart(4,'0') }}</span>
+                    </div>
+                  </div>
+                  <div class="id-foot">
+                    <span class="id-barcode" aria-hidden="true"></span>
+                  </div>
                 </div>
               </article>
             </div>
@@ -424,26 +478,40 @@
           </div>
           <div class="professor-grid">
             <!-- 這裡改用 allProfessors -->
-            <article class="professor-card" v-for="prof in allProfessors" :key="prof.id">
-              <div class="professor-photo">
-                <img :src="prof.image" :alt="prof.name" @error="imageFallback" loading="lazy">
-                <span>PROFESSOR</span>
-                <a v-if="prof.liveUrl" class="live-overlay" :href="prof.liveUrl" target="_blank" rel="noopener"
-                  @click.stop>
-                  <span>前往直播間</span>
-                </a>
-                <div v-else class="live-overlay disabled">
-                  <span>尚未放上連結</span>
+            <article class="professor-card id-card" v-for="prof in allProfessors" :key="prof.id">
+              <div class="id-card-inner">
+                <div class="professor-photo">
+                  <img :src="prof.image" :alt="prof.name" @error="imageFallback" loading="lazy">
+                  <span>PROFESSOR</span>
+                  <a v-if="prof.liveUrl" class="live-overlay" :href="prof.liveUrl" target="_blank" rel="noopener"
+                    @click.stop>
+                    <span>前往直播間</span>
+                  </a>
+                  <div v-else class="live-overlay disabled">
+                    <span>尚未放上連結</span>
+                  </div>
                 </div>
-              </div>
-              <div class="professor-body">
-                <small>{{ prof.title }} <template v-if="prof.house">· {{ prof.house }}</template></small>
-                <h2>{{ prof.name }}</h2>
-                <div class="expertise">
-                  <span>專長</span>
-                  <strong>{{ prof.expertise || '學院教學與指導' }}</strong>
+                <div class="professor-body">
+                  <div class="id-head">
+                    <span class="id-head-logo"><img src="images/logo.webp" alt="" loading="lazy"></span>
+                    <span class="id-head-text"><strong>毒蛇學院</strong><small>SNAKE ACADEMY · FACULTY ID</small></span>
+                    <span class="id-chip" aria-hidden="true"></span>
+                  </div>
+                  <div class="id-body-top">
+                    <small>{{ prof.title }} <template v-if="prof.house">· {{ prof.house }}</template></small>
+                    <span class="id-no">NO.{{ String(prof.id).padStart(4,'0') }}</span>
+                  </div>
+                  <h2>{{ prof.name }}</h2>
+                  <div class="expertise">
+                    <span>授課專長 · CLEARANCE</span>
+                    <strong>{{ prof.expertise || '學院教學與指導' }}</strong>
+                  </div>
+                  <p>{{ prof.bio }}</p>
+                  <div class="id-foot">
+                    <span class="id-barcode" aria-hidden="true"></span>
+                    <span class="id-valid">TEACHING LICENSE · VALID 2026</span>
+                  </div>
                 </div>
-                <p>{{ prof.bio }}</p>
               </div>
             </article>
           </div>

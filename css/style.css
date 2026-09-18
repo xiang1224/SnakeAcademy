@@ -681,7 +681,7 @@ nav button.active {
 }
 
 .student-grid {
-  grid-template-columns: repeat(5, 1fr)
+  grid-template-columns: repeat(3, 1fr)
 }
 
 
@@ -689,6 +689,232 @@ nav button.active {
   background: linear-gradient(145deg, #10291f, #0a1b14);
   border: 1px solid rgba(200, 164, 91, .17);
   overflow: hidden
+}
+
+/* ===== ID CARD STYLE (學生證 / 教師證) ===== */
+.id-card {
+  position: relative;
+  background: none;
+  border: none;
+  overflow: visible;
+  padding-top: 11px;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .35));
+}
+
+.id-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 13px;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(180deg, rgba(200, 164, 91, .3), rgba(200, 164, 91, .06));
+  border: 1px solid var(--line);
+  border-bottom: none;
+}
+
+.id-card::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 5px;
+  border-radius: 3px;
+  background: #050908;
+  border: 1px solid rgba(0, 0, 0, .4);
+}
+
+.id-card-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  overflow: hidden;
+  background: linear-gradient(165deg, #123023, #081712);
+  border: 1px solid rgba(200, 164, 91, .28);
+  box-shadow: inset 0 0 0 1px rgba(200, 164, 91, .06), inset 0 40px 60px -40px rgba(200, 164, 91, .18);
+}
+
+.id-card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(135deg, rgba(200, 164, 91, .05) 0 2px, transparent 2px 26px);
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.id-head {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: linear-gradient(90deg, rgba(200, 164, 91, .16), rgba(200, 164, 91, .02));
+  border-bottom: 1px solid var(--line);
+}
+
+.id-head-logo {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: rgba(5, 9, 8, .5);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.id-head-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.id-head-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.id-head-text strong {
+  font: 11px Cinzel;
+  letter-spacing: .5px;
+  color: var(--gold2);
+}
+
+.id-head-text small {
+  font-size: 8px;
+  letter-spacing: .8px;
+  color: var(--muted);
+}
+
+.id-chip {
+  margin-left: auto;
+  flex: none;
+  width: 24px;
+  height: 17px;
+  border-radius: 3px;
+  position: relative;
+  background: linear-gradient(135deg, #f2dda0, #c8a45b 55%, #7c5e2c);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .35);
+}
+
+.id-chip::before,
+.id-chip::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  height: 1px;
+  background: rgba(0, 0, 0, .35);
+}
+
+.id-chip::before {
+  top: 35%
+}
+
+.id-chip::after {
+  top: 65%
+}
+
+.id-type-tag {
+  margin-left: auto;
+  flex: none;
+  font: 9px Cinzel;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 3px 6px;
+  background: rgba(200, 164, 91, .08);
+}
+
+.id-card .person-photo {
+  position: relative;
+  z-index: 2;
+}
+
+.id-body-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.id-body-top small {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: .3px;
+}
+
+.id-no {
+  font: 10px/1 'Cinzel', serif;
+  letter-spacing: .5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.id-card .person-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.id-foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-top: 1px solid var(--line);
+  background: rgba(5, 9, 8, .4);
+}
+
+.id-barcode {
+  flex: none;
+  width: 92px;
+  max-width: 100%;
+  height: 15px;
+  opacity: .5;
+  background: repeating-linear-gradient(90deg,
+      var(--cream) 0 1px, transparent 1px 3px,
+      var(--cream) 3px 5px, transparent 5px 6px,
+      var(--cream) 6px 7px, transparent 7px 9px,
+      var(--cream) 9px 10px, transparent 10px 13px);
+  background-repeat: repeat-x;
+  /* 強制獨立合成層,避免頁面其他區塊觸發重繪時，
+     因半像素造成的反鋸齒差異讓條碼看起來在「跑動」 */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.id-valid {
+  font-size: 8px;
+  letter-spacing: .8px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.student-grid .id-head {
+  padding: 7px 10px
+}
+
+.student-grid .id-foot {
+  padding: 6px 10px
+}
+
+.student-grid .id-body-top {
+  margin-top: 4px
 }
 
 .person-photo {
@@ -820,6 +1046,115 @@ nav button.active {
 
 .student-grid .person-body h3 {
   font-size: 16px
+}
+
+/* ===== 師生名錄：橫式證件（照片在左、資料在右） ===== */
+.person-card.id-card .id-card-inner {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: auto 1fr auto;
+  min-height: 250px;
+}
+
+.person-card.id-card .person-photo {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  aspect-ratio: auto;
+  height: 100%;
+  border-right: 1px solid var(--line);
+}
+
+.person-card.id-card .id-head {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.person-card.id-card .person-body {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 16px;
+}
+
+.person-card.id-card .person-body h3 {
+  margin: 6px 0 0;
+}
+
+.person-card.id-card .person-body p {
+  font-size: 12.5px;
+  line-height: 1.65;
+  margin-top: 7px;
+}
+
+.person-card.id-card .id-foot {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.person-card.id-card .role-badge {
+  left: 9px;
+  bottom: 9px;
+  padding: 4px 6px;
+  font-size: 9px;
+  letter-spacing: .6px;
+}
+
+.person-card.id-card .live-overlay span {
+  padding: 7px 12px;
+  font-size: 10px;
+  letter-spacing: .8px;
+  text-align: center;
+}
+
+/* 全體學生：橫式證件版面較精簡 */
+.student-grid .person-card.id-card .id-card-inner {
+  grid-template-columns: 42% 58%;
+  min-height: 178px;
+}
+
+.student-grid .person-card.id-card .person-body {
+  padding: 12px 13px;
+}
+
+.student-grid .person-card.id-card .person-body h3 {
+  margin: 0 0 6px;
+}
+
+.student-grid .id-body-top {
+  margin-top: 0
+}
+
+/* 極窄螢幕：改回直式避免擠壓 */
+@media(max-width:520px) {
+
+  .person-card.id-card .id-card-inner,
+  .student-grid .person-card.id-card .id-card-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 0;
+  }
+
+  .person-card.id-card .id-head {
+    grid-row: 1
+  }
+
+  .person-card.id-card .person-photo {
+    grid-column: 1;
+    grid-row: 2;
+    aspect-ratio: 4/5;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .person-card.id-card .person-body {
+    grid-row: 3
+  }
+
+  .person-card.id-card .id-foot {
+    grid-row: 4
+  }
 }
 
 .about-layout {
@@ -975,8 +1310,14 @@ nav button.active {
     grid-template-columns: repeat(2, 1fr)
   }
 
+  .faculty-grid,
+  .gifted-grid,
+  .leader-grid {
+    grid-template-columns: 1fr
+  }
+
   .student-grid {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(2, 1fr)
   }
 
   .split-section {
@@ -1053,7 +1394,7 @@ nav button.active {
   }
 
   .student-grid {
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: 1fr
   }
 
   .about-card.large {
@@ -1630,6 +1971,22 @@ nav button.active {
   overflow: hidden
 }
 
+.professor-card.id-card {
+  display: block;
+  background: none;
+  border: none;
+}
+
+.professor-card.id-card .id-card-inner {
+  display: grid;
+  grid-template-columns: 42% 58%;
+}
+
+.professor-card.id-card .professor-photo {
+  position: relative;
+  z-index: 2;
+}
+
 .professor-photo {
   min-height: 360px;
   position: relative;
@@ -1659,6 +2016,33 @@ nav button.active {
   display: flex;
   flex-direction: column;
   justify-content: center
+}
+
+.professor-card.id-card .professor-body {
+  padding: 0;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.professor-card.id-card .professor-body>.id-body-top,
+.professor-card.id-card .professor-body>h2,
+.professor-card.id-card .professor-body>.expertise,
+.professor-card.id-card .professor-body>p {
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+.professor-card.id-card .professor-body>.id-body-top {
+  margin-top: 16px;
+}
+
+.professor-card.id-card .professor-body>p {
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.professor-card.id-card .id-foot {
+  margin-top: auto;
 }
 
 .professor-body small {
@@ -1712,6 +2096,10 @@ nav button.active {
   .professor-card {
     grid-template-columns: 40% 60%
   }
+
+  .professor-card.id-card .id-card-inner {
+    grid-template-columns: 40% 60%
+  }
 }
 
 @media(max-width:700px) {
@@ -1758,6 +2146,18 @@ nav button.active {
 
   .professor-card {
     grid-template-columns: 1fr
+  }
+
+  .professor-card.id-card .id-card-inner {
+    grid-template-columns: 1fr
+  }
+
+  .professor-card.id-card .professor-body>.id-body-top,
+  .professor-card.id-card .professor-body>h2,
+  .professor-card.id-card .professor-body>.expertise,
+  .professor-card.id-card .professor-body>p {
+    margin-left: 18px;
+    margin-right: 18px
   }
 
   .professor-photo {
