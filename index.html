@@ -366,7 +366,8 @@
             <span class="recipe-toggle-arrow">▾</span>
           </button>
           <div class="recipe-grid" v-show="showRecipes">
-            <article class="recipe-card" v-for="recipe in craftingRecipes" :key="recipe.id">
+            <article class="recipe-card" v-for="recipe in craftingRecipes" :key="recipe.id"
+              :id="'recipe-' + recipe.name" :class="{ highlighted: highlightedMaterial === recipe.name }">
               <h3>{{ recipe.name }}</h3>
               <div class="recipe-materials">
                 <button class="recipe-chip" v-for="mat in recipe.materials" :key="mat.name"
@@ -507,9 +508,14 @@
                     <strong>{{ prof.expertise || '學院教學與指導' }}</strong>
                   </div>
                   <p>{{ prof.bio }}</p>
+                  <div v-if="prof.note" class="professor-note">
+                    <span class="professor-note-label">⚠ 備註 · NOTICE</span>
+                    <p>{{ prof.note }}</p>
+                  </div>
                   <div class="id-foot">
                     <span class="id-barcode" aria-hidden="true"></span>
-                    <span class="id-valid">TEACHING LICENSE · VALID 2026</span>
+                    <span class="id-valid" :class="{ revoked: prof.note }">{{ prof.note ? 'LICENSE REVOKED · 職務已解除' :
+                      'TEACHING LICENSE · VALID 2026' }}</span>
                   </div>
                 </div>
               </div>

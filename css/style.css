@@ -905,6 +905,36 @@ nav button.active {
   white-space: nowrap;
 }
 
+.id-valid.revoked {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+.professor-note {
+  margin: 4px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 107, 107, .45);
+  border-left: 3px solid #ff6b6b;
+  background: rgba(255, 107, 107, .08);
+  border-radius: 2px;
+}
+
+.professor-note-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: .8px;
+  color: #ff6b6b;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.professor-note p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--cream);
+  margin: 0;
+}
+
 .student-grid .id-head {
   padding: 7px 10px
 }
@@ -1742,7 +1772,8 @@ nav button.active {
   font: 12px Cinzel
 }
 
-.resource-card.highlighted {
+.resource-card.highlighted,
+.recipe-card.highlighted {
   animation: recipe-highlight 1.6s ease;
 }
 

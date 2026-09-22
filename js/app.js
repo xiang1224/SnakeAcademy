@@ -61,7 +61,10 @@ createApp({
         { id: 3, name: '強力心臟藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }] },
         { id: 4, name: '回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }] },
         { id: 5, name: '腎上腺素', materials: [{ name: '怪物精華', qty: 2 }, { name: '龍血藤', qty: 2 }, { name: '魔石', qty: 2 }] },
-        { id: 6, name: '特效瀉藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '妖精花粉', qty: 2 }, { name: '魔石', qty: 2 }] }
+        { id: 6, name: '特效瀉藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '妖精花粉', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 7, name: '特級能量護盾藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '能量護盾藥水', qty: 1 }] },
+        { id: 8, name: '特級強力心臟藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '強力心臟藥水', qty: 1 }] },
+        { id: 9, name: '特級回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '回復藥水', qty: 1 }] }
       ],
 
       magicStones: [
@@ -177,6 +180,14 @@ createApp({
           use: '發射精準的魔力衝擊，強行打落敵方手中持有的武器或魔導器具，削弱其攻擊能力。',
           image: './images/rock/purple.webp'
         },
+        {
+          id: 15,
+          name: '爆炸術',
+          kind: '輔助控制魔法',
+          tags: ['爆炸'],
+          use: '發動後靠近目標將引發魔力共振強制定身對方，但強烈的反作用力也會使施法者自身同時陷入定身。',
+          image: './images/rock/blue.webp'
+        },
       ],
 
       // 情報區「禁忌的石碑」：世界觀失落歷史碎片
@@ -262,7 +273,7 @@ createApp({
         { id: 10, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/約翰•康斯坦丁.webp' },
         { id: 11, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/艾莉森 • 奧爾洛夫.webp', liveUrl: 'https://www.twitch.tv/ume_zz' },
         { id: 12, type: 'faculty', house: '老虎學院', name: '哈爾 • 詹金斯', title: '教授', image: 'images/students/1.webp' },
-        { id: 13, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/貝爾•奧利安.webp' },
+        { id: 13, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/貝爾•奧利安.webp', note: '涉嫌使用黑魔法書，現已收押阿茲卡班，教授職位已解除。' },
         { id: 14, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '傑克 • 唐 • 祖利亞', title: '課程教授', expertise: '咒術學', bio: '任教於鳳凰學院，專精咒術學的理論與應用。', image: 'images/teachers/傑克 • 唐 • 祖利亞.webp' },
 
         { id: 15, type: 'faculty', house: 'snake', name: '歐克 • 科布拉', title: '教授', bio: '負責學院教學與學生指導。', expertise: '魔法理論、實戰指導', image: 'images/teachers/teacher-01.webp', liveUrl: 'https://www.twitch.tv/kosh1106' },
@@ -479,9 +490,10 @@ createApp({
       document.body.style.overflow = 'hidden';
     },
 
-    // 點擊合成表材料標籤，捲動到對應的採集物卡片並短暫高亮
+    // 點擊合成表材料標籤，捲動到對應的採集物卡片，
+    // 若材料本身是另一款藥水（例如特級系列用到的基礎藥水），則捲動到該藥水的合成卡片
     scrollToMaterial(name) {
-      const el = document.getElementById('gather-' + name);
+      const el = document.getElementById('gather-' + name) || document.getElementById('recipe-' + name);
       if (!el) return;
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       this.highlightedMaterial = name;
