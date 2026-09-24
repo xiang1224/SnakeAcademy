@@ -38,6 +38,9 @@ createApp({
         { id: 8, name: '灰蛇厲害隊', category: '學院活動', image: 'images/gallery/灰蛇厲害隊.webp' },
         { id: 9, name: '團康遊戲', category: '學院活動', image: 'images/gallery/團康遊戲.webp' },
         { id: 10, name: '迷霧術課程', category: '課堂側拍', image: 'images/gallery/迷霧術.webp' },
+        { id: 11, name: '毒蛇雞同鴨講(布崔黑水派)', category: '學院活動', image: 'images/gallery/布崔黑水派.gif' },
+        { id: 12, name: '毒蛇雞同鴨講(純潔天使)', category: '學院活動', image: 'images/gallery/純潔天使.gif' },
+        { id: 13, name: '毒蛇雞同鴨講(晚安啾啾)', category: '學院活動', image: 'images/gallery/晚安啾啾.gif' },
       ],
 
       gatheringSpots: [
