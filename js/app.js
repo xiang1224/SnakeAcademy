@@ -53,8 +53,8 @@ createApp({
         { id: 7, name: '水晶花', type: 'Crystal Flower', use: '未知。', location: '花園', image: './images/material/Ice-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp' },
         { id: 8, name: '尖叫草藥', type: 'Scream Flower', use: '未知。', location: '很南方的巨石陣', image: './images/material/scream.webp', mapImage: 'images/map/scream-map.webp', actualImage: 'images/map/scream.webp' },
         // ↓↓↓ 這兩筆是合成表新增的材料，圖片與地點還沒補上實際資料，先用預留檔名，記得之後把對應圖片放進 images 資料夾
-        { id: 9, name: '怪物精華', type: 'Monster Essence', use: '擊敗怪物後掉落，可用於各類藥水合成。', location: '目前可用其他材料與教授1:1兌換', image: './images/material/marrow.webp', mapImage: 'images/map/monster-essence-map.webp', actualImage: 'images/map/monster-essence.webp' },
-        { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '目前可用其他材料與教授1:1兌換', image: './images/material/magicrock.webp', mapImage: 'images/map/magic-stone-map.webp', actualImage: 'images/map/magic-stone.webp' }
+        { id: 9, name: '怪物精華', type: 'Monster Essence', use: '擊敗怪物後掉落，可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
+        { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' }
       ],
 
       // 藥水合成表：採集相關頁面使用
@@ -77,6 +77,7 @@ createApp({
           kind: '攻擊魔法',
           tags: ['控血'],
           use: '操縱目標體內的血液流動，可用於造成內傷使其跪下。',
+          source: '課堂取得',
           image: './images/rock/red.webp'
         },
         {
@@ -85,6 +86,7 @@ createApp({
           kind: '攻擊魔法',
           tags: ['噬魔'],
           use: '吞噬與消解敵方的魔力。',
+          source: '課堂取得',
           image: './images/rock/red.webp'
         },
         {
@@ -93,6 +95,7 @@ createApp({
           kind: '攻擊魔法',
           tags: ['衝擊'],
           use: '釋放強烈的魔力震盪，能產生衝擊力擊退敵人。',
+          source: '課堂取得',
           image: './images/rock/red.webp'
         },
         {
@@ -101,6 +104,7 @@ createApp({
           kind: '輔助控制魔法',
           tags: ['遲緩'],
           use: '降低目標的移動速度與反應力，有效減緩敵方的戰鬥節奏與行動能力。',
+          source: '課堂取得',
           image: './images/rock/blue.webp'
         },
         {
@@ -109,6 +113,7 @@ createApp({
           kind: '輔助控制魔法',
           tags: ['煙幕'],
           use: '召喚遮蔽視線與魔力感知的濃煙，適合用於干擾敵方判斷、偵查與潛行掩護，亦可與指定目標交換位置。',
+          source: '課堂取得',
           image: './images/rock/blue.webp'
         },
         {
@@ -117,6 +122,7 @@ createApp({
           kind: '輔助控制魔法',
           tags: ['擊倒'],
           use: '利用瞬間爆發的魔力衝擊破壞目標重心，使其摔倒在地並製造控場空檔。',
+          source: '課堂取得',
           image: './images/rock/blue.webp'
         },
         {
@@ -125,6 +131,7 @@ createApp({
           kind: '咒術魔法',
           tags: ['加速'],
           use: '大幅提升目標的移動速度與行動頻率，在戰鬥中獲得先手與閃避優勢。',
+          source: '課堂取得',
           image: './images/rock/purple.webp'
         },
         {
@@ -133,6 +140,7 @@ createApp({
           kind: '咒術魔法',
           tags: ['開鎖'],
           use: '以精準的魔力震盪解開各類機械鎖頭、魔導鎖或基礎封印結構。',
+          source: '流浪商人販售',
           image: './images/rock/purple.webp'
         },
         {
@@ -141,6 +149,7 @@ createApp({
           kind: '咒術魔法',
           tags: ['高躍'],
           use: '增強腿部爆發力或施加輕量重力效果，使施法者能夠跳躍至高處或跨越障礙。',
+          source: '課堂取得',
           image: './images/rock/purple.webp'
         },
         {
@@ -149,6 +158,7 @@ createApp({
           kind: '咒術魔法',
           tags: ['黑妝'],
           use: '將暗影魔力附著於體表以遮蔽面貌，大幅提升在夜間與陰影中的隱匿能力。',
+          source: '流浪商人販售',
           image: './images/rock/purple.webp'
         },
         {
@@ -157,6 +167,7 @@ createApp({
           kind: '輔助控制魔法',
           tags: ['迷霧'],
           use: '展開大範圍大霧遮蔽戰場視線，干擾視野以爭取逃脫時間或進行戰術轉移。',
+          source: '課堂取得',
           image: './images/rock/blue.webp'
         },
         {
@@ -165,6 +176,7 @@ createApp({
           kind: '攻擊魔法',
           tags: ['火焰', '爆破'],
           use: '凝聚熾熱的高溫火球投擲向敵人，擊中時會引發範圍爆裂與持續灼燒傷害。',
+          source: '課堂取得',
           image: './images/rock/red.webp'
         },
         {
@@ -173,6 +185,7 @@ createApp({
           kind: '咒術魔法',
           tags: ['牽引'],
           use: '釋放無形魔力，將距離自己最近的敵人強力彈開，迅速拉開安全距離。',
+          source: '課堂取得',
           image: './images/rock/purple.webp'
         },
         {
@@ -181,6 +194,7 @@ createApp({
           kind: '咒術魔法',
           tags: ['繳械'],
           use: '發射精準的魔力衝擊，強行打落敵方手中持有的武器或魔導器具，削弱其攻擊能力。',
+          source: '課堂取得',
           image: './images/rock/purple.webp'
         },
         {
@@ -189,6 +203,7 @@ createApp({
           kind: '輔助控制魔法',
           tags: ['爆炸'],
           use: '發動後靠近目標將引發魔力共振強制定身對方，但強烈的反作用力也會使施法者自身同時陷入定身。',
+          source: '課堂取得',
           image: './images/rock/blue.webp'
         },
         {
@@ -197,7 +212,26 @@ createApp({
           kind: '攻擊魔法',
           tags: ['水柱'],
           use: '召喚螺旋升騰的高壓水龍捲，強烈的水流衝擊能將範圍內的敵人捲入半空並造成傷害。',
+          source: '課堂取得',
           image: './images/rock/red.webp'
+        },
+        {
+          id: 17,
+          name: '魔力盾',
+          kind: '治療防禦魔法',
+          tags: ['盾'],
+          use: '召喚螺旋升騰的高壓水龍捲，強烈的水流衝擊能將範圍內的敵人捲入半空並造成傷害。',
+          source: '課堂取得',
+          image: './images/rock/green.webp'
+        },
+        {
+          id: 18,
+          name: '回春術',
+          kind: '治療防禦魔法',
+          tags: ['回春'],
+          use: '導引溫和的自然魔力滋養傷口，為目標恢復少量的生命值。',
+          source: '流浪女巫販售',
+          image: './images/rock/green.webp'
         },
       ],
 
@@ -364,6 +398,7 @@ createApp({
           stone.name,
           stone.kind,
           stone.use,
+          stone.source,
           ...(stone.tags || [])
         ].join(' ').toLowerCase();
         return matchCategory && (!keyword || searchable.includes(keyword));

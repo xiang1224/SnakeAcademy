@@ -1949,6 +1949,11 @@ nav button.active {
   font-size: 12px
 }
 
+.stone-kind+.stone-kind {
+  border-top: none;
+  margin-top: -12px
+}
+
 .stone-body p {
   font-size: 13px;
   color: var(--muted);

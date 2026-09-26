@@ -452,6 +452,7 @@
                   <span v-for="tag in (stone.tags || [])" :key="tag">#{{ tag }}</span>
                 </div>
                 <div class="stone-kind"><small>種類</small><strong>{{ stone.kind }}</strong></div>
+                <div class="stone-kind"><small>取得方式</small><strong>{{ stone.source || '課堂取得' }}</strong></div>
                 <p><strong>用途</strong>{{ stone.use }}</p>
               </div>
             </article>
