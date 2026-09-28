@@ -157,7 +157,7 @@
           </div>
 
           <div class="gallery-grid">
-            <article class="photo-card" v-for="item in filteredGallery" :key="item.id">
+            <article class="photo-card" v-for="item in preview(filteredGallery, 'gallery')" :key="item.id">
               <button class="photo-image" @click="openLightbox(item)">
                 <img :src="item.image" :alt="item.name" @error="imageFallback" loading="lazy">
                 <span class="zoom">＋</span>
@@ -170,6 +170,14 @@
                 <a class="download-btn" :href="item.image" :download="safeFileName(item.name)" @click.stop>↓</a>
               </div>
             </article>
+          </div>
+          <div class="expand-wrap" v-if="canToggle(filteredGallery, 'gallery')">
+            <button v-if="remaining(filteredGallery, 'gallery') > 0" class="btn btn-outline expand-btn"
+              @click="showMore('gallery')">
+              {{ moreLabel(filteredGallery, 'gallery', '張照片') }}
+            </button>
+            <button v-if="isExpanded('gallery')" class="btn btn-outline expand-btn" @click="collapse('gallery')">收合
+              ↑</button>
           </div>
 
           <div v-if="filteredGallery.length === 0" class="empty-state">
@@ -304,6 +312,31 @@
                   </div>
                 </div>
               </article>
+              <article class="person-card leader id-card vacant">
+                <div class="id-card-inner">
+                  <div class="id-head">
+                    <span class="id-head-logo"><img src="images/logo.webp" alt="" loading="lazy"></span>
+                    <span class="id-head-text"><strong>毒蛇學院</strong><small>SNAKE ACADEMY · STUDENT ID</small></span>
+                    <span class="id-type-tag">COUNCIL</span>
+                  </div>
+                  <div class="person-photo vacant-photo">
+                    <span class="vacant-mark">？</span>
+                    <span class="role-badge">副班長</span>
+                  </div>
+                  <div class="person-body">
+                    <div class="id-body-top">
+                      <small>學生幹部</small>
+                      <span class="id-no">VACANT</span>
+                    </div>
+                    <h3>從缺</h3>
+                    <p>副班長一職目前從缺。</p>
+                  </div>
+                  <div class="id-foot">
+                    <span class="id-barcode" aria-hidden="true"></span>
+                    <span class="id-valid">VALID · 2026</span>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
 
@@ -312,13 +345,15 @@
               <h2>全體學生</h2>
             </div>
             <div class="people-grid student-grid">
-              <article class="person-card student id-card" v-for="person in students" :key="person.id">
+              <article class="person-card student id-card" v-for="person in preview(students, 'students')"
+                :key="person.id">
                 <div class="id-card-inner">
                   <div class="id-head">
                     <span class="id-head-text"><strong>毒蛇學院</strong><small>STUDENT ID</small></span>
                   </div>
                   <div class="person-photo">
                     <img :src="person.image" :alt="person.name" @error="imageFallback" loading="lazy">
+                    <span v-if="person.committee" class="role-badge">{{ person.committee }}</span>
                     <a v-if="person.liveUrl" class="live-overlay" :href="person.liveUrl" target="_blank" rel="noopener"
                       @click.stop>
                       <span>前往直播間</span>
@@ -330,7 +365,8 @@
                   <div class="person-body">
                     <h3>{{ person.name }}</h3>
                     <div class="id-body-top">
-                      <small>{{ person.title }}</small>
+                      <small>{{ person.title }}<template v-if="person.committee"> · {{ person.committee
+                          }}</template></small>
                       <span class="id-no">NO.{{ String(person.id).padStart(4,'0') }}</span>
                     </div>
                   </div>
@@ -339,6 +375,14 @@
                   </div>
                 </div>
               </article>
+            </div>
+            <div class="expand-wrap" v-if="canToggle(students, 'students')">
+              <button v-if="remaining(students, 'students') > 0" class="btn btn-outline expand-btn"
+                @click="showMore('students')">
+                {{ moreLabel(students, 'students', '位學生') }}
+              </button>
+              <button v-if="isExpanded('students')" class="btn btn-outline expand-btn" @click="collapse('students')">收合
+                ↑</button>
             </div>
           </div>
         </section>
@@ -382,8 +426,8 @@
         <section class="section compact">
 
           <div class="resource-grid">
-            <article class="resource-card" v-for="item in gatheringSpots" :key="item.id" :id="'gather-' + item.name"
-              :class="{ highlighted: highlightedMaterial === item.name }">
+            <article class="resource-card" v-for="item in preview(gatheringSpots, 'gathering')" :key="item.id"
+              :id="'gather-' + item.name" :class="{ highlighted: highlightedMaterial === item.name }">
               <div class="resource-title">
                 <div><span class="resource-type">{{ item.type }}</span>
                   <h2>{{ item.name }}</h2>
@@ -414,6 +458,14 @@
               </div>
             </article>
           </div>
+          <div class="expand-wrap" v-if="canToggle(gatheringSpots, 'gathering')">
+            <button v-if="remaining(gatheringSpots, 'gathering') > 0" class="btn btn-outline expand-btn"
+              @click="showMore('gathering')">
+              {{ moreLabel(gatheringSpots, 'gathering', '項採集物') }}
+            </button>
+            <button v-if="isExpanded('gathering')" class="btn btn-outline expand-btn" @click="collapse('gathering')">收合
+              ↑</button>
+          </div>
         </section>
       </section>
 
@@ -440,7 +492,7 @@
           </div>
 
           <div class="stone-grid">
-            <article class="stone-card" v-for="stone in filteredMagicStones" :key="stone.id">
+            <article class="stone-card" v-for="stone in preview(filteredMagicStones, 'stones')" :key="stone.id">
               <div class="stone-image">
                 <img :src="stone.image" :alt="stone.name" @error="imageFallback" loading="lazy">
                 <span>{{ stone.kind }}</span>
@@ -456,6 +508,15 @@
                 <p><strong>用途</strong>{{ stone.use }}</p>
               </div>
             </article>
+          </div>
+
+          <div class="expand-wrap" v-if="canToggle(filteredMagicStones, 'stones')">
+            <button v-if="remaining(filteredMagicStones, 'stones') > 0" class="btn btn-outline expand-btn"
+              @click="showMore('stones')">
+              {{ moreLabel(filteredMagicStones, 'stones', '顆魔法石') }}
+            </button>
+            <button v-if="isExpanded('stones')" class="btn btn-outline expand-btn" @click="collapse('stones')">收合
+              ↑</button>
           </div>
 
           <div v-if="filteredMagicStones.length === 0" class="empty-state stone-empty">
@@ -480,7 +541,7 @@
           </div>
           <div class="professor-grid">
             <!-- 這裡改用 allProfessors -->
-            <article class="professor-card id-card" v-for="prof in allProfessors" :key="prof.id">
+            <article class="professor-card id-card" v-for="prof in preview(allProfessors, 'professors')" :key="prof.id">
               <div class="id-card-inner">
                 <div class="professor-photo">
                   <img :src="prof.image" :alt="prof.name" @error="imageFallback" loading="lazy">
@@ -522,6 +583,14 @@
               </div>
             </article>
           </div>
+          <div class="expand-wrap" v-if="canToggle(allProfessors, 'professors')">
+            <button v-if="remaining(allProfessors, 'professors') > 0" class="btn btn-outline expand-btn"
+              @click="showMore('professors')">
+              {{ moreLabel(allProfessors, 'professors', '位教授') }}
+            </button>
+            <button v-if="isExpanded('professors')" class="btn btn-outline expand-btn"
+              @click="collapse('professors')">收合 ↑</button>
+          </div>
         </section>
       </section>
 
@@ -544,7 +613,7 @@
           </div>
 
           <div class="tablet-grid">
-            <article class="tablet-card" v-for="tablet in forbiddenTablets" :key="tablet.id"
+            <article class="tablet-card" v-for="tablet in preview(forbiddenTablets, 'tablets')" :key="tablet.id"
               :class="{ locked: !tablet.discovered }">
               <div class="tablet-number">
                 <span>石碑</span>
@@ -566,6 +635,14 @@
                 </template>
               </div>
             </article>
+          </div>
+          <div class="expand-wrap" v-if="canToggle(forbiddenTablets, 'tablets')">
+            <button v-if="remaining(forbiddenTablets, 'tablets') > 0" class="btn btn-outline expand-btn"
+              @click="showMore('tablets')">
+              {{ moreLabel(forbiddenTablets, 'tablets', '塊石碑') }}
+            </button>
+            <button v-if="isExpanded('tablets')" class="btn btn-outline expand-btn" @click="collapse('tablets')">收合
+              ↑</button>
           </div>
         </section>
       </section>

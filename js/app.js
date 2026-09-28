@@ -24,6 +24,11 @@ createApp({
       infoSessionDuration: 30 * 60 * 1000,
       sessionCheckTimer: null,
       showRecipes: false,
+      // 資料較多的頁面：預設只顯示前幾筆，每按一次「展開更多」再多載入一批，不會一次全開。
+      // previewCounts = 一開始顯示幾筆；stepCounts = 每次點擊多顯示幾筆。
+      visibleCounts: { students: 3, gallery: 6, gathering: 3, stones: 6, professors: 3, tablets: 3 },
+      previewCounts: { students: 3, gallery: 6, gathering: 3, stones: 6, professors: 3, tablets: 3 },
+      stepCounts: { students: 6, gallery: 6, gathering: 3, stones: 6, professors: 3, tablets: 3 },
       highlightedMaterial: null,
 
       // ====== 你之後主要修改這裡的資料 ======
@@ -54,7 +59,7 @@ createApp({
         { id: 8, name: '尖叫草藥', type: 'Scream Flower', use: '未知。', location: '很南方的巨石陣', image: './images/material/scream.webp', mapImage: 'images/map/scream-map.webp', actualImage: 'images/map/scream.webp' },
         // ↓↓↓ 這兩筆是合成表新增的材料，圖片與地點還沒補上實際資料，先用預留檔名，記得之後把對應圖片放進 images 資料夾
         { id: 9, name: '怪物精華', type: 'Monster Essence', use: '擊敗怪物後掉落，可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
-        { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' }
+        { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/magicrock.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' }
       ],
 
       // 藥水合成表：採集相關頁面使用
@@ -220,7 +225,7 @@ createApp({
           name: '魔力盾',
           kind: '治療防禦魔法',
           tags: ['盾'],
-          use: '召喚螺旋升騰的高壓水龍捲，強烈的水流衝擊能將範圍內的敵人捲入半空並造成傷害。',
+          use: '凝聚密實的魔力屏障環繞全身，能在短時間內完全免疫所有來自敵方的魔法傷害與效果。',
           source: '課堂取得',
           image: './images/rock/green.webp'
         },
@@ -313,7 +318,7 @@ createApp({
         { id: 6, type: 'faculty', intelOnly: true, name: '奈爾 • 奧斯本', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/teacher-14.webp' },
         { id: 7, type: 'faculty', intelOnly: true, name: '帕比 • 索恩維亞', title: '訓導老師', expertise: '學生生活輔導', bio: '負責學生生活常規與紀律管理。', image: 'images/teachers/帕比．索恩維亞.webp' },
 
-        { id: 8, type: 'faculty', intelOnly: true, name: '洛克 • K', title: '課程教授', expertise: '雙手劍', bio: '教授雙手劍術，注重實戰技巧與體能訓練。', image: 'images/teachers/洛克•K.webp' },
+        { id: 8, type: 'faculty', intelOnly: true, name: '洛克 • K', title: '課程教授', expertise: '雙手劍', bio: '教授雙手劍術，注重實戰技巧與體能訓練。', image: 'images/teachers/洛克•K.webp', liveUrl: 'https://www.twitch.tv/mrbird2000' },
         { id: 9, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '洛恩 • 維特斯', title: '課程教授', expertise: '魔藥學', bio: '任教於凍狼學院，專精魔藥調配與藥理研究。', image: 'images/teachers/洛恩 • 維特斯.webp', liveUrl: 'https://www.twitch.tv/abcabc0620' },
         { id: 10, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/約翰•康斯坦丁.webp' },
         { id: 11, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/艾莉森 • 奧爾洛夫.webp', liveUrl: 'https://www.twitch.tv/ume_zz' },
@@ -325,14 +330,14 @@ createApp({
         { id: 16, type: 'faculty', house: 'snake', name: '比莉 • 艾利殊', title: '教授', bio: '負責課程規劃與學院事務。', expertise: '歷史、戰術與課程規劃', image: 'images/teachers/teacher-02.webp' },
 
         // ====== 學生群，編號與教師群分開，各自從 1 開始 ======
-        { id: 1, type: 'leader', name: '優莉安娜．溫特貝爾', title: '班長', bio: '協助教授管理班級與維持團隊秩序。', image: 'images/students/優莉安娜．溫特貝爾.webp', liveUrl: 'https://www.twitch.tv/loveuu_uu' },
-        { id: 2, type: 'leader', name: '茶漓．阿斯特', title: '副班長', bio: '協助班長處理班務與學生事務。', image: 'images/students/茶漓．阿斯特.webp' },
+        { id: 1, type: 'student', name: '優莉安娜．溫特貝爾', title: '學生', image: 'images/students/優莉安娜．溫特貝爾.webp', liveUrl: 'https://www.twitch.tv/loveuu_uu' },
+        { id: 2, type: 'leader', name: '茶漓．阿斯特', title: '班長', bio: '協助教授管理班級與維持團隊秩序。', image: 'images/students/茶漓．阿斯特.webp' },
         { id: 3, type: 'student', name: '心肝 • 普林西斯', title: '學生', image: 'images/students/心肝 • 普林西斯.webp' },
-        { id: 4, type: 'student', name: '伊凡•莫爾', title: '學生', image: 'images/students/伊凡•莫爾.webp' },
+        { id: 4, type: 'student', name: '伊凡•莫爾', title: '學生', committee: '風紀委員會', image: 'images/students/伊凡•莫爾.webp' },
         { id: 5, type: 'student', name: '吉米 • 湯馬斯', title: '學生', image: 'images/students/吉米 • 湯馬斯.webp' },
-        { id: 6, type: 'student', name: '杜威・庫柏恩', title: '學生', image: 'images/students/杜威・庫柏恩.webp', liveUrl: 'https://www.twitch.tv/djiang_duuuku' },
+        { id: 6, type: 'student', name: '杜威・庫柏恩', title: '學生', committee: '風紀委員會', image: 'images/students/杜威・庫柏恩.webp', liveUrl: 'https://www.twitch.tv/djiang_duuuku' },
         { id: 7, type: 'student', name: '芙莉．佛力', title: '學生', image: 'images/students/芙莉．佛力.webp' },
-        { id: 8, type: 'student', name: '夏綠蒂．華倫', title: '學生', image: 'images/students/夏綠蒂．華倫.webp', liveUrl: 'https://www.twitch.tv/amuam3u' },
+        { id: 8, type: 'student', name: '夏綠蒂．華倫', title: '學生', committee: '風紀委員會', image: 'images/students/夏綠蒂．華倫.webp', liveUrl: 'https://www.twitch.tv/amuam3u' },
         { id: 9, type: 'student', name: '烏拉菈•艾寶', title: '學生', image: 'images/students/烏拉菈•艾寶.webp', liveUrl: 'https://www.twitch.tv/rr_leice' },
         { id: 10, type: 'student', name: '烏魯魯奇雅．瑪拉', title: '學生', image: 'images/students/烏魯魯奇雅．瑪拉.webp' },
         { id: 11, type: 'student', name: '莉絲·菲伊', title: '學生', image: 'images/students/莉絲·菲伊.webp', liveUrl: 'https://www.twitch.tv/1nom1' },
@@ -348,12 +353,16 @@ createApp({
         { id: 21, type: 'gifted', name: '伊芙琳．克羅伊斯', title: '資優生', bio: '負責細心呵護學弟妹們。', image: 'images/students/伊芙琳．克羅伊斯.webp', liveUrl: 'https://www.twitch.tv/hachi0u0' },
         { id: 22, type: 'student', name: '莉絲·羅文', title: '學生', image: 'images/students/莉絲·羅文.webp', liveUrl: 'https://www.twitch.tv/yidhra0727' },
         { id: 23, type: 'student', name: '亞瑟 • 金斯利', title: '學生', image: 'images/students/亞瑟 • 金斯利.webp' },
-        { id: 24, type: 'student', name: '哈比·麥·貴度', title: '學生', image: 'images/students/哈比·麥·貴度.webp', liveUrl: 'https://www.twitch.tv/tnyuuta' },
+        { id: 24, type: 'student', name: '哈比·麥·貴度', title: '學生', committee: '風紀委員會', image: 'images/students/哈比·麥·貴度.webp', liveUrl: 'https://www.twitch.tv/tnyuuta' },
         { id: 25, type: 'student', name: '熙振．泰瑞托', title: '學生', image: 'images/students/熙振．泰瑞托.webp' },
         { id: 26, type: 'student', name: '伊莉莎．霍普', title: '學生', image: 'images/students/伊莉莎．霍普.webp' },
-        { id: 27, type: 'student', name: '露娜．索爾貝克', title: '學生', image: 'images/students/露娜．索爾貝克.webp', liveUrl: 'https://www.twitch.tv/boss_guan' },
+        { id: 27, type: 'student', name: '露娜．索爾貝克', title: '學生', committee: '風紀委員會', image: 'images/students/露娜．索爾貝克.webp', liveUrl: 'https://www.twitch.tv/boss_guan' },
         { id: 28, type: 'student', name: '凱斯·凱爾采', title: '學生', image: 'images/students/凱斯·凱爾采.webp' },
         { id: 29, type: 'student', name: '史崔克·東', title: '學生', image: 'images/students/史崔克·東.webp', liveUrl: 'https://www.twitch.tv/hirnmampfer' },
+        { id: 30, type: 'student', name: '肯尼‧佛斯特', title: '學生', image: 'images/students/肯尼‧佛斯特.webp' },
+        { id: 31, type: 'student', name: '萊恩‧衛斯理', title: '學生', image: 'images/students/萊恩‧衛斯理.webp' },
+        { id: 32, type: 'student', name: '愛德華‧ 艾力克', title: '學生', image: 'images/students/愛德華‧ 艾力克.webp' },
+        { id: 33, type: 'student', name: '沃特·溫特貝爾', title: '學生', image: 'images/students/沃特·溫特貝爾.webp', liveUrl: 'https://www.twitch.tv/waterday0930' },
 
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
@@ -441,7 +450,42 @@ createApp({
     });
   },
 
+  watch: {
+    // 切換相簿分類、魔法石分類時，回到收合狀態
+    galleryFilter() { this.collapse('gallery'); },
+    stoneFilter() { this.collapse('stones'); }
+  },
+
   methods: {
+    // ====== 點擊展開（分批載入） ======
+    isSearchingStones(key) {
+      return key === 'stones' && this.stoneSearch.trim() !== '';
+    },
+    canToggle(list, key) {
+      return !this.isSearchingStones(key) && list.length > this.previewCounts[key];
+    },
+    preview(list, key) {
+      if (this.isSearchingStones(key)) return list;
+      return list.slice(0, this.visibleCounts[key]);
+    },
+    remaining(list, key) {
+      return Math.max(0, list.length - this.visibleCounts[key]);
+    },
+    isExpanded(key) {
+      return this.visibleCounts[key] > this.previewCounts[key];
+    },
+    showMore(key) {
+      this.visibleCounts[key] += this.stepCounts[key];
+    },
+    collapse(key) {
+      this.visibleCounts[key] = this.previewCounts[key];
+    },
+    moreLabel(list, key, unit) {
+      const left = this.remaining(list, key);
+      const next = Math.min(left, this.stepCounts[key]);
+      return `展開更多（再顯示 ${next} ${unit}，還有 ${left} ${unit}）↓`;
+    },
+
     go(target) {
       // 情報區登入在 30 分鐘內有效，期間切換情報頁面不需重新輸入密碼。
       if (this.lockedInfoPages.includes(target)) {
@@ -539,13 +583,23 @@ createApp({
     // 點擊合成表材料標籤，捲動到對應的採集物卡片，
     // 若材料本身是另一款藥水（例如特級系列用到的基礎藥水），則捲動到該藥水的合成卡片
     scrollToMaterial(name) {
-      const el = document.getElementById('gather-' + name) || document.getElementById('recipe-' + name);
-      if (!el) return;
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      this.highlightedMaterial = name;
-      setTimeout(() => {
-        if (this.highlightedMaterial === name) this.highlightedMaterial = null;
-      }, 1600);
+      const find = () => document.getElementById('gather-' + name) || document.getElementById('recipe-' + name);
+      const run = el => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        this.highlightedMaterial = name;
+        setTimeout(() => {
+          if (this.highlightedMaterial === name) this.highlightedMaterial = null;
+        }, 1600);
+      };
+      const el = find();
+      if (el) return run(el);
+      // 目標卡片可能在尚未載入的採集列表裡，只多載入到該項目為止再捲動
+      const idx = this.gatheringSpots.findIndex(x => x.name === name);
+      if (idx >= this.visibleCounts.gathering) {
+        const step = this.stepCounts.gathering;
+        this.visibleCounts.gathering = Math.ceil((idx + 1) / step) * step;
+        this.$nextTick(() => { const e2 = find(); if (e2) run(e2); });
+      }
     },
 
     openImageLightbox(image, name, category) {

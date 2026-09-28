@@ -2712,3 +2712,38 @@ nav button.active {
     font-size: 24px;
   }
 }
+
+/* 副班長從缺卡片 */
+.person-card.vacant .vacant-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 19, 15, .55)
+}
+
+.person-card.vacant .vacant-mark {
+  font-size: 48px;
+  color: var(--gold);
+  opacity: .35
+}
+
+.person-card.vacant h3 {
+  color: var(--muted)
+}
+
+
+/* 點擊展開 / 收合 */
+.expand-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px
+}
+
+.expand-btn {
+  min-width: 220px
+}
+
+.expand-wrap {
+  flex-wrap: wrap;
+  gap: 12px
+}
