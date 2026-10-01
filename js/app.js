@@ -207,7 +207,7 @@ createApp({
         },
         {
           id: 15,
-          name: '爆炸術',
+          name: '炸彈術',
           kind: '輔助控制魔法',
           tags: ['爆炸'],
           use: '發動後靠近目標將引發魔力共振強制定身對方，但強烈的反作用力也會使施法者自身同時陷入定身。',
@@ -240,6 +240,24 @@ createApp({
           use: '導引溫和的自然魔力滋養傷口，為目標恢復少量的生命值。',
           source: '流浪女巫販售',
           image: './images/rock/green.webp'
+        },
+        {
+          id: 19,
+          name: '岩石術',
+          kind: '攻擊魔法',
+          tags: ['岩石'],
+          use: '凝聚堅硬岩塊攻擊目標，命中軀幹可造成強力的單體傷害；若命中腳部則會引發地裂造成群體傷害。',
+          source: '課堂取得',
+          image: './images/rock/red.webp'
+        },
+        {
+          id: 20,
+          name: '照明術',
+          kind: '咒術魔法',
+          tags: ['照明'],
+          use: '凝聚純淨光球懸浮於空中或跟隨自身，照亮周圍黑暗環境。',
+          source: '歐克教授隨心情取得',
+          image: './images/rock/purple.webp'
         },
       ],
 
@@ -326,7 +344,7 @@ createApp({
         { id: 10, type: 'faculty', intelOnly: true, house: '凍狼學院', name: '約翰 • 康斯坦丁', title: '課程教授', expertise: '攻擊魔法', bio: '任教於凍狼學院，專精攻擊性魔法的施展與教學。', image: 'images/teachers/約翰•康斯坦丁.webp' },
         { id: 11, type: 'faculty', intelOnly: true, house: '老虎學院', name: '艾莉森 • 奧爾洛夫', title: '課程教授', expertise: '魔藥學', bio: '任教於老虎學院，擅長進階魔藥配方設計。', image: 'images/teachers/艾莉森 • 奧爾洛夫.webp', liveUrl: 'https://www.twitch.tv/ume_zz' },
         { id: 12, type: 'faculty', house: '老虎學院', name: '哈爾 • 詹金斯', title: '教授', image: 'images/students/1.webp' },
-        { id: 13, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/貝爾•奧利安.webp', note: '涉嫌使用黑魔法書，現已收押阿茲卡班，教授職位已解除。' },
+        { id: 13, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '貝爾 • 奧利安', title: '課程教授', expertise: '攻擊魔法', bio: '任教於鳳凰學院，致力於培養學生的實戰魔法能力。', image: 'images/teachers/貝爾•奧利安.webp' },
         { id: 14, type: 'faculty', intelOnly: true, house: '鳳凰學院', name: '傑克 • 唐 • 祖利亞', title: '課程教授', expertise: '咒術學', bio: '任教於鳳凰學院，專精咒術學的理論與應用。', image: 'images/teachers/傑克 • 唐 • 祖利亞.webp' },
 
         { id: 15, type: 'faculty', house: 'snake', name: '歐克 • 科布拉', title: '教授', bio: '負責學院教學與學生指導。', expertise: '魔法理論、實戰指導', image: 'images/teachers/teacher-01.webp', liveUrl: 'https://www.twitch.tv/kosh1106' },
@@ -340,7 +358,7 @@ createApp({
         { id: 5, type: 'student', name: '吉米 • 湯馬斯', title: '學生', image: 'images/students/吉米 • 湯馬斯.webp' },
         { id: 6, type: 'student', name: '杜威・庫柏恩', title: '學生', committee: '風紀委員會', image: 'images/students/杜威・庫柏恩.webp', liveUrl: 'https://www.twitch.tv/djiang_duuuku' },
         { id: 7, type: 'student', name: '芙莉．佛力', title: '學生', image: 'images/students/芙莉．佛力.webp' },
-        { id: 8, type: 'student', name: '夏綠蒂．華倫', title: '學生', committee: '風紀委員會', image: 'images/students/夏綠蒂．華倫.webp', liveUrl: 'https://www.twitch.tv/amuam3u' },
+        { id: 8, type: 'leader', name: '夏綠蒂．華倫', title: '副班長', bio: '協助班長管理班級與維持團隊秩序。', image: 'images/students/夏綠蒂．華倫.webp', liveUrl: 'https://www.twitch.tv/amuam3u' },
         { id: 9, type: 'student', name: '烏拉菈•艾寶', title: '學生', image: 'images/students/烏拉菈•艾寶.webp', liveUrl: 'https://www.twitch.tv/rr_leice' },
         { id: 10, type: 'student', name: '烏魯魯奇雅．瑪拉', title: '學生', image: 'images/students/烏魯魯奇雅．瑪拉.webp' },
         { id: 11, type: 'student', name: '莉絲·菲伊', title: '學生', image: 'images/students/莉絲·菲伊.webp', liveUrl: 'https://www.twitch.tv/1nom1' },
