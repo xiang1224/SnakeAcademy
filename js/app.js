@@ -46,6 +46,7 @@ createApp({
         { id: 11, name: '毒蛇雞同鴨講(布崔黑水派)', category: '學院活動', image: 'images/gallery/布崔黑水派.gif' },
         { id: 12, name: '毒蛇雞同鴨講(純潔天使)', category: '學院活動', image: 'images/gallery/純潔天使.gif' },
         { id: 13, name: '毒蛇雞同鴨講(晚安啾啾)', category: '學院活動', image: 'images/gallery/晚安啾啾.gif' },
+        { id: 14, name: '優莉安娜生日會', category: '學院活動', image: 'images/gallery/優莉安娜生日會.webp' },
       ],
 
       gatheringSpots: [
@@ -72,7 +73,9 @@ createApp({
         { id: 6, name: '特效瀉藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '妖精花粉', qty: 2 }, { name: '魔石', qty: 2 }] },
         { id: 7, name: '特級能量護盾藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '能量護盾藥水', qty: 1 }] },
         { id: 8, name: '特級強力心臟藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '強力心臟藥水', qty: 1 }] },
-        { id: 9, name: '特級回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '回復藥水', qty: 1 }] }
+        { id: 9, name: '特級回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草藥', qty: 2 }, { name: '魔石', qty: 2 }, { name: '回復藥水', qty: 1 }] },
+        { id: 10, name: '魅惑藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }] },
+        { id: 11, name: '沉睡藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }, { name: '蜂王蜜', qty: 2 }] }
       ],
 
       magicStones: [
