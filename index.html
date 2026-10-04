@@ -405,7 +405,7 @@
               :id="'gather-' + item.name" :class="{ highlighted: highlightedMaterial === item.name }">
               <div class="resource-title">
                 <div><span class="resource-type">{{ item.type }}</span>
-                  <h2>{{ item.name }}</h2>
+                  <h2>{{ item.name }}<span v-if="item.chance" class="chance-badge">極低機率取得</span></h2>
                 </div>
                 <span class="intel-number">{{ String(item.id).padStart(2,'0') }}</span>
               </div>
