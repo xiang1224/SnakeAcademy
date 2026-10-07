@@ -26,10 +26,14 @@ createApp({
       showRecipes: false,
       // 資料較多的頁面：預設只顯示前幾筆，每按一次「展開更多」再多載入一批，不會一次全開。
       // previewCounts = 一開始顯示幾筆；stepCounts = 每次點擊多顯示幾筆。
-      visibleCounts: { students: 3, gallery: 6, gathering: 3, stones: 6, professors: 3, tablets: 3 },
-      previewCounts: { students: 3, gallery: 6, gathering: 3, stones: 6, professors: 3, tablets: 3 },
-      stepCounts: { students: 6, gallery: 6, gathering: 3, stones: 6, professors: 3, tablets: 3 },
+      visibleCounts: { students: 3, gallery: 6, stones: 6, professors: 3, tablets: 3 },
+      previewCounts: { students: 3, gallery: 6, stones: 6, professors: 3, tablets: 3 },
+      stepCounts: { students: 6, gallery: 6, stones: 6, professors: 3, tablets: 3 },
       highlightedMaterial: null,
+      // 採集相關改成文字清單：圖片只在「滑鼠移入預覽」或「點擊展開」時才會建立並讀取。
+      gatherSearch: '',     // 採集清單搜尋關鍵字
+      openGatherId: null,   // 目前點擊展開的採集物 id
+      gatherHover: null,    // 滑鼠目前停留的項目與座標：{ item, x, y }
 
       // ====== 你之後主要修改這裡的資料 ======
       gallery: [
@@ -47,6 +51,8 @@ createApp({
         { id: 12, name: '毒蛇雞同鴨講(純潔天使)', category: '學院活動', image: 'images/gallery/純潔天使.gif' },
         { id: 13, name: '毒蛇雞同鴨講(晚安啾啾)', category: '學院活動', image: 'images/gallery/晚安啾啾.gif' },
         { id: 14, name: '優莉安娜生日會', category: '學院活動', image: 'images/gallery/優莉安娜生日會.webp' },
+        { id: 15, name: '遊艇舞會', category: '學院活動', image: 'images/gallery/遊艇舞會.webp' },
+        { id: 16, name: '舞會合照', category: '學院活動', image: 'images/gallery/舞會合照.webp' },
       ],
 
       gatheringSpots: [
@@ -68,6 +74,8 @@ createApp({
         { id: 15, name: '腐心草', type: 'Rotheart-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Rotheart-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 16, name: '烈焰花', type: 'Flame-Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Flame-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
         { id: 17, name: '迴聲花瓣', type: 'Echo-Petal', use: '尚未知曉用途。', location: '花園', image: './images/material/Rotheart-Herb.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
+        { id: 18, name: '混亂藤', type: 'Chaos-Vine', use: '尚未知曉用途。', location: '地圖魁地奇球場右上方', image: './images/material/Chaos-Vine.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp', chance: true },
+        { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
       ],
 
       // 藥水合成表：採集相關頁面使用
@@ -266,6 +274,15 @@ createApp({
           source: '歐克教授隨心情取得',
           image: './images/rock/purple.webp'
         },
+        {
+          id: 21,
+          name: '致盲術',
+          kind: '輔助控制魔法',
+          tags: ['致盲'],
+          use: '釋放暗影遮蔽目標視覺，使對方短暫陷入失明狀態並大幅降低命中率。',
+          source: '課堂取得',
+          image: 'images/intel/stones/blue.webp'
+        },
       ],
 
       // 情報區「禁忌的石碑」：世界觀失落歷史碎片
@@ -427,6 +444,13 @@ createApp({
     allProfessors() {
       return this.people.filter(x => x.type === 'faculty');
     },
+    filteredGatheringSpots() {
+      const keyword = this.gatherSearch.trim().toLowerCase();
+      if (!keyword) return this.gatheringSpots;
+      return this.gatheringSpots.filter(item =>
+        [item.name, item.type, item.use, item.location].join(' ').toLowerCase().includes(keyword)
+      );
+    },
     filteredMagicStones() {
       const keyword = this.stoneSearch.trim().toLowerCase();
       return this.magicStones.filter(stone => {
@@ -450,6 +474,20 @@ createApp({
     },
     students() {
       return this.people.filter(x => x.type === 'student');
+    },
+    // 浮動預覽的位置：跟著滑鼠，靠近視窗邊緣時自動翻到另一側
+    gatherPopStyle() {
+      const h = this.gatherHover;
+      if (!h) return {};
+      const w = Math.min(600, window.innerWidth - 24);
+      const estH = 250, gap = 22, pad = 12;
+      let left = h.x + gap;
+      if (left + w > window.innerWidth - pad) left = h.x - w - gap;
+      left = Math.max(pad, Math.min(left, window.innerWidth - w - pad));
+      let top = h.y + gap;
+      if (top + estH > window.innerHeight - pad) top = h.y - estH - gap;
+      top = Math.max(pad, top);
+      return { width: w + 'px', left: left + 'px', top: top + 'px' };
     },
     discoveredTabletsCount() {
       return this.forbiddenTablets.filter(x => x.discovered).length;
@@ -481,7 +519,9 @@ createApp({
   watch: {
     // 切換相簿分類、魔法石分類時，回到收合狀態
     galleryFilter() { this.collapse('gallery'); },
-    stoneFilter() { this.collapse('stones'); }
+    stoneFilter() { this.collapse('stones'); },
+    page() { this.gatherHover = null; },
+    gatherSearch() { this.gatherHover = null; }
   },
 
   methods: {
@@ -608,6 +648,32 @@ createApp({
       document.body.style.overflow = 'hidden';
     },
 
+    // ====== 採集清單：滑鼠移入預覽 / 點擊展開 ======
+    gatherPics(item) {
+      return [
+        { label: '採集物', src: item.image },
+        { label: '地圖位置', src: item.mapImage },
+        { label: '實際位置', src: item.actualImage }
+      ];
+    },
+    toggleGather(item) {
+      this.openGatherId = this.openGatherId === item.id ? null : item.id;
+      if (this.openGatherId === item.id) this.gatherHover = null;
+    },
+    // 只有滑鼠（pointerType === 'mouse'）才顯示浮動預覽；觸控裝置改用點擊展開
+    showGatherPreview(item, e) {
+      if (e.pointerType !== 'mouse') return;
+      this.gatherHover = { item, x: e.clientX, y: e.clientY };
+    },
+    moveGatherPreview(e) {
+      if (e.pointerType !== 'mouse' || !this.gatherHover) return;
+      this.gatherHover.x = e.clientX;
+      this.gatherHover.y = e.clientY;
+    },
+    hideGatherPreview() {
+      this.gatherHover = null;
+    },
+
     // 點擊合成表材料標籤，捲動到對應的採集物卡片，
     // 若材料本身是另一款藥水（例如特級系列用到的基礎藥水），則捲動到該藥水的合成卡片
     scrollToMaterial(name) {
@@ -621,11 +687,9 @@ createApp({
       };
       const el = find();
       if (el) return run(el);
-      // 目標卡片可能在尚未載入的採集列表裡，只多載入到該項目為止再捲動
-      const idx = this.gatheringSpots.findIndex(x => x.name === name);
-      if (idx >= this.visibleCounts.gathering) {
-        const step = this.stepCounts.gathering;
-        this.visibleCounts.gathering = Math.ceil((idx + 1) / step) * step;
+      // 目標被搜尋條件過濾掉時，清除搜尋再捲動
+      if (this.gatherSearch && this.gatheringSpots.some(x => x.name === name)) {
+        this.gatherSearch = '';
         this.$nextTick(() => { const e2 = find(); if (e2) run(e2); });
       }
     },

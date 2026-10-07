@@ -400,47 +400,60 @@
 
         <section class="section compact">
 
-          <div class="resource-grid">
-            <article class="resource-card" v-for="item in preview(gatheringSpots, 'gathering')" :key="item.id"
-              :id="'gather-' + item.name" :class="{ highlighted: highlightedMaterial === item.name }">
-              <div class="resource-title">
-                <div><span class="resource-type">{{ item.type }}</span>
-                  <h2>{{ item.name }}<span v-if="item.chance" class="chance-badge">極低機率取得</span></h2>
-                </div>
-                <span class="intel-number">{{ String(item.id).padStart(2,'0') }}</span>
-              </div>
-              <p class="resource-use"><strong>用途</strong>{{ item.use }}</p>
-              <figure class="resource-main-image" @click="openImageLightbox(item.image, item.name + '｜採集物', '採集物')">
-                <img :src="item.image" :alt="item.name + '採集物'" @error="imageFallback" loading="lazy">
-                <span class="image-zoom-hint">＋ 放大</span>
-                <figcaption>採集物照片</figcaption>
-              </figure>
-              <div class="location-grid">
-                <figure class="location-image" @click="openImageLightbox(item.mapImage, item.name + '｜地圖位置', '地圖位置')">
-                  <img :src="item.mapImage" :alt="item.name + '地圖位置'" @error="imageFallback" loading="lazy">
-                  <span class="image-zoom-hint">＋ 放大</span>
-                  <figcaption>地圖位置</figcaption>
-                </figure>
-                <figure class="location-image"
-                  @click="openImageLightbox(item.actualImage, item.name + '｜實際位置', '實際位置')">
-                  <img :src="item.actualImage" :alt="item.name + '實際位置'" @error="imageFallback" loading="lazy">
-                  <span class="image-zoom-hint">＋ 放大</span>
-                  <figcaption>實際位置</figcaption>
-                </figure>
-              </div>
-              <div class="location-note"><span>⌖</span>
-                <div><small>位置情報</small><strong>{{ item.location }}</strong></div>
-              </div>
-            </article>
+          <div class="gather-toolbar">
+            <div class="stone-search">
+              <span>⌕</span>
+              <input v-model="gatherSearch" type="search" placeholder="搜尋採集物名稱、英文名、用途或位置……" aria-label="搜尋採集物">
+              <button v-if="gatherSearch" class="clear-search" @click="gatherSearch = ''" aria-label="清除搜尋">×</button>
+            </div>
+            <span class="gather-count">共 {{ filteredGatheringSpots.length }} / {{ gatheringSpots.length }} 項</span>
           </div>
-          <div class="expand-wrap" v-if="canToggle(gatheringSpots, 'gathering')">
-            <button v-if="remaining(gatheringSpots, 'gathering') > 0" class="btn btn-outline expand-btn"
-              @click="showMore('gathering')">
-              {{ moreLabel(gatheringSpots, 'gathering', '項採集物') }}
-            </button>
-            <button v-if="isExpanded('gathering')" class="btn btn-outline expand-btn" @click="collapse('gathering')">收合
-              ↑</button>
+          <p class="gather-hint">滑鼠移到項目上即可預覽照片；點擊項目可展開並放大查看（手機請直接點擊）。</p>
+          <div class="gather-head" aria-hidden="true">
+            <span>名稱</span><span>用途</span><span>採集位置</span><span></span>
           </div>
+          <ul class="gather-list">
+            <li class="gather-item" v-for="item in filteredGatheringSpots" :key="item.id" :id="'gather-' + item.name"
+              :class="{ highlighted: highlightedMaterial === item.name, open: openGatherId === item.id }">
+              <div class="gather-row" role="button" tabindex="0" :aria-expanded="openGatherId === item.id"
+                @click="toggleGather(item)" @keydown.enter.prevent="toggleGather(item)"
+                @keydown.space.prevent="toggleGather(item)" @pointerenter="showGatherPreview(item, $event)"
+                @pointermove="moveGatherPreview($event)" @pointerleave="hideGatherPreview">
+                <span class="gather-name">
+                  <strong>{{ item.name }}</strong>
+                  <span v-if="item.chance" class="chance-badge">極低機率取得</span>
+                  <em>{{ item.type }}</em>
+                </span>
+                <span class="gather-use">{{ item.use }}</span>
+                <span class="gather-loc"><i>⌖</i>{{ item.location }}</span>
+                <span class="gather-caret" aria-hidden="true">▾</span>
+              </div>
+              <div class="gather-detail" v-if="openGatherId === item.id">
+                <figure class="gather-pic" v-for="pic in gatherPics(item)" :key="pic.label"
+                  @click="openImageLightbox(pic.src, item.name + '｜' + pic.label, pic.label)">
+                  <img :src="pic.src" :alt="item.name + pic.label" @error="imageFallback">
+                  <span class="image-zoom-hint">＋ 放大</span>
+                  <figcaption>{{ pic.label }}</figcaption>
+                </figure>
+              </div>
+            </li>
+          </ul>
+          <p class="gather-empty" v-if="!filteredGatheringSpots.length">找不到符合「{{ gatherSearch }}」的採集物。</p>
+
+          <!-- 滑鼠移入預覽：只有 hover 時才會建立 <img>，所以才會開始讀取圖片 -->
+          <teleport to="body">
+            <div class="gather-pop" v-if="gatherHover && gatherHover.item.id !== openGatherId" :style="gatherPopStyle"
+              aria-hidden="true">
+              <div class="gather-pop-title">{{ gatherHover.item.name }}<small>{{ gatherHover.item.type }}</small></div>
+              <div class="gather-pop-pics">
+                <figure v-for="pic in gatherPics(gatherHover.item)" :key="gatherHover.item.id + pic.label">
+                  <img :src="pic.src" :alt="gatherHover.item.name + pic.label" @error="imageFallback"
+                    @load="$event.target.classList.add('loaded')">
+                  <figcaption>{{ pic.label }}</figcaption>
+                </figure>
+              </div>
+            </div>
+          </teleport>
         </section>
       </section>
 

@@ -1851,6 +1851,44 @@ nav button.active {
   object-fit: cover
 }
 
+.img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  background: #07100c;
+  border: 1px dashed rgba(200, 164, 91, .3);
+  color: var(--muted);
+  transition: border-color .25s ease, background .25s ease, color .25s ease;
+}
+
+.img-placeholder.main-ratio {
+  aspect-ratio: 16/9;
+}
+
+.img-placeholder.grid-ratio {
+  aspect-ratio: 4/3;
+}
+
+.img-placeholder-icon {
+  font-size: 20px;
+  opacity: .7;
+}
+
+.img-placeholder-text {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.resource-main-image:hover .img-placeholder,
+.location-image:hover .img-placeholder {
+  border-color: rgba(200, 164, 91, .6);
+  background: rgba(200, 164, 91, .06);
+  color: var(--gold2);
+}
+
 .location-grid figcaption {
   padding: 8px 9px;
   font-size: 10px;
@@ -2759,4 +2797,300 @@ nav button.active {
 .expand-wrap {
   flex-wrap: wrap;
   gap: 12px
+}
+
+/* ===== 採集相關：文字清單 + 滑鼠移入預覽 ===== */
+.gather-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.gather-toolbar .stone-search {
+  flex: 1;
+  max-width: 460px;
+}
+
+.gather-count {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.gather-empty {
+  margin: 0;
+  padding: 36px 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.gather-hint {
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.gather-head,
+.gather-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.05fr) minmax(0, 1.5fr) minmax(170px, 1.15fr) 20px;
+  column-gap: 22px;
+  align-items: center;
+}
+
+.gather-head {
+  padding: 0 18px 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.gather-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(200, 164, 91, .14);
+}
+
+.gather-item {
+  border-top: 1px solid rgba(200, 164, 91, .14);
+  background: linear-gradient(90deg, rgba(16, 41, 31, .55), rgba(9, 24, 16, .2));
+}
+
+.gather-item:first-child {
+  border-top: 0;
+}
+
+.gather-row {
+  position: relative;
+  padding: 14px 18px;
+  cursor: pointer;
+  outline: none;
+  transition: background .2s ease;
+}
+
+.gather-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform .2s ease;
+}
+
+.gather-row:hover,
+.gather-row:focus-visible,
+.gather-item.open .gather-row {
+  background: rgba(200, 164, 91, .08);
+}
+
+.gather-row:hover::before,
+.gather-row:focus-visible::before,
+.gather-item.open .gather-row::before {
+  transform: scaleY(1);
+}
+
+.gather-name strong {
+  display: inline;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.gather-name em {
+  display: block;
+  margin-top: 2px;
+  font: normal 11px Cinzel, serif;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+.gather-name .chance-badge {
+  margin-left: 8px;
+  vertical-align: 2px;
+}
+
+.gather-use {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.gather-loc {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--cream);
+}
+
+.gather-loc i {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.gather-caret {
+  color: var(--gold);
+  font-size: 14px;
+  text-align: center;
+  transition: transform .2s ease;
+}
+
+.gather-item.open .gather-caret {
+  transform: rotate(180deg);
+}
+
+.gather-item.highlighted {
+  animation: recipe-highlight 1.6s ease;
+}
+
+/* 點擊展開後的三張圖 */
+.gather-detail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 280px));
+  gap: 12px;
+  padding: 6px 18px 20px;
+}
+
+.gather-pic {
+  position: relative;
+  margin: 0;
+  background: #07100c;
+  border: 1px solid rgba(200, 164, 91, .14);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.gather-pic img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform .3s ease, filter .3s ease;
+}
+
+.gather-pic:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.08);
+}
+
+.gather-pic:hover .image-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gather-pic figcaption {
+  padding: 8px 9px;
+  font-size: 11px;
+  color: var(--gold2);
+  letter-spacing: 1px;
+}
+
+/* 滑鼠跟隨的預覽卡（掛在 body，不會被卡片裁切） */
+.gather-pop {
+  position: fixed;
+  z-index: 60;
+  padding: 12px 14px 10px;
+  background: #0a1c14;
+  border: 1px solid rgba(200, 164, 91, .45);
+  box-shadow: var(--shadow);
+  pointer-events: none;
+}
+
+.gather-pop-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold2);
+}
+
+.gather-pop-title small {
+  font: 11px Cinzel, serif;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.gather-pop-pics {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 8px;
+}
+
+.gather-pop-pics figure {
+  margin: 0;
+  background: #07100c;
+  border: 1px solid rgba(200, 164, 91, .14);
+}
+
+.gather-pop-pics img {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.gather-pop-pics img.loaded {
+  opacity: 1;
+}
+
+.gather-pop-pics figcaption {
+  padding: 5px 7px;
+  font-size: 10px;
+  color: var(--gold2);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 800px) {
+  .gather-head {
+    display: none;
+  }
+
+  .gather-row {
+    grid-template-columns: 1fr 20px;
+    row-gap: 6px;
+    padding: 14px 14px;
+  }
+
+  .gather-name,
+  .gather-use,
+  .gather-loc {
+    grid-column: 1;
+  }
+
+  .gather-caret {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gather-detail {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    padding: 4px 14px 16px;
+  }
+
+  .gather-detail .gather-pic:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gather-row,
+  .gather-row::before,
+  .gather-caret,
+  .gather-pop-pics img {
+    transition: none;
+  }
 }
