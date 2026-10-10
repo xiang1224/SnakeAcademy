@@ -76,6 +76,7 @@ createApp({
         { id: 17, name: '迴聲花瓣', type: 'Echo-Petal', use: '尚未知曉用途。', location: '花園', image: './images/material/Echo-Petal.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
         { id: 18, name: '混亂藤', type: 'Chaos-Vine', use: '尚未知曉用途。', location: '地圖魁地奇球場右上方', image: './images/material/Chaos-Vine.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp', chance: true },
         { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 20, name: '陽光果', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Sunfruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
       ],
 
       // 藥水合成表：採集相關頁面使用
@@ -283,6 +284,24 @@ createApp({
           source: '課堂取得',
           image: 'images/intel/stones/blue.webp'
         },
+        {
+          id: 22,
+          name: '閃步術',
+          kind: '輔助控制魔法',
+          tags: ['閃步'],
+          use: '壓縮空間進行短距離瞬間移動，能靈巧地躲避敵方攻擊或瞬間拉開/逼近距離。',
+          source: '課堂取得',
+          image: 'images/intel/stones/blue.webp'
+        },
+        {
+          id: 23,
+          name: '暴風雪',
+          kind: '輔助控制魔法',
+          tags: ['暴風雪'],
+          use: '在指定區域召喚小範圍狂暴冰雪，對區域內的敵人造成冰霜傷害。',
+          source: '課堂取得',
+          image: 'images/intel/stones/red.webp'
+        }
       ],
 
       // 情報區「禁忌的石碑」：世界觀失落歷史碎片
