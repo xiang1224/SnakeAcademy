@@ -544,7 +544,7 @@ createApp({
           tags: ['致盲'],
           use: '釋放暗影遮蔽目標視覺，使對方短暫陷入失明狀態並大幅降低命中率。',
           source: '課堂取得',
-          image: 'images/intel/stones/blue.webp'
+          image: 'images/rock/blue.webp'
         },
         {
           id: 22,
@@ -553,16 +553,16 @@ createApp({
           tags: ['閃步'],
           use: '壓縮空間進行短距離瞬間移動，能靈巧地躲避敵方攻擊或瞬間拉開/逼近距離。',
           source: '課堂取得',
-          image: 'images/intel/stones/blue.webp'
+          image: 'images/rock/blue.webp'
         },
         {
           id: 23,
           name: '暴風雪',
-          kind: '輔助控制魔法',
+          kind: '攻擊魔法',
           tags: ['暴風雪'],
           use: '在指定區域召喚小範圍狂暴冰雪，對區域內的敵人造成冰霜傷害。',
           source: '課堂取得',
-          image: 'images/intel/stones/red.webp'
+          image: 'images/rock/red.webp'
         }
       ],
 
