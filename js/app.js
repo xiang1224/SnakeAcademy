@@ -339,6 +339,7 @@ createApp({
         { id: 18, name: '混亂藤', type: 'Chaos-Vine', use: '尚未知曉用途。', location: '地圖魁地奇球場右上方', image: './images/material/Chaos-Vine.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp', chance: true },
         { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 20, name: '陽光果', type: 'Sunfruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Sunfruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
+        { id: 21, name: '火椒果', type: 'Firepepper-Fruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Firepepper-Fruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
       ],
 
       // 藥水合成表：採集相關頁面使用
@@ -356,6 +357,7 @@ createApp({
         { id: 11, name: '沉睡藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }, { name: '蜂王蜜', qty: 2 }] }
       ],
 
+      // mana（魔力消耗）、cooldown（冷卻時間）：填數字會自動加單位（冷卻為「秒」），也可填字串如 '3 分鐘'；null 會顯示「待補充」。
       magicStones: [
         {
           id: 1,
@@ -364,6 +366,8 @@ createApp({
           tags: ['控血'],
           use: '操縱目標體內的血液流動，可用於造成內傷使其跪下。',
           source: '課堂取得',
+          mana: 15,
+          cooldown: 15,
           image: './images/rock/red.webp'
         },
         {
@@ -373,6 +377,8 @@ createApp({
           tags: ['噬魔'],
           use: '吞噬與消解敵方的魔力。',
           source: '課堂取得',
+          mana: 25,
+          cooldown: 13,
           image: './images/rock/red.webp'
         },
         {
@@ -382,6 +388,8 @@ createApp({
           tags: ['衝擊'],
           use: '釋放強烈的魔力震盪，能產生衝擊力擊退敵人。',
           source: '課堂取得',
+          mana: 15,
+          cooldown: 10,
           image: './images/rock/red.webp'
         },
         {
@@ -391,6 +399,8 @@ createApp({
           tags: ['遲緩'],
           use: '降低目標的移動速度與反應力，有效減緩敵方的戰鬥節奏與行動能力。',
           source: '課堂取得',
+          mana: 20,
+          cooldown: 30,
           image: './images/rock/blue.webp'
         },
         {
@@ -400,6 +410,8 @@ createApp({
           tags: ['煙幕'],
           use: '召喚遮蔽視線與魔力感知的濃煙，適合用於干擾敵方判斷、偵查與潛行掩護，亦可與指定目標交換位置。',
           source: '課堂取得',
+          mana: 20,
+          cooldown: 8,
           image: './images/rock/blue.webp'
         },
         {
@@ -409,6 +421,8 @@ createApp({
           tags: ['擊倒'],
           use: '利用瞬間爆發的魔力衝擊破壞目標重心，使其摔倒在地並製造控場空檔。',
           source: '課堂取得',
+          mana: 10,
+          cooldown: 10,
           image: './images/rock/blue.webp'
         },
         {
@@ -418,6 +432,8 @@ createApp({
           tags: ['加速'],
           use: '大幅提升目標的移動速度與行動頻率，在戰鬥中獲得先手與閃避優勢。',
           source: '課堂取得',
+          mana: 15,
+          cooldown: 30,
           image: './images/rock/purple.webp'
         },
         {
@@ -427,6 +443,8 @@ createApp({
           tags: ['開鎖'],
           use: '以精準的魔力震盪解開各類機械鎖頭、魔導鎖或基礎封印結構。',
           source: '流浪商人販售',
+          mana: 20,
+          cooldown: 7,
           image: './images/rock/purple.webp'
         },
         {
@@ -436,6 +454,8 @@ createApp({
           tags: ['高躍'],
           use: '增強腿部爆發力或施加輕量重力效果，使施法者能夠跳躍至高處或跨越障礙。',
           source: '課堂取得',
+          mana: 20,
+          cooldown: 10,
           image: './images/rock/purple.webp'
         },
         {
@@ -445,6 +465,8 @@ createApp({
           tags: ['黑妝'],
           use: '將暗影魔力附著於體表以遮蔽面貌，大幅提升在夜間與陰影中的隱匿能力。',
           source: '流浪商人販售',
+          mana: null,
+          cooldown: null,
           image: './images/rock/purple.webp'
         },
         {
@@ -454,6 +476,8 @@ createApp({
           tags: ['迷霧'],
           use: '展開大範圍大霧遮蔽戰場視線，干擾視野以爭取逃脫時間或進行戰術轉移。',
           source: '課堂取得',
+          mana: 20,
+          cooldown: 30,
           image: './images/rock/blue.webp'
         },
         {
@@ -463,6 +487,8 @@ createApp({
           tags: ['火焰', '爆破'],
           use: '凝聚熾熱的高溫火球投擲向敵人，擊中時會引發範圍爆裂與持續灼燒傷害。',
           source: '課堂取得',
+          mana: 35,
+          cooldown: 35,
           image: './images/rock/red.webp'
         },
         {
@@ -472,6 +498,8 @@ createApp({
           tags: ['牽引'],
           use: '釋放無形魔力，將距離自己最近的敵人強力彈開，迅速拉開安全距離。',
           source: '課堂取得',
+          mana: 20,
+          cooldown: 60,
           image: './images/rock/purple.webp'
         },
         {
@@ -481,6 +509,8 @@ createApp({
           tags: ['繳械'],
           use: '發射精準的魔力衝擊，強行打落敵方手中持有的武器或魔導器具，削弱其攻擊能力。',
           source: '課堂取得',
+          mana: 20,
+          cooldown: 8,
           image: './images/rock/purple.webp'
         },
         {
@@ -490,6 +520,8 @@ createApp({
           tags: ['爆炸'],
           use: '發動後靠近目標將引發魔力共振強制定身對方，但強烈的反作用力也會使施法者自身同時陷入定身。',
           source: '課堂取得',
+          mana: 40,
+          cooldown: 30,
           image: './images/rock/blue.webp'
         },
         {
@@ -499,6 +531,8 @@ createApp({
           tags: ['水柱'],
           use: '召喚螺旋升騰的高壓水龍捲，強烈的水流衝擊能將範圍內的敵人捲入半空並造成傷害。',
           source: '課堂取得',
+          mana: 40,
+          cooldown: 30,
           image: './images/rock/red.webp'
         },
         {
@@ -508,6 +542,8 @@ createApp({
           tags: ['盾'],
           use: '凝聚密實的魔力屏障環繞全身，能在短時間內完全免疫所有來自敵方的魔法傷害與效果。',
           source: '課堂取得',
+          mana: 45,
+          cooldown: 120,
           image: './images/rock/green.webp'
         },
         {
@@ -517,6 +553,8 @@ createApp({
           tags: ['回春'],
           use: '導引溫和的自然魔力滋養傷口，為目標恢復少量的生命值。',
           source: '流浪女巫販售',
+          mana: null,
+          cooldown: null,
           image: './images/rock/green.webp'
         },
         {
@@ -526,6 +564,8 @@ createApp({
           tags: ['岩石'],
           use: '凝聚堅硬岩塊攻擊目標，命中軀幹可造成強力的單體傷害；若命中腳部則會引發地裂造成群體傷害。',
           source: '課堂取得',
+          mana: 35,
+          cooldown: 40,
           image: './images/rock/red.webp'
         },
         {
@@ -535,6 +575,8 @@ createApp({
           tags: ['照明'],
           use: '凝聚純淨光球懸浮於空中或跟隨自身，照亮周圍黑暗環境。',
           source: '歐克教授隨心情取得',
+          mana: 10,
+          cooldown: 0,
           image: './images/rock/purple.webp'
         },
         {
@@ -544,6 +586,8 @@ createApp({
           tags: ['致盲'],
           use: '釋放暗影遮蔽目標視覺，使對方短暫陷入失明狀態並大幅降低命中率。',
           source: '課堂取得',
+          mana: 40,
+          cooldown: 30,
           image: 'images/rock/blue.webp'
         },
         {
@@ -553,16 +597,53 @@ createApp({
           tags: ['閃步'],
           use: '壓縮空間進行短距離瞬間移動，能靈巧地躲避敵方攻擊或瞬間拉開/逼近距離。',
           source: '課堂取得',
+          mana: 25,
+          cooldown: 6,
           image: 'images/rock/blue.webp'
         },
         {
           id: 23,
           name: '暴風雪',
-          kind: '攻擊魔法',
+          kind: '輔助控制魔法',
           tags: ['暴風雪'],
           use: '在指定區域召喚小範圍狂暴冰雪，對區域內的敵人造成冰霜傷害。',
           source: '課堂取得',
+          mana: 40,
+          cooldown: 35,
           image: 'images/rock/red.webp'
+        },
+        {
+          id: 24,
+          name: '召喚術',
+          kind: '咒術魔法',
+          tags: ['召喚'],
+          use: '以法杖指向目標並鎖定魔力，強制將遠處被指到的敵人或目標瞬間拉至自己面前。',
+          source: '課堂取得',
+          mana: 40,
+          cooldown: 30,
+          image: 'images/rock/purple.webp'
+        },
+        {
+          id: 25,
+          name: '回血術',
+          kind: '治療防禦魔法',
+          tags: ['回血'],
+          use: '調動細緻的魔力溫和包裹全身，能快速癒合身體表面所有的微小傷口並穩定傷勢。',
+          source: '課堂取得',
+          mana: 30,
+          cooldown: 300,
+          image: './images/rock/green.webp'
+        },
+        {
+          id: 26,
+          name: '失衡術',
+          kind: '輔助控制魔法',
+          tags: ['失衡'],
+          use: '干擾目標前庭感官與肢體協調，使其瞬間喪失平衡能力並癱軟在地，持續約10秒無法正常行動。',
+          source: '課堂取得',
+          mana: 35,
+          cooldown: 60,
+          image: 'images/rock/blue.webp'
         }
       ],
 
@@ -1026,6 +1107,15 @@ createApp({
     // 把「近距離**極危險**」這種字串切成 [{ text, bold }]，避免使用 v-html
     splitBold(str) {
       return String(str).split('**').map((text, i) => ({ text, bold: i % 2 === 1 })).filter(x => x.text);
+    },
+
+    // 魔力消耗 / 冷卻時間顯示：未填顯示「待補充」，數字自動補單位
+    statText(value, unit = '') {
+      if (value === null || value === undefined || value === '') return '待補充';
+      return typeof value === 'number' ? `${value}${unit}` : String(value);
+    },
+    isStatBlank(value) {
+      return value === null || value === undefined || value === '';
     },
 
     imageFallback(event) {

@@ -3471,3 +3471,10 @@ nav button.active {
     transition: none;
   }
 }
+
+/* 魔法石：魔力消耗 / 冷卻時間尚未填寫時 */
+.stone-kind strong.pending {
+  font-weight: 400;
+  color: var(--muted);
+  opacity: .7;
+}
