@@ -3094,3 +3094,380 @@ nav button.active {
     transition: none;
   }
 }
+
+/* ===== 魔物相關：名單 + 詳細資料（點名稱切換） ===== */
+.mon-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.mon-index {
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(7, 20, 14, .55);
+  border: 1px solid rgba(200, 164, 91, .18);
+}
+
+.mon-index-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0;
+  padding: 14px 16px 10px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.mon-index-title span {
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.mon-index-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-top: 1px solid rgba(200, 164, 91, .1);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.mon-index-title+.mon-index-item {
+  border-top: 0;
+}
+
+.mon-index-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform .2s ease;
+}
+
+.mon-index-item:hover,
+.mon-index-item:focus-visible {
+  background: rgba(200, 164, 91, .07);
+  outline: none;
+}
+
+.mon-index-item.active {
+  background: rgba(200, 164, 91, .12);
+}
+
+.mon-index-item:hover::before,
+.mon-index-item:focus-visible::before,
+.mon-index-item.active::before {
+  transform: scaleY(1);
+}
+
+.mon-no {
+  font: 12px Cinzel, serif;
+  color: rgba(200, 164, 91, .6);
+}
+
+.mon-index-text strong {
+  display: block;
+  font-size: 16px;
+  color: var(--cream);
+}
+
+.mon-index-item.active .mon-index-text strong {
+  color: var(--gold2);
+}
+
+.mon-index-text small {
+  display: block;
+  margin-top: 1px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mon-level,
+.mon-danger {
+  --lv: #ffd27a;
+  --lv-bg: rgba(255, 210, 122, .1);
+  --lv-line: rgba(255, 210, 122, .45);
+}
+
+.mon-level.lv4,
+.mon-danger.lv4 {
+  --lv: #f0a091;
+  --lv-bg: rgba(214, 90, 70, .14);
+  --lv-line: rgba(240, 160, 145, .5);
+}
+
+.mon-level {
+  padding: 2px 7px;
+  font-size: 10px;
+  color: var(--lv);
+  background: var(--lv-bg);
+  border: 1px solid var(--lv-line);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* 詳細資料 */
+.mon-detail {
+  min-width: 0;
+  scroll-margin-top: 90px;
+  animation: mon-in .35s ease;
+}
+
+@keyframes mon-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mon-head h2 {
+  margin: 4px 0 4px;
+  font-size: 34px;
+  color: var(--gold2);
+}
+
+.mon-alias {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.mon-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--lv);
+  background: var(--lv-bg);
+  border: 1px solid var(--lv-line);
+}
+
+.mon-danger i {
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+.mon-top {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 26px;
+  margin-top: 22px;
+}
+
+.mon-figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #07100c;
+  border: 1px solid rgba(200, 164, 91, .3);
+  cursor: zoom-in;
+}
+
+.mon-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.mon-figure:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+.mon-figure:hover .image-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mon-stats h3,
+.mon-blocks h3 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.mon-stat {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 46px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 13px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.mon-stat b {
+  font-weight: 700;
+  text-align: right;
+  color: var(--cream);
+}
+
+.mon-stat b small {
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.mon-bar {
+  height: 8px;
+  background: rgba(200, 164, 91, .1);
+}
+
+.mon-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--green2), #a8b86a);
+  transform-origin: left;
+  animation: mon-bar .6s ease;
+}
+
+.mon-bar i.max {
+  background: linear-gradient(90deg, #a8b86a, var(--gold2));
+}
+
+@keyframes mon-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.mon-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.mon-blocks section {
+  padding: 16px 18px;
+  background: linear-gradient(180deg, rgba(16, 41, 31, .6), rgba(9, 24, 16, .25));
+  border: 1px solid rgba(200, 164, 91, .14);
+}
+
+.mon-blocks ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.mon-blocks li,
+.mon-blocks p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--cream);
+}
+
+.mon-blocks li::marker {
+  color: var(--gold);
+}
+
+.mon-wide {
+  grid-column: 1 / -1;
+}
+
+.mon-wide strong {
+  color: #f0a091;
+}
+
+.mon-warning {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  margin: 18px 0 0;
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--cream);
+  background: rgba(214, 90, 70, .1);
+  border: 1px solid rgba(240, 160, 145, .4);
+  border-left-width: 4px;
+}
+
+.mon-warning span {
+  flex: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #f0a091;
+}
+
+@media (max-width: 960px) {
+  .mon-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .mon-index {
+    position: static;
+  }
+
+  .mon-index-item {
+    padding: 11px 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .mon-top {
+    grid-template-columns: 1fr;
+  }
+
+  .mon-figure img {
+    aspect-ratio: 4/3;
+  }
+
+  .mon-blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .mon-head h2 {
+    font-size: 28px;
+  }
+
+  .mon-warning {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .mon-detail,
+  .mon-bar i {
+    animation: none;
+  }
+
+  .mon-index-item,
+  .mon-index-item::before {
+    transition: none;
+  }
+}

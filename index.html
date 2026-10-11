@@ -48,6 +48,8 @@
             <div class="nav-dropdown-menu">
               <button :class="{ active: page === 'gathering' }" @click="go('gathering')">採集相關
                 <small>Gathering</small></button>
+              <button :class="{ active: page === 'monsters' }" @click="go('monsters')">魔物相關
+                <small>Monsters</small></button>
               <button :class="{ active: page === 'stones' }" @click="go('stones')">魔法石相關 <small>Magic
                   Stones</small></button>
               <button :class="{ active: page === 'tablets' }" @click="go('tablets')">禁忌的石碑
@@ -457,6 +459,87 @@
         </section>
       </section>
 
+
+      <!-- INFORMATION: MONSTERS -->
+      <section v-if="page === 'monsters'" class="page inner-page">
+        <div class="page-hero info-hero">
+          <p class="eyebrow">FIELD INTELLIGENCE · BESTIARY</p>
+          <h1>魔物相關</h1>
+          <p>記錄地牢與禁域出沒的魔物情報。點選名單中的名稱，即可切換到該魔物的圖片與詳細資料。</p>
+        </div>
+
+        <section class="section compact">
+          <div class="mon-layout">
+            <nav class="mon-index" aria-label="魔物名單">
+              <p class="mon-index-title">魔物名單<span>{{ monsters.length }} 種</span></p>
+              <button v-for="m in monsters" :key="m.id" class="mon-index-item"
+                :class="{ active: m.id === selectedMonsterId }" :aria-pressed="m.id === selectedMonsterId"
+                @click="selectMonster(m)">
+                <span class="mon-no">{{ String(m.id).padStart(2, '0') }}</span>
+                <span class="mon-index-text">
+                  <strong>{{ m.name }}</strong>
+                  <small>{{ m.alias }}</small>
+                </span>
+                <span class="mon-level" :class="'lv' + m.level">{{ m.levelLabel }}</span>
+              </button>
+            </nav>
+
+            <article class="mon-detail" ref="monsterDetail" v-if="currentMonster" :key="currentMonster.id">
+              <header class="mon-head">
+                <p class="eyebrow">NO.{{ String(currentMonster.id).padStart(2, '0') }} · {{ currentMonster.category }}
+                </p>
+                <h2>{{ currentMonster.name }}</h2>
+                <p class="mon-alias">別稱：{{ currentMonster.alias }}</p>
+                <p class="mon-danger" :class="'lv' + currentMonster.level">
+                  <i>{{ '★'.repeat(currentMonster.stars) + '☆'.repeat(5 - currentMonster.stars) }}</i>
+                  {{ currentMonster.danger }}｜{{ currentMonster.levelLabel }}
+                </p>
+              </header>
+
+              <div class="mon-top">
+                <figure class="mon-figure"
+                  @click="openImageLightbox(currentMonster.image, currentMonster.name, '魔物圖鑑')">
+                  <img :src="currentMonster.image" :alt="currentMonster.name" @error="imageFallback">
+                  <span class="image-zoom-hint">＋ 放大</span>
+                </figure>
+                <div class="mon-stats">
+                  <h3>能力分析</h3>
+                  <div class="mon-stat" v-for="(val, label) in currentMonster.stats" :key="label">
+                    <span>{{ label }}</span>
+                    <div class="mon-bar"><i :class="{ max: val >= 9 }" :style="{ width: val * 10 + '%' }"></i></div>
+                    <b>{{ val }}<small>/10</small></b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mon-blocks">
+                <section>
+                  <h3>特色</h3>
+                  <ul>
+                    <li v-for="t in currentMonster.features" :key="t">{{ t }}</li>
+                  </ul>
+                </section>
+                <section>
+                  <h3>弱點</h3>
+                  <ul>
+                    <li v-for="t in currentMonster.weaknesses" :key="t">{{ t }}</li>
+                  </ul>
+                </section>
+                <section class="mon-wide">
+                  <h3>戰術評估</h3>
+                  <p>
+                    <template v-for="(seg, i) in splitBold(currentMonster.tactic)" :key="i">
+                      <strong v-if="seg.bold">{{ seg.text }}</strong><template v-else>{{ seg.text }}</template>
+                    </template>
+                  </p>
+                </section>
+              </div>
+
+              <p class="mon-warning"><span>⚠ 警告</span>{{ currentMonster.warning }}</p>
+            </article>
+          </div>
+        </section>
+      </section>
 
       <!-- INFORMATION: MAGIC STONES -->
       <section v-if="page === 'stones'" class="page inner-page">

@@ -11,10 +11,10 @@ createApp({
       stoneSearch: '',
       lightbox: null,
       infoOpen: false,
-      infoPages: ['gathering', 'stones', 'professors', 'tablets'],
+      infoPages: ['gathering', 'monsters', 'stones', 'professors', 'tablets'],
       // 情報區內需要密碼才能進入的頁面。
       // 「教授們相關」目前不需要密碼，故不列在這裡；其餘情報頁維持上鎖。
-      lockedInfoPages: ['gathering', 'stones', 'tablets'],
+      lockedInfoPages: ['gathering', 'monsters', 'stones', 'tablets'],
       passwordModal: false,
       passwordInput: '',
       passwordError: '',
@@ -53,6 +53,268 @@ createApp({
         { id: 14, name: '優莉安娜生日會', category: '學院活動', image: 'images/gallery/優莉安娜生日會.webp' },
         { id: 15, name: '遊艇舞會', category: '學院活動', image: 'images/gallery/遊艇舞會.webp' },
         { id: 16, name: '舞會合照', category: '學院活動', image: 'images/gallery/舞會合照.webp' },
+      ],
+
+      // 魔物圖鑑：圖片只有在被選中時才會讀取。image 路徑請對應 images/monsters/ 內的檔名。
+      selectedMonsterId: 1,
+      monsters: [
+        {
+          "id": 1,
+          "name": "斷首屠夫",
+          "alias": "白刃監刑者",
+          "category": "地牢異變種・重裝近戰型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "四級警戒",
+          "level": 4,
+          "stats": {
+            "力量": 10,
+            "速度": 4,
+            "防禦": 8,
+            "感知": 5,
+            "魔力": 2,
+            "智慧": 4
+          },
+          "features": [
+            "裝備巨型砍刀，具備正面壓制、重擊可破盾、攻擊範圍廣，步伐沉重但耐久驚人。"
+          ],
+          "weaknesses": [
+            "身體與收刀速度慢，揮砍後有明顯硬直。",
+            "膝部與持刀手腕防護不足。",
+            "狹窄障礙可限制其揮刀。"
+          ],
+          "tactic": "近距離**極危險**，中距離可周旋；建議 3-4 名受訓巫師協同牽制，切勿正面硬拚。",
+          "warning": "切勿與其在狹窄走廊正面交鋒。",
+          "image": "images/monsters/Executioner.webp"
+        },
+        {
+          "id": 2,
+          "name": "噬音長喉",
+          "alias": "地牢哀鳴者",
+          "category": "深淵寄生種・近戰獵殺型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "四級警戒",
+          "level": 4,
+          "stats": {
+            "力量": 7,
+            "速度": 6,
+            "防禦": 7,
+            "感知": 9,
+            "魔力": 5,
+            "智慧": 4
+          },
+          "features": [
+            "無眼感知，依賴震動與聲音定位。",
+            "長喉伸縮突襲、尖刺皮甲。",
+            "擅長黑暗伏擊，會模仿求聲引誘獵物靠近，再以環狀利齒吞噬。"
+          ],
+          "weaknesses": [
+            "強光會干擾其感知。",
+            "高頻鐘鳴聲使其短暫僵直。",
+            "頭部伸展時腹側甲片裸露。",
+            "轉身緩慢。"
+          ],
+          "tactic": "近距離**極危險**，中距離**可控**；建議 3-4 名受訓巫師協同處理。",
+          "warning": "切勿回應地牢中的求救聲。",
+          "image": "images/monsters/Long-Throat.webp"
+        },
+        {
+          "id": 3,
+          "name": "噬聲裂冠",
+          "alias": "地牢回音者",
+          "category": "深淵擬聲種・近戰伏擊型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "四級警戒",
+          "level": 4,
+          "stats": {
+            "力量": 7,
+            "速度": 7,
+            "防禦": 6,
+            "感知": 9,
+            "魔力": 4,
+            "智慧": 5
+          },
+          "features": [
+            "無眼感知，依賴震動與聲音定位。",
+            "裂冠口器可瞬間張開，近距離撕咬。",
+            "能模仿同伴或求救聲誘敵。",
+            "四肢細長，擅長貼牆潛伏與突然襲擊。"
+          ],
+          "weaknesses": [
+            "強光會干擾其聲波定位。",
+            "鐘鳴、金屬共振等高頻持續噪音會使其短暫失衡。",
+            "張開口器準備撲咬時，胸腹部甲膜暴露出。",
+            "轉向速度慢，不擅長在開闊地追擊。"
+          ],
+          "tactic": "近距離**極危險**，中距離**可控**；建議 3-4 名受訓巫師協同處理。",
+          "warning": "切勿回應地牢中的求救聲。",
+          "image": "images/monsters/Rift-Crown.webp"
+        },
+        {
+          "id": 4,
+          "name": "腐蝕行者",
+          "alias": "腐肉寄生體",
+          "category": "變異生物・寄生感染型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "三級警戒",
+          "level": 3,
+          "stats": {
+            "力量": 7,
+            "速度": 5,
+            "防禦": 6,
+            "感知": 8,
+            "魔力": 7,
+            "智慧": 3
+          },
+          "features": [
+            "寄生孢子：可感染生物造成持續腐蝕傷害。",
+            "再生能力：部分肢體快速再生。",
+            "異常感知。",
+            "長時間潛伏（不主動攻擊）。",
+            "腐蝕血液：接觸後造成組織壞死。"
+          ],
+          "weaknesses": [
+            "高溫火焰可燒毀孢子與外層組織。",
+            "聖光與淨化魔法能有效抑制感染。",
+            "頭部與心臟雖難以攻擊但可致命。"
+          ],
+          "tactic": "近距離**高危險**，中遠距離**中等危險**；建議 3-4 名受訓巫師協同作戰，並攜帶火焰魔法或淨化道具。",
+          "warning": "孢子感染具有高度傳染性，切勿靠近或觸碰。",
+          "image": "images/monsters/Corrosion-Walker.webp"
+        },
+        {
+          "id": 5,
+          "name": "灰影狼人",
+          "alias": "月眠者",
+          "category": "變異生物・夜行獵殺型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "三級警戒",
+          "level": 3,
+          "stats": {
+            "力量": 8,
+            "速度": 9,
+            "防禦": 7,
+            "感知": 8,
+            "魔力": 5,
+            "智慧": 6
+          },
+          "features": [
+            "人形、狼形態可切換，敏捷迅速、擅長長距離突襲。",
+            "具備強大再生能力、群體協同作戰能力與極佳夜間視力。"
+          ],
+          "weaknesses": [
+            "強光照射（使視力暫時失明）。",
+            "聖光與神聖魔法（抑制效果）。",
+            "心臟與頭部（致命打擊）。",
+            "水屬性魔法（降低速度與再生能力）。"
+          ],
+          "tactic": "近距離**極危險**，中距離**高危險**；建議 3-5 名受訓巫師協同應對，並攜帶照明術與聖光魔法。",
+          "warning": "月圓之夜活動頻繁，請避免單獨前往山林。",
+          "image": "images/monsters/Grey-Werewolf.webp"
+        },
+        {
+          "id": 6,
+          "name": "亡骸行者",
+          "alias": "枯骨遊魂",
+          "category": "不死系・亡靈型・近戰突襲型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "四級警戒",
+          "level": 4,
+          "stats": {
+            "力量": 7,
+            "速度": 6,
+            "防禦": 7,
+            "感知": 8,
+            "魔力": 4,
+            "智慧": 2
+          },
+          "features": [
+            "融合多具屍骨的畸變體，披著破爛兜帽與殘破布甲，以亡骸為裝飾與武器。",
+            "動作詭異但攻擊迅速，擅長群體行動，對聲音與血腥氣味極為敏感。"
+          ],
+          "weaknesses": [
+            "頭部核心（黏體本體）。",
+            "神聖魔法與光屬性攻擊。",
+            "火焰與淨化類咒語效果顯著。",
+            "破壞其骨骼結構可暫時癱瘓。",
+            "群體同時攻擊可降低威脅。"
+          ],
+          "tactic": "近距離**高危險**，中距離**中等危險**；建議 3 人以上組隊應對，優先集中攻擊頭部以避免被包圍，注意地形切勿在狹窄空間作戰。",
+          "warning": "常以群體出現，切勿單獨進入禁域地牢。",
+          "image": "images/monsters/Bone-Walker.webp"
+        },
+        {
+          "id": 7,
+          "name": "墓園翼魔",
+          "alias": "沉默夜梟",
+          "category": "不死系・亡靈型・飛行襲擊型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "四級警戒",
+          "level": 4,
+          "stats": {
+            "力量": 6,
+            "速度": 9,
+            "防禦": 5,
+            "感知": 10,
+            "魔力": 6,
+            "智慧": 3
+          },
+          "features": [
+            "巨型蝙蝠外形具高度飛行能力，擁有極佳夜視與聽覺感知。",
+            "能在空中無聲接近目標，擅長以爪擊捕抓獵物帶至高空。",
+            "對聲音極為敏感，成群行動常在墓園與高塔盤旋。"
+          ],
+          "weaknesses": [
+            "強光 / 火焰有明顯克制。",
+            "噪音干擾使其行動遲緩。",
+            "頭部與胸口為主要弱點。",
+            "翅膜脆弱，受攻擊易失去飛行能力。",
+            "畏懼聖屬性魔法與驅魔咒。",
+            "在陽光下活動力大幅下降。"
+          ],
+          "tactic": "近距離**中等危險**，中距離與遠距離皆為**高危險**；建議 3-4 名受訓巫師協同作戰，優先使用光源、火焰與驅魔咒，避免在黑暗環境中單獨行動。",
+          "warning": "聽見翅聲時，立即尋找光源並保持安靜，切勿抬頭移動！",
+          "image": "images/monsters/Graveyard-Wyvern.webp"
+        },
+        {
+          "id": 8,
+          "name": "夜影追獵者",
+          "alias": "墓園鴉翼",
+          "category": "不死系・亡靈型・飛行突襲型",
+          "stars": 4,
+          "danger": "高危險",
+          "levelLabel": "四級警戒",
+          "level": 4,
+          "stats": {
+            "力量": 7,
+            "速度": 9,
+            "防禦": 6,
+            "感知": 8,
+            "魔力": 7,
+            "智慧": 6
+          },
+          "features": [
+            "擁有巨大蝙蝠翅膀能高速飛行，寂靜無聲的空中突襲。",
+            "戴著破舊帽子與長風衣，腐壞的面容散發死靈氣息。",
+            "喜歡從黑暗高處監視獵物，擅長抓取並帶走目標，出現時常伴隨陰風與低語。"
+          ],
+          "weaknesses": [
+            "強光照射會短暫失去行動。",
+            "聖屬性魔法效果顯著。",
+            "頭部是主要弱點。",
+            "翅膀受損會大幅降低飛行能力。",
+            "對火焰、光明系咒語特別脆弱。"
+          ],
+          "tactic": "近距離與中距離皆為**高危險**，遠距離為**中等危險**；建議 3-5 名受訓巫師協同作戰，優先利用光源與聖屬性魔法進行壓制，避免單獨行動。",
+          "warning": "天空陰影出現時，立即尋找遮蔽物並保持光源！",
+          "image": "images/monsters/Night-Stalker.webp"
+        }
       ],
 
       gatheringSpots: [
@@ -463,6 +725,9 @@ createApp({
     allProfessors() {
       return this.people.filter(x => x.type === 'faculty');
     },
+    currentMonster() {
+      return this.monsters.find(m => m.id === this.selectedMonsterId) || null;
+    },
     filteredGatheringSpots() {
       const keyword = this.gatherSearch.trim().toLowerCase();
       if (!keyword) return this.gatheringSpots;
@@ -746,6 +1011,21 @@ createApp({
 
     safeFileName(name) {
       return `${name || 'snake-academy-photo'}.webp`;
+    },
+
+    // ====== 魔物圖鑑 ======
+    selectMonster(monster) {
+      this.selectedMonsterId = monster.id;
+      // 窄螢幕時名單在上、詳細資料在下，選取後自動捲到詳細資料
+      if (window.innerWidth <= 960) {
+        this.$nextTick(() => {
+          this.$refs.monsterDetail?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    },
+    // 把「近距離**極危險**」這種字串切成 [{ text, bold }]，避免使用 v-html
+    splitBold(str) {
+      return String(str).split('**').map((text, i) => ({ text, bold: i % 2 === 1 })).filter(x => x.text);
     },
 
     imageFallback(event) {
