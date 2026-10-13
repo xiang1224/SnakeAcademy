@@ -644,6 +644,17 @@ createApp({
           mana: 35,
           cooldown: 60,
           image: 'images/rock/blue.webp'
+        },
+        {
+          id: 27,
+          name: '石化咒',
+          kind: '輔助控制魔法',
+          tags: ['石化'],
+          use: '向目標施加咒術，使其全身肌肉與關節瞬间石化僵硬，持續約 5 秒陷入完全無法行動狀態。',
+          source: '課堂取得',
+          mana: 35,
+          cooldown: 30,
+          image: 'images/rock/blue.webp'
         }
       ],
 
