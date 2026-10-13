@@ -770,7 +770,14 @@ createApp({
         { id: 31, type: 'student', name: '萊恩‧衛斯理', title: '學生', image: 'images/students/萊恩‧衛斯理.webp' },
         { id: 32, type: 'student', name: '愛德華‧ 艾力克', title: '學生', image: 'images/students/愛德華‧ 艾力克.webp' },
         { id: 33, type: 'student', name: '沃特·溫特貝爾', title: '學生', image: 'images/students/沃特·溫特貝爾.webp', liveUrl: 'https://www.twitch.tv/waterday0930' },
-
+        { id: 34, type: 'student', name: '派‧溫特貝爾', title: '學生', image: 'images/students/派‧溫特貝爾.webp', liveUrl: 'https://www.twitch.tv/waterday0930' },
+        { id: 35, type: 'student', name: '吳繫', title: '學生', image: 'images/students/吳繫.webp' },
+        { id: 36, type: 'student', name: '狄龍 ‧ 海爾', title: '學生', image: 'images/students/狄龍 ‧ 海爾.webp' },
+        { id: 37, type: 'student', name: '哈利．波波', title: '學生', image: 'images/students/哈利．波波.webp' },
+        { id: 38, type: 'student', name: '威廉．梵卓', title: '學生', image: 'images/students/威廉．梵卓.webp' },
+        { id: 39, type: 'student', name: '約翰・亨特', title: '學生', image: 'images/students/約翰・亨特.webp' },
+        { id: 40, type: 'student', name: '崔弗 • 崔老尼', title: '學生', image: 'images/students/崔弗 • 崔老尼.webp' },
+        { id: 41, type: 'student', name: '奧爾菲斯 • 瑞斗', title: '學生', image: 'images/students/奧爾菲斯 • 瑞斗.webp' },
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
         // 不列入「師生名錄」與首頁「師生資料」統計數字
