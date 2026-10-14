@@ -324,7 +324,7 @@ createApp({
         { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '促進身體代謝，可用於基礎藥劑、料理與部分魔法配方。', location: '霍格華茲正門噴水池', image: './images/material/Fairy_Pollen.webp', mapImage: 'images/map/pollen-map.webp', actualImage: 'images/map/pollen.webp' },
         { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '刺激身體及魔力活動，可用來製作腎上腺素。', location: '地圖魁地奇球場右上方', image: './images/material/Dragon_Blood.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp' },
         { id: 6, name: '蜂王蜜', type: 'Honey', use: '可用來製作沉睡藥水。', location: '活米村北方', image: './images/material/Honey.webp', mapImage: 'images/map/honey-map.webp', actualImage: 'images/map/honey.webp' },
-        { id: 7, name: '水晶花', type: 'Crystal Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Ice-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp' },
+        { id: 7, name: '冰晶花', type: 'Crystal Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Ice-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp' },
         { id: 8, name: '尖叫草', type: 'Scream Flower', use: '能夠放大其他材料的魔力效果，可用來製作特級藥水。', location: '很南方的巨石陣', image: './images/material/scream.webp', mapImage: 'images/map/scream-map.webp', actualImage: 'images/map/scream.webp' },
         // ↓↓↓ 這兩筆是合成表新增的材料，圖片與地點還沒補上實際資料，先用預留檔名，記得之後把對應圖片放進 images 資料夾
         { id: 9, name: '怪物精華', type: 'Monster Essence', use: '啟動或活化藥劑中的魔力，擊敗怪物後掉落，可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
@@ -332,7 +332,7 @@ createApp({
         { id: 11, name: '靜心草', type: 'Tranquility-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Tranquility-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 12, name: '搔癢草', type: 'Itching-Powder-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Itching-Powder-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 13, name: '灰岩苔', type: 'Limestone-Moss', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Limestone-Moss.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 14, name: '月光草', type: 'Moonlight-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Moonlight-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 14, name: '月光草', type: 'Moonlight-Herb', use: '可用於魔力辨識、異常魔力分離與魔力進化，亦可用來製作解靈藥。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Moonlight-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 15, name: '腐心草', type: 'Rotheart-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Rotheart-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 16, name: '烈焰花', type: 'Flame-Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Flame-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
         { id: 17, name: '迴聲花瓣', type: 'Echo-Petal', use: '尚未知曉用途。', location: '花園', image: './images/material/Echo-Petal.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
@@ -354,7 +354,8 @@ createApp({
         { id: 8, name: '特級強力心臟藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草', qty: 2 }, { name: '魔石', qty: 2 }, { name: '強力心臟藥水', qty: 1 }] },
         { id: 9, name: '特級回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草', qty: 2 }, { name: '魔石', qty: 2 }, { name: '回復藥水', qty: 1 }] },
         { id: 10, name: '魅惑藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }] },
-        { id: 11, name: '沉睡藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }, { name: '蜂王蜜', qty: 2 }] }
+        { id: 11, name: '沉睡藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }, { name: '蜂王蜜', qty: 2 }] },
+        { id: 12, name: '解靈藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }, { name: '月光草', qty: 2 }] }
       ],
 
       // mana（魔力消耗）、cooldown（冷卻時間）：填數字會自動加單位（冷卻為「秒」），也可填字串如 '3 分鐘'；null 會顯示「待補充」。
@@ -789,6 +790,8 @@ createApp({
         { id: 39, type: 'student', name: '約翰・亨特', title: '學生', image: 'images/students/約翰・亨特.webp' },
         { id: 40, type: 'student', name: '崔弗 • 崔老尼', title: '學生', image: 'images/students/崔弗 • 崔老尼.webp' },
         { id: 41, type: 'student', name: '奧爾菲斯 • 瑞斗', title: '學生', image: 'images/students/奧爾菲斯 • 瑞斗.webp' },
+        { id: 42, type: 'student', name: '羅伯斯特．瑞德', title: '學生', image: 'images/students/羅伯斯特．瑞德.webp' },
+        
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
         // 不列入「師生名錄」與首頁「師生資料」統計數字
