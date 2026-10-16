@@ -649,13 +649,35 @@ createApp({
         {
           id: 27,
           name: '石化咒',
-          kind: '輔助控制魔法',
+          kind: '咒術魔法',
           tags: ['石化'],
           use: '向目標施加咒術，使其全身肌肉與關節瞬间石化僵硬，持續約 5 秒陷入完全無法行動狀態。',
           source: '課堂取得',
           mana: 35,
           cooldown: 30,
+          image: 'images/rock/purple.webp'
+        },
+        {
+          id: 28,
+          name: '反彈術',
+          kind: '輔助控制魔法',
+          tags: ['反彈'],
+          use: '瞬間張開反彈結界，將當下受到的所有攻擊魔法全部原封不動地向外彈回。',
+          source: '課堂取得',
+          mana: 0,
+          cooldown: 125,
           image: 'images/rock/blue.webp'
+        },
+        {
+          id: 29,
+          name: '吸收術',
+          kind: '攻擊魔法',
+          tags: ['吸收'],
+          use: '化解並吸收敵人20%的攻擊傷害，10秒後可將儲存的能量轉化為1.5倍的爆發攻擊打出。',
+          source: '課堂取得',
+          mana: 60,
+          cooldown: 50,
+          image: 'images/rock/red.webp'
         }
       ],
 
