@@ -11,10 +11,10 @@ createApp({
       stoneSearch: '',
       lightbox: null,
       infoOpen: false,
-      infoPages: ['gathering', 'monsters', 'stones', 'professors', 'tablets'],
+      infoPages: ['gathering', 'monsters', 'stones', 'professors', 'tablets', 'legends'],
       // 情報區內需要密碼才能進入的頁面。
       // 「教授們相關」目前不需要密碼，故不列在這裡；其餘情報頁維持上鎖。
-      lockedInfoPages: ['gathering', 'monsters', 'stones', 'tablets'],
+      lockedInfoPages: ['gathering', 'monsters', 'stones', 'tablets', 'legends'],
       passwordModal: false,
       passwordInput: '',
       passwordError: '',
@@ -320,7 +320,7 @@ createApp({
       gatheringSpots: [
         { id: 1, name: '水晶蘑菇', type: 'Crystal Mushroom', use: '降低、穩定精神及魔力活動，可用來製作魅惑藥水。', location: '地圖活米村上方墓園處', image: './images/material/Crystal_Mushroom.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp' },
         { id: 2, name: '魔力泉水', type: 'Magical Spring Water', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村左上側森林處', image: './images/material/Magical_Spring_Water.webp', mapImage: 'images/map/water-map.webp', actualImage: 'images/map/water.webp' },
-        { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Magic_Flower.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp' },
+        { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖城堡右側的山中平原', image: './images/material/Magic_Flower.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp' },
         { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '促進身體代謝，可用於基礎藥劑、料理與部分魔法配方。', location: '霍格華茲正門噴水池', image: './images/material/Fairy_Pollen.webp', mapImage: 'images/map/pollen-map.webp', actualImage: 'images/map/pollen.webp' },
         { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '刺激身體及魔力活動，可用來製作腎上腺素。', location: '地圖魁地奇球場右上方', image: './images/material/Dragon_Blood.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp' },
         { id: 6, name: '蜂王蜜', type: 'Honey', use: '可用來製作沉睡藥水。', location: '活米村北方', image: './images/material/Honey.webp', mapImage: 'images/map/honey-map.webp', actualImage: 'images/map/honey.webp' },
@@ -329,15 +329,15 @@ createApp({
         // ↓↓↓ 這兩筆是合成表新增的材料，圖片與地點還沒補上實際資料，先用預留檔名，記得之後把對應圖片放進 images 資料夾
         { id: 9, name: '怪物精華', type: 'Monster Essence', use: '啟動或活化藥劑中的魔力，擊敗怪物後掉落，可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
         { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/magicrock.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
-        { id: 11, name: '靜心草', type: 'Tranquility-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Tranquility-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 12, name: '搔癢草', type: 'Itching-Powder-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Itching-Powder-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 13, name: '灰岩苔', type: 'Limestone-Moss', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Limestone-Moss.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 14, name: '月光草', type: 'Moonlight-Herb', use: '可用於魔力辨識、異常魔力分離與魔力進化，亦可用來製作解靈藥。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Moonlight-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 15, name: '腐心草', type: 'Rotheart-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Rotheart-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 11, name: '靜心草', type: 'Tranquility-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Tranquility-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 12, name: '搔癢草', type: 'Itching-Powder-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Itching-Powder-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 13, name: '灰岩苔', type: 'Limestone-Moss', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Limestone-Moss.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 14, name: '月光草', type: 'Moonlight-Herb', use: '可用於魔力辨識、異常魔力分離與魔力進化，亦可用來製作解靈藥。', location: '地圖城堡右側的山中平原', image: './images/material/Moonlight-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 15, name: '腐心草', type: 'Rotheart-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Rotheart-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 16, name: '烈焰花', type: 'Flame-Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Flame-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
         { id: 17, name: '迴聲花瓣', type: 'Echo-Petal', use: '尚未知曉用途。', location: '花園', image: './images/material/Echo-Petal.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
         { id: 18, name: '混亂藤', type: 'Chaos-Vine', use: '尚未知曉用途。', location: '地圖魁地奇球場右上方', image: './images/material/Chaos-Vine.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp', chance: true },
-        { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖活米村右下側公園處(有個恐龍)', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 20, name: '陽光果', type: 'Sunfruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Sunfruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
         { id: 21, name: '火椒果', type: 'Firepepper-Fruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Firepepper-Fruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
       ],
@@ -726,6 +726,21 @@ createApp({
         }
       ],
 
+      // 情報區「校園十大傳說」：學院流傳的十則傳聞
+      // category 可自行修改；image 之後有插圖可填（例如 'images/legends/1.webp'），沒填就不顯示圖片
+      legends: [
+        { id: 1, title: '校長年齡之謎', category: '人物傳聞', icon: '♛', text: '80歲，據說校長使用了禁咒保持年輕。' },
+        { id: 2, title: '水下寶藏', category: '地點傳聞', icon: '≈', text: '水底下潛藏著足以改變魔法世界的寶藏。' },
+        { id: 3, title: '神秘密室', category: '地點傳聞', icon: '⚷', text: '找到入口，使用不知名魔法後，便可進入，但也從未看見人出來過。' },
+        { id: 4, title: '吃人窗戶', category: '靈異傳聞', icon: '🍺', text: '活米村某酒館，有個窗戶會吃人，於深夜靠近時，會出現神秘身影。' },
+        { id: 5, title: '山地人遺址', category: '地點傳聞', icon: '⛰', text: '山上據傳居住者一群地精工匠，後搬到了活米村，但廢墟中還藏著神祕書籍。' },
+        { id: 6, title: '墓地的愛情', category: '愛情傳聞', icon: '❀', text: '貴族與學徒，不被允許的愛情，相約於畢業時離開，但出了意外，「如果今生還能再見，我希望我們能更靠近一點」。' },
+        { id: 7, title: '樹下的告白', category: '愛情傳聞', icon: '🌳', text: '於古老的樹下，互相告白，只要真心誠意，就會成功 (?' },
+        { id: 8, title: '教授樓浴場', category: '靈異傳聞', icon: '♨', text: '教授樓浴場中，於天時地利人和時，浴場會出現一個穿著古老服裝的幽靈，據傳是已逝的教授，或是還活著的活死人。' },
+        { id: 9, title: '阿巴頓教官', category: '人物傳聞', icon: '⛓', text: '成為教授前是阿茲卡班的罪犯，曾殺過人，如今卻又回來擔任教授，可能是來服刑、更生。' },
+        { id: 10, title: '你們．是傳說', category: '人物傳聞', icon: '★', text: '傳說，正在發生，正在成長，犯錯，但總有一天，我們會成為故事中的主角。' }
+      ],
+
       people: [
         // ====== 教師群(校長 → 訓導老師 → 教授們)，編號獨立於學生 ======
         { id: 1, type: 'faculty', intelOnly: true, name: '彼得 • 楊', title: '校長', expertise: '學院行政與治理', bio: '總管學院行政與各項重大決策，統籌全院運作。', image: 'images/teachers/彼得 • 楊.webp' },
@@ -791,7 +806,7 @@ createApp({
         { id: 40, type: 'student', name: '崔弗 • 崔老尼', title: '學生', image: 'images/students/崔弗 • 崔老尼.webp' },
         { id: 41, type: 'student', name: '奧爾菲斯 • 瑞斗', title: '學生', image: 'images/students/奧爾菲斯 • 瑞斗.webp' },
         { id: 42, type: 'student', name: '羅伯斯特．瑞德', title: '學生', image: 'images/students/羅伯斯特．瑞德.webp' },
-        
+
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
         // 不列入「師生名錄」與首頁「師生資料」統計數字

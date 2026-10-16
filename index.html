@@ -54,6 +54,8 @@
                   Stones</small></button>
               <button :class="{ active: page === 'tablets' }" @click="go('tablets')">禁忌的石碑
                 <small>Forbidden Tablets</small></button>
+              <button :class="{ active: page === 'legends' }" @click="go('legends')">校園十大傳說
+                <small>Legends</small></button>
               <button :class="{ active: page === 'professors' }" @click="go('professors')">教授們相關
                 <small>Professors</small></button>
             </div>
@@ -718,6 +720,35 @@
             </button>
             <button v-if="isExpanded('tablets')" class="btn btn-outline expand-btn" @click="collapse('tablets')">收合
               ↑</button>
+          </div>
+        </section>
+      </section>
+
+      <!-- INFORMATION: LEGENDS -->
+      <section v-if="page === 'legends'" class="page inner-page">
+        <div class="page-hero info-hero">
+          <p class="eyebrow">CAMPUS INTELLIGENCE · TEN LEGENDS</p>
+          <h1>校園十大傳說</h1>
+          <p>在學院的走廊與夜色之間，流傳著十則真偽難辨的傳聞。</p>
+        </div>
+        <section class="section compact">
+          <div class="info-warning">
+            <span class="brand-mark"><img src="images/logo.webp" alt="毒蛇學院標誌" loading="lazy"></span>
+            <div><strong>傳聞檔案</strong>
+              <p>以下內容皆為口耳相傳，真偽尚待查證，請自行判斷。</p>
+            </div>
+          </div>
+          <div class="legend-grid">
+            <article class="legend-card" :class="{ finale: legend.id === 10 }" v-for="legend in legends"
+              :key="legend.id">
+              <div class="legend-head">
+                <span class="legend-no">{{ String(legend.id).padStart(2,'0') }}</span>
+                <span class="legend-icon" aria-hidden="true">{{ legend.icon }}</span>
+                <span class="legend-tag">{{ legend.category }}</span>
+              </div>
+              <h2>{{ legend.title }}</h2>
+              <p>{{ legend.text }}</p>
+            </article>
           </div>
         </section>
       </section>

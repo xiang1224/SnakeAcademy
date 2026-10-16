@@ -3478,3 +3478,122 @@ nav button.active {
   color: var(--muted);
   opacity: .7;
 }
+
+/* ============================
+   校園十大傳說（Legends）
+   ============================ */
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.legend-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 28px;
+  background: linear-gradient(145deg, #10291f, #091810);
+  border: 1px solid rgba(200, 164, 91, .18);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.legend-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 55%, rgba(200, 164, 91, .05));
+  pointer-events: none;
+}
+
+.legend-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 164, 91, .5);
+  box-shadow: var(--shadow);
+}
+
+.legend-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.legend-no {
+  font: 700 26px Cinzel, serif;
+  color: rgba(200, 164, 91, .55);
+  letter-spacing: 2px;
+}
+
+.legend-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold2);
+  background: rgba(200, 164, 91, .07);
+  font-size: 18px;
+}
+
+.legend-tag {
+  margin-left: auto;
+  padding: 3px 9px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--gold);
+  border: 1px solid rgba(200, 164, 91, .4);
+  background: rgba(200, 164, 91, .06);
+}
+
+.legend-card h2 {
+  margin: 0 0 10px;
+  font-size: 23px;
+  color: var(--gold2);
+}
+
+.legend-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.legend-card.finale {
+  grid-column: 1 / -1;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0, rgba(200, 164, 91, .14), transparent 60%),
+    linear-gradient(145deg, #10291f, #091810);
+  border-color: rgba(200, 164, 91, .45);
+}
+
+.legend-card.finale .legend-head {
+  justify-content: center;
+}
+
+.legend-card.finale .legend-tag {
+  margin-left: 0;
+}
+
+.legend-card.finale h2 {
+  font-size: 28px;
+}
+
+.legend-card.finale p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--cream);
+}
+
+@media(max-width:700px) {
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-card.finale {
+    grid-column: auto;
+  }
+}
