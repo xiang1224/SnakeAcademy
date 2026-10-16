@@ -3597,3 +3597,140 @@ nav button.active {
     grid-column: auto;
   }
 }
+
+/* ============================
+   霍格華茲大陸史（Continent History）
+   ============================ */
+.history-hero h1 {
+  color: var(--gold2);
+}
+
+.history-timeline {
+  position: relative;
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+}
+
+.history-timeline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 23px;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 8%, var(--gold) 92%, transparent);
+  opacity: .45;
+}
+
+.history-chapter {
+  position: relative;
+  padding-left: 76px;
+  margin-bottom: 26px;
+}
+
+.history-node {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--bg2);
+  color: var(--gold2);
+  font-size: 20px;
+  box-shadow: 0 0 0 6px var(--bg);
+}
+
+.history-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 30px;
+  background: linear-gradient(145deg, #10291f, #091810);
+  border: 1px solid rgba(200, 164, 91, .18);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.history-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(200, 164, 91, .5);
+  box-shadow: var(--shadow);
+}
+
+.history-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.history-no {
+  font: 700 28px Cinzel, serif;
+  letter-spacing: 2px;
+  color: rgba(200, 164, 91, .55);
+}
+
+.history-head h2 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--gold2);
+}
+
+.history-head small {
+  font: 500 11px Cinzel, serif;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.history-card p {
+  margin: 0 0 6px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--cream);
+}
+
+.history-card p:last-child {
+  margin-bottom: 0;
+}
+
+.history-chapter.finale .history-card {
+  background:
+    radial-gradient(circle at 50% 0, rgba(200, 164, 91, .14), transparent 60%),
+    linear-gradient(145deg, #10291f, #091810);
+  border-color: rgba(200, 164, 91, .45);
+}
+
+.history-chapter.finale .history-card p:last-child {
+  margin-top: 14px;
+  color: var(--gold2);
+  font-style: italic;
+}
+
+@media(max-width:700px) {
+  .history-timeline:before {
+    left: 17px;
+  }
+
+  .history-chapter {
+    padding-left: 54px;
+  }
+
+  .history-node {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .history-card {
+    padding: 20px 18px;
+  }
+
+  .history-head h2 {
+    font-size: 20px;
+  }
+}

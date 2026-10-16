@@ -54,6 +54,8 @@
                   Stones</small></button>
               <button :class="{ active: page === 'tablets' }" @click="go('tablets')">禁忌的石碑
                 <small>Forbidden Tablets</small></button>
+              <button :class="{ active: page === 'history' }" @click="go('history')">霍格華茲大陸史
+                <small>Continent History</small></button>
               <button :class="{ active: page === 'legends' }" @click="go('legends')">校園十大傳說
                 <small>Legends</small></button>
               <button :class="{ active: page === 'professors' }" @click="go('professors')">教授們相關
@@ -721,6 +723,39 @@
             <button v-if="isExpanded('tablets')" class="btn btn-outline expand-btn" @click="collapse('tablets')">收合
               ↑</button>
           </div>
+        </section>
+      </section>
+
+      <!-- INFORMATION: CONTINENT HISTORY -->
+      <section v-if="page === 'history'" class="page inner-page">
+        <div class="page-hero info-hero history-hero">
+          <p class="eyebrow">WORLD CHRONICLE · HISTORY</p>
+          <h1>霍格華茲大陸史</h1>
+          <p>從未知的年代到魔王的封印，一段被時間慢慢掩埋的歷史。</p>
+        </div>
+        <section class="section compact">
+          <div class="info-warning">
+            <span class="brand-mark"><img src="images/logo.webp" alt="毒蛇學院標誌" loading="lazy"></span>
+            <div><strong>編年史檔案</strong>
+              <p>以下內容由學院記錄者整理自口述與殘破的文獻，細節或許已被歲月改寫。</p>
+            </div>
+          </div>
+          <ol class="history-timeline">
+            <li class="history-chapter" :class="{ finale: ch.id === continentHistory.length }"
+              v-for="ch in continentHistory" :key="ch.id">
+              <span class="history-node" aria-hidden="true">{{ ch.icon }}</span>
+              <article class="history-card">
+                <div class="history-head">
+                  <span class="history-no">{{ String(ch.id).padStart(2,'0') }}</span>
+                  <div>
+                    <h2>{{ ch.title }}</h2>
+                    <small>{{ ch.en }}</small>
+                  </div>
+                </div>
+                <p v-for="(line, idx) in ch.lines" :key="idx">{{ line }}</p>
+              </article>
+            </li>
+          </ol>
         </section>
       </section>
 
