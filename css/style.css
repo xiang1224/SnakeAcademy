@@ -3734,3 +3734,90 @@ nav button.active {
     font-size: 20px;
   }
 }
+
+/* 藥水合成表：效果 / 時效 / 冷卻 */
+.recipe-effect {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.recipe-effect ul {
+  margin: 0 0 10px;
+  padding-left: 18px;
+}
+
+.recipe-effect li {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--cream);
+}
+
+.recipe-effect li::marker {
+  color: var(--gold);
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.recipe-meta b {
+  margin-left: 4px;
+  color: var(--gold2);
+  font-weight: 700;
+}
+
+/* 藥水效果：可展開按鈕（每張卡都有，沒資料時為停用狀態，維持卡片高度一致） */
+.recipe-effect-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
+  padding: 9px 12px;
+  border: 1px solid rgba(200, 164, 91, .25);
+  background: rgba(200, 164, 91, .06);
+  color: var(--gold2);
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-family: inherit;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.recipe-effect-toggle:hover:not(:disabled),
+.recipe-effect-toggle.open {
+  background: rgba(200, 164, 91, .12);
+  border-color: var(--gold);
+}
+
+.recipe-effect-toggle:disabled {
+  cursor: not-allowed;
+  color: var(--muted);
+  opacity: .65;
+  border-style: dashed;
+}
+
+.recipe-effect-arrow {
+  color: var(--gold);
+  transition: transform .25s ease;
+}
+
+.recipe-effect-toggle.open .recipe-effect-arrow {
+  transform: rotate(180deg);
+}
+
+.recipe-effect {
+  margin-top: 12px;
+  padding-top: 0;
+  border-top: 0;
+  position: relative;
+  z-index: 1;
+}

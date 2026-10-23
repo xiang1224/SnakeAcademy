@@ -24,6 +24,7 @@ createApp({
       infoSessionDuration: 30 * 60 * 1000,
       sessionCheckTimer: null,
       showRecipes: false,
+      openRecipeIds: [],    // 目前展開效果的藥水 id（可同時展開多張）
       // 資料較多的頁面：預設只顯示前幾筆，每按一次「展開更多」再多載入一批，不會一次全開。
       // previewCounts = 一開始顯示幾筆；stepCounts = 每次點擊多顯示幾筆。
       visibleCounts: { students: 3, gallery: 6, stones: 6, professors: 3, tablets: 3 },
@@ -339,7 +340,7 @@ createApp({
         { id: 18, name: '混亂藤', type: 'Chaos-Vine', use: '尚未知曉用途。', location: '地圖魁地奇球場右上方', image: './images/material/Chaos-Vine.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp', chance: true },
         { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 20, name: '陽光果', type: 'Sunfruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Sunfruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
-        { id: 21, name: '火椒果', type: 'Firepepper-Fruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Firepepper-Fruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
+        { id: 21, name: '火椒果', type: 'Firepepper-Fruit', use: '可用來製作狂人藥。', location: '地圖活米村上方墓園處', image: './images/material/Firepepper-Fruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
       ],
 
       // 藥水合成表：採集相關頁面使用
@@ -355,7 +356,26 @@ createApp({
         { id: 9, name: '特級回復藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '尖叫草', qty: 2 }, { name: '魔石', qty: 2 }, { name: '回復藥水', qty: 1 }] },
         { id: 10, name: '魅惑藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }] },
         { id: 11, name: '沉睡藥水', materials: [{ name: '怪物精華', qty: 2 }, { name: '水晶蘑菇', qty: 2 }, { name: '魔石', qty: 2 }, { name: '蜂王蜜', qty: 2 }] },
-        { id: 12, name: '解靈藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }, { name: '月光草', qty: 2 }] }
+        {
+          id: 12, name: '解靈藥', materials: [{ name: '怪物精華', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }, { name: '月光草', qty: 2 }],
+          effects: ['解除：迷幻、緩速、石化、混亂、沉睡（不一定成功）、變形、部分詛咒'],
+          duration: '待測試',
+          cooldown: '待測試'
+        },
+        {
+          id: 13, name: '狂人藥',
+          materials: [{ name: '怪物精華', qty: 2 }, { name: '魔石', qty: 2 }, { name: '火椒果', qty: 2 }, { name: '魔法之花', qty: 2 }],
+          effects: ['刺激身體機能（代償）', '阻隔魔力流動，暫時失去魔力', '跑步速度及耐力增加 2 成'],
+          duration: '2～3 分鐘',
+          cooldown: '10 分鐘'
+        },
+        {
+          id: 14, name: '人魚藥水',
+          materials: [{ name: '魔力泉水', qty: 1 }, { name: '迴聲花瓣', qty: 3 }, { name: '學舌草', qty: 2 }, { name: '月光草', qty: 1 }, { name: '冰晶花', qty: 1 }, { name: '妖精花粉', qty: 1 }, { name: '魔石', qty: 1 }],
+          effects: ['可讓生物擁有與自身相近的語言能力'],
+          duration: '待測試',
+          cooldown: '待測試'
+        }
       ],
 
       // mana（魔力消耗）、cooldown（冷卻時間）：填數字會自動加單位（冷卻為「秒」），也可填字串如 '3 分鐘'；null 會顯示「待補充」。
@@ -677,6 +697,28 @@ createApp({
           source: '課堂取得',
           mana: 60,
           cooldown: 50,
+          image: 'images/rock/red.webp'
+        },
+        {
+          id: 30,
+          name: '魔牆術',
+          kind: '輔助控制魔法',
+          tags: ['魔牆術'],
+          use: '從地面拔起巨大堅硬的石牆形成實體掩護，能有效抵擋敵方遠程投射物與攻擊魔法。',
+          source: '課堂取得',
+          mana: 25,
+          cooldown: 40,
+          image: 'images/rock/blue.webp'
+        },
+        {
+          id: 31,
+          name: '深淵環',
+          kind: '攻擊魔法',
+          tags: ['深淵'],
+          use: '以自身為中心展開烈焰陣法，召喚出一圈熾熱的綠色火焰環，對試圖接近或跨越的敵人造成持續灼燒傷害。',
+          source: '流浪女巫、魔法部福袋',
+          mana: 40,
+          cooldown: 20,
           image: 'images/rock/red.webp'
         }
       ],
@@ -1121,6 +1163,15 @@ createApp({
       this.infoOpen = false;
       this.lightbox = null;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+
+    isRecipeOpen(id) {
+      return this.openRecipeIds.includes(id);
+    },
+    toggleRecipe(id) {
+      this.openRecipeIds = this.isRecipeOpen(id)
+        ? this.openRecipeIds.filter(x => x !== id)
+        : [...this.openRecipeIds, id];
     },
 
     toggleInfoMenu() {

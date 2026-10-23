@@ -400,6 +400,20 @@
                   {{ mat.name }} <em>x{{ mat.qty }}</em>
                 </button>
               </div>
+              <button class="recipe-effect-toggle" :class="{ open: isRecipeOpen(recipe.id) }"
+                :disabled="!recipe.effects" :aria-expanded="isRecipeOpen(recipe.id)" @click="toggleRecipe(recipe.id)">
+                <span>{{ recipe.effects ? '藥水效果' : '效果待補充' }}</span>
+                <span class="recipe-effect-arrow" aria-hidden="true">▾</span>
+              </button>
+              <div class="recipe-effect" v-if="recipe.effects && isRecipeOpen(recipe.id)">
+                <ul>
+                  <li v-for="e in recipe.effects" :key="e">{{ e }}</li>
+                </ul>
+                <p class="recipe-meta" v-if="recipe.duration || recipe.cooldown">
+                  <span v-if="recipe.duration">時效 <b>{{ recipe.duration }}</b></span>
+                  <span v-if="recipe.cooldown">冷卻 <b>{{ recipe.cooldown }}</b></span>
+                </p>
+              </div>
             </article>
           </div>
         </section>
