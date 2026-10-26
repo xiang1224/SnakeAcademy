@@ -27,8 +27,8 @@ createApp({
       openRecipeIds: [],    // 目前展開效果的藥水 id（可同時展開多張）
       // 資料較多的頁面：預設只顯示前幾筆，每按一次「展開更多」再多載入一批，不會一次全開。
       // previewCounts = 一開始顯示幾筆；stepCounts = 每次點擊多顯示幾筆。
-      visibleCounts: { students: 3, gallery: 6, stones: 6, professors: 3, tablets: 3 },
-      previewCounts: { students: 3, gallery: 6, stones: 6, professors: 3, tablets: 3 },
+      visibleCounts: { students: 6, gallery: 6, stones: 6, professors: 6, tablets: 6 },
+      previewCounts: { students: 6, gallery: 6, stones: 6, professors: 6, tablets: 6 },
       stepCounts: { students: 6, gallery: 6, stones: 6, professors: 3, tablets: 3 },
       highlightedMaterial: null,
       // 採集相關改成文字清單：圖片只在「滑鼠移入預覽」或「點擊展開」時才會建立並讀取。
@@ -54,6 +54,9 @@ createApp({
         { id: 14, name: '優莉安娜生日會', category: '學院活動', image: 'images/gallery/優莉安娜生日會.webp' },
         { id: 15, name: '遊艇舞會', category: '學院活動', image: 'images/gallery/遊艇舞會.webp' },
         { id: 16, name: '舞會合照', category: '學院活動', image: 'images/gallery/舞會合照.webp' },
+        { id: 17, name: '人魚見面會(一)', category: '校園日常', image: 'images/gallery/人魚見面會(一).webp' },
+        { id: 18, name: '人魚見面會(二)', category: '校園日常', image: 'images/gallery/人魚見面會(二).webp' },
+        { id: 19, name: '好想小夏', category: '學院活動', image: 'images/gallery/好想小夏.webp' },
       ],
 
       // 魔物圖鑑：圖片只有在被選中時才會讀取。image 路徑請對應 images/monsters/ 內的檔名。
@@ -720,6 +723,17 @@ createApp({
           mana: 40,
           cooldown: 20,
           image: 'images/rock/red.webp'
+        },
+        {
+          id: 32,
+          name: '冰刺術',
+          kind: '攻擊魔法',
+          tags: ['冰刺'],
+          use: '凝聚尖銳的高密度寒冰之刺瞬間向前突襲，對單一目標造成高額的傷害。',
+          source: '課堂取得',
+          mana: 50,
+          cooldown: 55,
+          image: 'images/rock/red.webp'
         }
       ],
 
@@ -986,6 +1000,9 @@ createApp({
         { id: 40, type: 'student', name: '崔弗 • 崔老尼', title: '學生', image: 'images/students/崔弗 • 崔老尼.webp' },
         { id: 41, type: 'student', name: '奧爾菲斯 • 瑞斗', title: '學生', image: 'images/students/奧爾菲斯 • 瑞斗.webp' },
         { id: 42, type: 'student', name: '羅伯斯特．瑞德', title: '學生', image: 'images/students/羅伯斯特．瑞德.webp' },
+        { id: 43, type: 'student', name: '亞斯塔', title: '學生', image: 'images/students/亞斯塔.webp' },
+        { id: 44, type: 'student', name: '埃琳娜·黑木', title: '學生', image: 'images/students/埃琳娜·黑木.webp' },
+        { id: 45, type: 'student', name: '黛安娜·隆巴頓', title: '學生', image: 'images/students/黛安娜·隆巴頓.webp' },
 
         // ====== 情報區「教授們相關」新增資料 ======
         // intelOnly: true 表示這些人只出現在「情報區→教授們相關」頁面，
