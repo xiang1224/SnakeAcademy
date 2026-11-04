@@ -327,21 +327,21 @@ createApp({
         { id: 3, name: '魔法之花', type: 'Magic Flower', use: '可用於基礎藥劑、料理與部分魔法配方。', location: '地圖城堡右側的山中平原', image: './images/material/Magic_Flower.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp' },
         { id: 4, name: '妖精花粉', type: 'Fairy Pollen', use: '促進身體代謝，可用於基礎藥劑、料理與部分魔法配方。', location: '霍格華茲正門噴水池', image: './images/material/Fairy_Pollen.webp', mapImage: 'images/map/pollen-map.webp', actualImage: 'images/map/pollen.webp' },
         { id: 5, name: '龍血藤', type: 'Dragon Blood', use: '刺激身體及魔力活動，可用來製作腎上腺素。', location: '地圖魁地奇球場右上方', image: './images/material/Dragon_Blood.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp' },
-        { id: 6, name: '蜂王蜜', type: 'Honey', use: '可用來製作沉睡藥水。', location: '活米村北方', image: './images/material/Honey.webp', mapImage: 'images/map/honey-map.webp', actualImage: 'images/map/honey.webp' },
+        { id: 6, name: '蜂王蜜', type: 'Honey', use: '可用來製作沉睡藥水、發光藥水。', location: '活米村北方', image: './images/material/Honey.webp', mapImage: 'images/map/honey-map.webp', actualImage: 'images/map/honey.webp' },
         { id: 7, name: '冰晶花', type: 'Crystal Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Ice-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp' },
         { id: 8, name: '尖叫草', type: 'Scream Flower', use: '能夠放大其他材料的魔力效果，可用來製作特級藥水。', location: '很南方的巨石陣', image: './images/material/scream.webp', mapImage: 'images/map/scream-map.webp', actualImage: 'images/map/scream.webp' },
         // ↓↓↓ 這兩筆是合成表新增的材料，圖片與地點還沒補上實際資料，先用預留檔名，記得之後把對應圖片放進 images 資料夾
         { id: 9, name: '怪物精華', type: 'Monster Essence', use: '啟動或活化藥劑中的魔力，擊敗怪物後掉落，可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/marrow.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
         { id: 10, name: '魔石', type: 'Magic Stone', use: '可用於各類藥水合成。', location: '擊殺地圖標記處之魔物均有機率掉落', image: './images/material/magicrock.webp', mapImage: 'images/map/monster-map.webp', actualImage: 'images/map/monster.webp' },
         { id: 11, name: '靜心草', type: 'Tranquility-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Tranquility-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 12, name: '搔癢草', type: 'Itching-Powder-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Itching-Powder-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 13, name: '灰岩苔', type: 'Limestone-Moss', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Limestone-Moss.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 12, name: '搔癢草', type: 'Itching-Powder-Herb', use: '可用來製作笑笑藥水。', location: '地圖城堡右側的山中平原', image: './images/material/Itching-Powder-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 13, name: '灰岩苔', type: 'Limestone-Moss', use: '可用來製作石軀液。', location: '地圖城堡右側的山中平原', image: './images/material/Limestone-Moss.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 14, name: '月光草', type: 'Moonlight-Herb', use: '可用於魔力辨識、異常魔力分離與魔力進化，亦可用來製作解靈藥。', location: '地圖城堡右側的山中平原', image: './images/material/Moonlight-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 15, name: '腐心草', type: 'Rotheart-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Rotheart-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
-        { id: 16, name: '烈焰花', type: 'Flame-Flower', use: '尚未知曉用途。', location: '花園', image: './images/material/Flame-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
-        { id: 17, name: '迴聲花瓣', type: 'Echo-Petal', use: '尚未知曉用途。', location: '花園', image: './images/material/Echo-Petal.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
+        { id: 16, name: '烈焰花', type: 'Flame-Flower', use: '帶有火焰魔力，可用來製作赤焰藥水。', location: '花園', image: './images/material/Flame-Flower.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
+        { id: 17, name: '迴聲花瓣', type: 'Echo-Petal', use: '可感應腦波波動，可用來製作真言水。', location: '花園', image: './images/material/Echo-Petal.webp', mapImage: 'images/map/ice-flower-map.webp', actualImage: 'images/map/ice-flower.webp', chance: true },
         { id: 18, name: '混亂藤', type: 'Chaos-Vine', use: '尚未知曉用途。', location: '地圖魁地奇球場右上方', image: './images/material/Chaos-Vine.webp', mapImage: 'images/map/blood-map.webp', actualImage: 'images/map/blood.webp', chance: true },
-        { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '尚未知曉用途。', location: '地圖城堡右側的山中平原', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
+        { id: 19, name: '學舌草', type: 'Mimic-Herb', use: '可用來製作鸚鵡藥水。', location: '地圖城堡右側的山中平原', image: './images/material/Mimic-Herb.webp', mapImage: './images/map/flower-map.webp', actualImage: 'images/map/flower.webp', chance: true },
         { id: 20, name: '陽光果', type: 'Sunfruit', use: '尚未知曉用途。', location: '地圖活米村上方墓園處', image: './images/material/Sunfruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
         { id: 21, name: '火椒果', type: 'Firepepper-Fruit', use: '可用來製作狂人藥。', location: '地圖活米村上方墓園處', image: './images/material/Firepepper-Fruit.webp', mapImage: 'images/map/mushroom-map.webp', actualImage: 'images/map/mushroom.webp', chance: true },
       ],
@@ -377,6 +377,59 @@ createApp({
           materials: [{ name: '魔力泉水', qty: 1 }, { name: '迴聲花瓣', qty: 3 }, { name: '學舌草', qty: 2 }, { name: '月光草', qty: 1 }, { name: '冰晶花', qty: 1 }, { name: '妖精花粉', qty: 1 }, { name: '魔石', qty: 1 }],
           effects: ['可讓生物擁有與自身相近的語言能力'],
           duration: '待測試',
+          cooldown: '待測試'
+        },
+        {
+          id: 15, name: '石軀液',
+          materials: [{ name: '灰岩苔', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }, { name: '怪物精華', qty: 2 }],
+          effects: ['服用或施用後，使目標身體僵硬、暫時喪失行動能力', '意識清醒，仍能正常說話與聽講'],
+          duration: '5 分鐘',
+          cooldown: '待測試'
+        },
+        {
+          id: 16, name: '發光藥水',
+          materials: [{ name: '蜂王蜜', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '魔石', qty: 2 }, { name: '怪物精華', qty: 2 }],
+          effects: ['喝下後自身發光', '據說有助於採集稀有花草，提升採集率'],
+          duration: '5 分鐘',
+          cooldown: '待測試'
+        },
+        {
+          id: 17, name: '鸚鵡藥水',
+          materials: [{ name: '怪物精華', qty: 2 }, { name: '魔石', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '學舌草', qty: 2 }],
+          effects: ['記錄並模仿聲音，影響語言表達', '下意識重複別人說的最後一句話', '能理解對方語句內容，不影響思想'],
+          duration: '1 分鐘',
+          cooldown: '待測試'
+        },
+        {
+          id: 18, name: '真言水',
+          materials: [{ name: '怪物精華', qty: 2 }, { name: '魔石', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '迴聲花瓣', qty: 2 }],
+          effects: [
+            '以迴聲花瓣感應腦波，相當於麻瓜世界的吐真劑',
+            '服用後神志不清，受精神干擾而無法說謊',
+            '說出的是「自己所認為的真話」；不知道的事會回答不知道，不會編造',
+            '不保證能獲得真相',
+            '藥效受身形大小影響，理論上小型生物需加以稀釋'
+          ],
+          duration: '待測試',
+          cooldown: '待測試'
+        },
+        {
+          id: 19, name: '赤焰藥水',
+          materials: [{ name: '怪物精華', qty: 2 }, { name: '魔石', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '烈焰花', qty: 2 }],
+          effects: [
+            '帶有火焰魔力，提升體能',
+            '體內魔力轉化為防禦力，類似藥水版魔力盾，免疫魔法攻擊',
+            '只免疫別人「對著你」的攻擊；對地板或旁人施法時，仍會被波及',
+            '服用後身體發燙，具侵蝕性（喝下會扣血），飲用前須注意身體健康'
+          ],
+          duration: '待測試',
+          cooldown: '待測試'
+        },
+        {
+          id: 20, name: '笑笑藥水',
+          materials: [{ name: '怪物精華', qty: 2 }, { name: '魔石', qty: 2 }, { name: '魔法之花', qty: 2 }, { name: '搔癢草', qty: 2 }],
+          effects: ['刺激感官、增加反射動作', '影響笑聲相關肌肉及神經反應，使人不受控地大笑', '不會真正影響情緒'],
+          duration: '10～30 秒',
           cooldown: '待測試'
         }
       ],
@@ -734,6 +787,17 @@ createApp({
           mana: 50,
           cooldown: 55,
           image: 'images/rock/red.webp'
+        },
+        {
+          id: 33,
+          name: '偽裝術',
+          kind: '咒術魔法',
+          tags: ['偽裝'],
+          use: '法杖指向目標即可變為其外貌，持續5分鐘（禁止冒充校長或教授）。變形期間無法使用任何魔法，且嚴禁更換衣物，否則將造成魔力異常而永久無法恢復。',
+          source: '課堂取得',
+          mana: null,
+          cooldown: 300,
+          image: 'images/rock/purple.webp'
         }
       ],
 
